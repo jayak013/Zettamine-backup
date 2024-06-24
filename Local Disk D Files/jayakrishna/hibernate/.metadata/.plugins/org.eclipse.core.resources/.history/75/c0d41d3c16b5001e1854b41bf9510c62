@@ -1,0 +1,54 @@
+package com.zettamine.hibernate;
+
+import java.util.Scanner;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.zettamine.hibernate.entity.Student;
+
+public class SaveStudent {
+	
+	private static final Logger LOGGER = Logger.getLogger(SaveStudent.class);
+	
+	public static void main(String[] args) {
+		char option = 0;
+		do {
+			Scanner scn = new Scanner(System.in);
+			System.out.println("Enter Student name and email: ");
+			String name = scn.next();
+			String email = scn.next();
+			Student st = new Student(name,email);
+			saveStudent(st);
+			System.out.print("Do you want to add more Students...?[Y/N]");
+			option = scn.next().charAt(0);
+		}while(option=='y' || option=='Y');
+	}
+	
+	public static void saveStudent(Student st) {
+		BasicConfigurator.configure();
+		LOGGER.setLevel(Level.DEBUG);
+		LOGGER.debug("Inside saveStudent()");
+		LOGGER.debug("Student Obj : "+st);
+		
+		Configuration cfg = new Configuration();
+		
+		cfg.configure("hibernate.cfg.xml"); //XML Parsing - DOM Parser
+		
+		SessionFactory sF = cfg.buildSessionFactory();
+		Session session = sF.openSession();
+		Transaction transaction = session.beginTransaction();
+		session.save(st);
+		transaction.commit();
+		LOGGER.debug("trasaction committed...and Student is added.");
+		session.close();
+		sF.close();
+		LOGGER.debug("exit saveStudent()");
+	}
+	
+}

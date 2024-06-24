@@ -1,0 +1,9 @@
+package com.zettamine.iostreams.factory;
+
+import com.zettamine.iostreams.copiers.FolderCopier;
+
+public interface CopierFactory {
+	
+	FolderCopier createFileCopier();
+	
+}

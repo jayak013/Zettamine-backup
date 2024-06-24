@@ -1,0 +1,32 @@
+package com.zettamine.amc.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zettamine.amc.dto.ResponseDto;
+import com.zettamine.amc.dto.ServiceAreaDto;
+
+@RestController
+@RequestMapping("/api/v1/amc/service-area")
+public class AppraisalServiceAreaController {
+	
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createServiceArea(@RequestBody ServiceAreaDto serviceAreaDto){
+		return null;
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<ResponseDto> updateServiceArea(@RequestBody ServiceAreaDto serviceAreaDto){
+		return null;
+	}
+	
+	@PostMapping("/fetch/{amcId}")
+	public ResponseEntity<ResponseDto> fetchServiceArea(@PathVariable Integer amcId){
+		return null;
+	}
+	
+}

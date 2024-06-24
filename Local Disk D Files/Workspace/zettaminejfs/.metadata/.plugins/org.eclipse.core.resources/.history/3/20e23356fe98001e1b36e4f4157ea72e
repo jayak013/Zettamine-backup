@@ -1,0 +1,9 @@
+package com.zettamine.java.day05.assignment04;
+
+public class DeserializeProducts {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}

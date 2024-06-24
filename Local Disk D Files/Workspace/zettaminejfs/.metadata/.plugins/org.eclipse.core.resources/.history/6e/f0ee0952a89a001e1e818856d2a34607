@@ -1,0 +1,10 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.util.Set;
+
+public class Student {
+	private String rollNo;
+	private String stdName;
+	private Set<Integer> subjectMarksHS;
+	private Set<Integer> subjectMarksTS;
+}

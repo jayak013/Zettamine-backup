@@ -1,0 +1,10 @@
+package com.zettamine.hibernate.entity;
+
+public class FacultyCertificationsMain {
+	
+	public static void main(String[] args) {
+		Faculty faculty = new Faculty();
+		System.out.println(faculty);
+	}
+	
+}

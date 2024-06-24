@@ -1,0 +1,29 @@
+package com.zettamine.java.day06.assignment08;
+
+import java.util.Scanner;
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		TreeSet<StringBuffer> treeSet = new TreeSet<StringBuffer>((StringBuffer s1,StringBuffer s2)->{
+												if(s1.length()>s2.length()) return 1;
+												else if(s1.length()<s2.length()) return -1;
+												else return s1.compareTo(s2);
+											});
+		
+		System.out.print("How many students you want to add: ");
+		int numberOfStudents = scn.nextInt();
+		do {
+			
+		}while(numberOfStudents>0)
+		treeSet.add(new StringBuffer("Anil"));
+		treeSet.add(new StringBuffer("Sunil"));
+		treeSet.add(new StringBuffer("Srinivas"));
+		treeSet.add(new StringBuffer("Pankaj Kumar"));
+		
+		System.out.println(treeSet);
+	}
+	
+}

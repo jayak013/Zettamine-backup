@@ -1,0 +1,11 @@
+package com.zettamine.jdbctemplate.dao;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public interface UserDAO {
+	
+	int saveEmployee(Employee emp);
+	
+	Employee findEmployeeById(Integer id);
+	
+}

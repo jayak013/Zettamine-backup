@@ -1,0 +1,15 @@
+package com.zettamine.java.practice;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+public class JodaDateAndTime {
+	public static void main(String[] args) {
+		Date date = new Date();
+		System.out.println(date);
+		LocalDate now = LocalDate.now();
+		System.out.println(now);
+		LocalDate of = LocalDate.of(2012, 1, 23);
+		System.out.println(of);
+	}
+}

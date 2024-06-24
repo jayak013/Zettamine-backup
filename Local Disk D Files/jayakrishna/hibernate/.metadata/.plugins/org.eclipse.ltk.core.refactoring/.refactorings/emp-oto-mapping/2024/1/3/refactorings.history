@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.zettamine.entity&apos; to &apos;com.zettamine.hibernate.entity&apos;&#x0D;&#x0A;- Original project: &apos;emp-oto-mapping&apos;&#x0D;&#x0A;- Original element: &apos;emp-oto-mapping/src/main/java/com.zettamine.entity&apos;&#x0D;&#x0A;- Renamed element: &apos;emp-oto-mapping/src/main/java/com.zettamine.hibernate.entity&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.zettamine.entity&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.entity" name="com.zettamine.hibernate.entity" qualified="false" references="true" stamp="1705646704521" textual="false" version="1.0"/>
+</session>

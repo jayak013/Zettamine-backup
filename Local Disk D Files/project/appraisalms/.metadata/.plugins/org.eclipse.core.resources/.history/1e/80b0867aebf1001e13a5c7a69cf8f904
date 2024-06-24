@@ -1,0 +1,17 @@
+package com.zettamine.amc.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zettamine.amc.dto.ResponseDto;
+import com.zettamine.amc.dto.ServiceAreaDto;
+
+@RestController
+public class AppraisalServiceAreaController {
+	
+	public ResponseEntity<ResponseDto> createServiceArea(@RequestBody ServiceAreaDto serviceAreaDto){
+		return null;
+	}
+	
+}

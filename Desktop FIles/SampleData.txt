@@ -1,0 +1,2 @@
+Reads text from character files using a default buffer size. Decoding from bytes to characters uses either a specified charset or the platform's default charset.
+The FileReader is meant for reading streams of characters. For reading streams of raw bytes, consider using a FileInputStream.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver.class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/Hibernate
+		</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">Jayak@013</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect
+		</property>
+		<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="connection.pool_size">0</property>
+		<property name="hibernate.cache.use_second_level_cache"
+			value="true" />
+		<property name="hibernate.cache.region.factory_class"
+			value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+		<mapping class="com.zettamine.hibernate.entity.Employee" />
+		<mapping class="com.zettamine.hibernate.entity.Address" />
+	</session-factory>
+</hibernate-configuration>

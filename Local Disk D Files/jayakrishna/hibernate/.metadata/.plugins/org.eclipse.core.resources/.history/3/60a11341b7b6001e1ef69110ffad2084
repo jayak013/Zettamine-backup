@@ -1,0 +1,11 @@
+package com.zettamine.hibernate.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+
+public class Faculty {
+	private Integer facultyId;
+	private String facultyName;
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Batch> batches;
+}

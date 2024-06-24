@@ -1,0 +1,42 @@
+package com.zettamine.test;
+
+import java.util.HashSet;
+
+public class Palindrome {
+	String s;
+	public boolean isPalindrome(String s) {
+		if(s==null) throw new NullPointerException();
+		return new StringBuilder(s).reverse().toString().equalsIgnoreCase(s);
+	}
+	
+	
+	public String removeSpaces(String s) {
+		return s.replaceAll(" ", "");
+	}
+	
+	public static void main(String[] args) {
+		String str1 = new String("java");
+		String str = new String("java").intern();
+		
+		HashSet<Employee> set = new HashSet<Employee>();
+		
+		Employee emp1= new Employee("sai","dept");
+		Employee emp2 = new Employee("kumar","hr");
+		
+		set.add(emp1);
+		set.add(emp2);
+		
+
+		System.out.println(set);
+		
+		emp1.setName("sai kumar");
+		System.out.println(set);
+		
+		
+		
+		
+		System.out.println(str==str1);
+	}
+	
+
+}

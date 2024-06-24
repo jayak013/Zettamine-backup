@@ -1,0 +1,34 @@
+	key Notes:
+VertX-Equipment Module - 
+vertical warehouse?
+carosuel in warehouse
+how the warehouses are used by c
+
+entry data and exit data  of blocks -vacant
+inbound and outbound data(cartons)
+goods movement with in warehouse
+-
+booking of warehouse space
+**********************************************
+maintenance table data of inventory equipment
+damage and malfunction data or logs
+replacement logs of spare parts (master)
+**********************************************
+Note: maintenance will be at variant level and equipment types
+equipment -> equipment categories -> equipment types -> variants
+
+*** Ex: inventory movement equipment (categories) , Fork Lift (type), reach fork lift(variant)  ****
+
+Automated Guided Vehicles?
+
+header data and item data?*********
+
+vertical conveyor? in manufacturing
+
+Need to find the maintenance activities what to be done?
+
+information of vendor and OEM(original equipment manufacturer)
+
+check list(master data) of maintenance data(transaction data)
+
+standard cost...? costing data

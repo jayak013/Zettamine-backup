@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Up Event</title>
+</head>
+<body>
+    <div>
+        Enter Name:<input type="text" id="inputValue" maxlength="20">
+        <span id="textLength"></span>
+    </div>
+    <script>
+        let keyUpEvent = () => {
+            let text = document.querySelector('#inputValue').value;
+            if (text.length < 8) {
+                document.getElementById("inputValue").style.color = "red"; 
+            } 
+            else {
+                document.getElementById("inputValue").style.color = "black"; 
+            }
+            document.getElementById("textLength").innerText = "(" + text.length + ")";
+        }
+        
+        keyUpEvent();
+
+        let input = document.getElementById("inputValue");
+        input.addEventListener('keyup', keyUpEvent);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+package com.zettamine.iostreams.copy;
+
+public class TestClassOfStreams {
+	
+	public static void main(String[] args) {
+		
+		List<Map<Integer,Employee>> listOfMaps = new Arraylist();
+		
+	}
+	
+}
+class Employee{
+	private String name;
+	private String job;
+	private Integer age;
+	public Employee(String name, String job, Integer age) {
+		super();
+		this.name = name;
+		this.job = job;
+		this.age = age;
+	}
+	
+	
+}

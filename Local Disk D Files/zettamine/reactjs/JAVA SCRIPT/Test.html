@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <div>
+        <h1 class="name">Jaya Krishna</h1>
+        <button  id ="button" >Zai</button>
+    </div>
+    <script>
+        function changeText(){
+            var nameId =  document.querySelector('.name')
+            var text = document.getElementById("button")
+            if(nameId.innerText === 'Jaya Krishna'){
+                text.innerText = 'Jay'
+                nameId.innerText = 'Zaiba Khan'
+            }
+            else{
+                text.innerText = 'Zai'
+                nameId.innerText = 'Jaya Krishna'
+            }
+            
+        }
+        setInterval(changeText, 500);
+    </script>
+</body>
+</html>

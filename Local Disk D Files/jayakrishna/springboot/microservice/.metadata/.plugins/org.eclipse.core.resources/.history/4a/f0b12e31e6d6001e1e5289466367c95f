@@ -1,0 +1,13 @@
+package com.zettamine.accounts.controllers;
+
+import com.zettamine.accounts.dto.CustomerDto;
+
+public class AccountsServiceImpl implements IAccountsService {
+
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

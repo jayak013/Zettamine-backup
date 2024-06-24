@@ -1,0 +1,5 @@
+package com.zettamine.accounts.exception;
+
+public class ExceptionHandler {
+
+}

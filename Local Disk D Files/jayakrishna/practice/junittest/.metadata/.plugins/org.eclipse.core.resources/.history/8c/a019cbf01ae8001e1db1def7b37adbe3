@@ -1,0 +1,32 @@
+package com.zettamine.junit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+
+class EvenOrOddTest {
+	
+
+	@Test
+	@Order(2)
+	void testEvenOrOdd(TestInfo testInfo) {
+		System.out.println(testInfo.getTestMethod());
+		EvenOrOdd evenOrOdd = new EvenOrOdd();
+		String actual = evenOrOdd.evenOrOdd(12);
+		String expected = "even";
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	@Order(1)
+	void testEvenOrOdd1(TestInfo testInfo) {
+		System.out.println(testInfo.getTestMethod());
+		EvenOrOdd evenOrOdd = new EvenOrOdd();
+		String actual = evenOrOdd.evenOrOdd(13);
+		String expected = "evn";
+		assertEquals(expected, actual);
+	}
+
+}

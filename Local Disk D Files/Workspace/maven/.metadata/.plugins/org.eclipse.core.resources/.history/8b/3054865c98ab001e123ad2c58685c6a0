@@ -1,0 +1,43 @@
+package com.zettamine.mt;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeMain {
+	public static void main(String[] args) {
+		
+		
+		Thread t1,t2,t3,t4,t5;
+		List<Thread> threadList = new ArrayList<>();
+		
+		for(Employee e:EmployeeDAO.getAllEmployees()) {
+			threadList.add(new SalaryCalculation(e));
+		}
+		
+		long startTime = System.currentTimeMillis();
+		for(Thread t:threadList) {
+			t.start();
+			try {
+				t.join();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("Time taken for 5 threads is "+(endTime-startTime));
+		
+		long startTime1 = System.currentTimeMillis();
+		for(Employee e:EmployeeDAO.getAllEmployees()) {
+			Thread t = new SalaryCalculation(e);
+			t.start();
+			try {
+				t.join();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		long endTime1 = System.currentTimeMillis();
+		System.out.println("Time taken for single thread is "+(endTime1-startTime1));
+	}
+}

@@ -1,0 +1,57 @@
+To start Telecom business many licences are required(TRAI controls the guide lines of the India Telecom services.)
+
+1. INTERNET SERVICE PROVIDER(ISP License)
+	a. first one is we can provide internet services all over India
+	b. we can provide internet service to a metro or a city
+	c. we can provide internet service to an area or for a block
+2. UL-VNO License(Unified License For Virtual Network Operator) : While having issues with the budget or having tight budget it is better to choose this one. 
+	a. OSP Registrations(other service provider) : we call it as call center. It is used 
+	for providing services like BPO,LPO,KPO,RPO, Tele-education,Tele-Banking,Networking. 	these are categorized into 1. Inbound(Domestic level inside a country)
+				   2. Outbound(International service)
+	OSP are based on location. for one OSP license one call center. And also the 	infrastructure creation of OSP requires a lot of investment. So 2 telecom companies 
+	will build one OSP service together. For this a mutual agreement is required. 	Services can be provided through work from home also.
+	
+	b. IP-1 Registration: It is required to become a telecom service provider. The 	company can provide its services throgh Dark Fibre, Right of Way, Tower and Duct 	Space.
+	
+	Audiotex--> Audio and Text Services
+	Voice Call--> Voice Call Services
+	UMS License--> Unified Messaging Services
+
+	Seach for license for telecommunication business TRAI--> TRAI decides the guidelines
+
+	
+	To start a business it is important to register our company or a private limited comp
+	legal advices required from a lawyer or telecom sector expert
+
+	After all this
+	Infrastructure, services, network expansion, man power, branding, marketing, tax & 	advertisement. All these requires a lot of investment
+
+	features like number portability, recharge inquiries, ISD Services, Roaming, 	Internet Connection,Installation and support Service
+	
+	24*7 customer friendly services
+
+	Technical Team: Technical experts, telecom Engineers, Security Experts, man power for fibre cables fittings, operators for installing towers,technicians, satellite communication experts, break down recovery engineers, product designers, manufacturing and service unit and router engineers etc.
+
+To achieve company goals
+1. Business Strategy
+2. campaign Designers
+3. Creative Thinkers
+4. Writers team
+
+
+Telecom Services : It is the backbone of every business activity in economic & social development of a country. Government of India has created a vision of becoming IT super power by year 2025.
+1. Cellular Mobile Services -> Voice, non-voice messages
+-->It includes mobile telecom services like voice & non-voice messages & data sciences.
+-->They provide direct inter connectivity with any other type of telecom service provider.
+2. Fixed Line Services -> fibre Optic Cables (Land line)
+-->It also include services like voice & non-voice message and data services.
+-->They are connected through fibre optic cables.
+3. Cable Services -> One-way Entertainment Servies
+-->They are linkages and switched services within licensed area of operation to provide entertainment services.
+4. VSAT(very small aperture terminal)-> satellite based communication servie,Helps BOth government agencies and business, flexible and reliable solution, reliable and uninterrupted, urban and rural areas.(no information leak)
+5. DTH(Direct to Home)-> Satellite Based Media Service provided by cellular companies
+, small dish antenna(setup box), 
+No dependency on cable operator
+One can receive media services through satellite with the help of small dish antenna & setup box
+6. Radio paging services
+-->affordabke means of transmitting information to person when they are on mobile(Old servie)

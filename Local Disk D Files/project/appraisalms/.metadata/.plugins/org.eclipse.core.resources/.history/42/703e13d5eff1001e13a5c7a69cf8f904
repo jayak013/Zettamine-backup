@@ -1,0 +1,18 @@
+package com.zettamine.amc.dto;
+
+
+public class ServiceAreaDto {
+	
+	private Integer area_id;
+	
+	private Integer amcId;
+
+	private String county;
+	
+	private String city;
+	
+	private String state;
+	
+	private String zipcode;
+	
+}

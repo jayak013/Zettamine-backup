@@ -1,0 +1,15 @@
+package com.zettamine.accounts.exception;
+
+public class ResourceNotFoundException extends RuntimeException {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	public ResourceNotFoundException(String resourceName,String propertyName, Object propertyValue ) {
+		super(resourceName+" not found with the "+propertyName+" : "+propertyValue);
+	}
+
+}

@@ -1,0 +1,386 @@
+Multithreading
+--------------
+What is Thread
+How many ways thread object can be created
+What is the difference between java program execution vs thread execution
+Thread Lifecycle
+Different Thread States
+What is the need of Synchronization
+Synchronization in Java
+What is Object Lock
+What is Class Lock
+Synchronization Vs Lock
+What is Interthread communication
+Sleep vs Wait methods
+Why wait(), notify(), notifyAll() are in Object class
+yield() and join() methods
+What is the drawback of Threads
+What is the need of Thread Pool in Java
+What is the need of Callable Interface
+Callable Vs Runnable
+Thread Pools in Java  - Single Thread Pool, Cached Thread Pool, Fixed Thread Pool, Scheduled Thread Pool
+How to implement Thread Pool
+Executor Framework
+How to do multithreading in Java?
+Practical Program on Multithreading using executor framework
+What is Future interface in Java
+What is Volatile keyword in Java
+What is deadlock and how to avoid it
+What is Atomicity in Java
+What is the difference between lock and Synchronization
+
+What is reentrant lock
+What is read write lock
+What is count down latch
+What is Semaphore
+What is Cyclic Barrier
+What is Thread local
+What is Thread Groups
+
+Java 8 changes to executor framework - Producer and Consumer example (Blocking Queue) implementation using Threads
+
+- Thread is nothing but an independent path of execution within the same program
+
+- We can create thread in 3 ways
+ (a) extending Thread class
+ (b) implementing Runnable
+ (c) implementing Callable
+
+start() method is responsible to create an independent path of execution
+run() method is the start point for Thread
+
+runnable pool
+
+
+Thread scheduler in Java is the component of JVM that determines the execution order of multiple threads on a single processor (CPU).
+
+The thread schedule is part of JVM that decides which thread should run
+
+There is no guarantee that which thread will be chosen to run by the Thread Scheduler
+Only one thread at a time can run in a single process.
+
+The thread scheduler mainly uses "pre-emptive" or "time-slicing scheduling to schedule the threads
+
+It decides the order in which threads should run. This process is called thread scheduling in Java.
+
+When a system with a single processor executes a program having multiple threads, CPU executes only a single thread at a particular time.
+
+Other threads in the program wait in Runnable state for getting the chance of execution on CPU because at a time only one thread can get the chance to access the CPU.
+
+The thread scheduler selects a thread for execution from runnable state. But there is no guarantee that which thread from runnable pool will be selected next to run by the thread scheduler.
+
+Java runtime system mainly uses one of the following two strategies:
+
+    1) Preemptive scheduling
+    2) Time-sliced scheduling
+
+Preemptive Scheduling
+
+This scheduling is based on priority. Therefore, this scheduling is known as priority-based scheduling. In the priority-based scheduling algorithm, Thread scheduler uses the priority to decide which thread should be run.
+
+If a thread with a higher priority exists in Runnable state (ready state), it will be scheduled to run immediately.
+
+In case more than two threads have the same priority then CPU allocates time slots for thread execution on the basis of first-come, first-serve manner.
+Time-Sliced Scheduling
+
+The process of allocating time to threads is known as time slicing in Java. Time-slicing is based on non-priority scheduling. Under this scheduling, every running thread is executed for a fixed time period.
+
+A currently running thread goes to the Runnable state when its time slice is elapsed and another thread gets time slots by CPU for execution.
+
+With time-slicing, threads having lower priorities or higher priorities gets the same time slots for execution.
+
+Main Thread
+-----------
+The main thread in Java is a crucial component of any Java program. 
+
+The main thread is automatically created when a Java program starts, and maintains the main() method of the application. 
+
+The main () method, which serves as the program's entrance point, is the initial method utilised at the start of the programme.
+
+The main thread works as a single thread, which means that each line of code is executed sequentially. 
+
+Other names for this thread are "main application thread" and "main thread".
+
+Any additional threads that the programme may require must be created and started by the main thread. It is also in charge of organising how these threads are carried out and making sure they function effectively.
+
+Properties Associated with the Main Thread in Java
+
+1) Entry point: The main thread serves as the program's main() procedure  which serves as the program's entry point.
+     
+2) Foreground thread: Since the main thread is a foreground thread, the application will not exit until the  main thread completes its execution.
+     
+3) Single-thread processing: The main thread is a single-thread processing process, which means that it executes sequentially  one line at a time.
+     
+4) Higher priority: The main thread takes precedence over other threads launched by the program. It indicates that it has the  first pick of system resources such as the CPU.
+
+
+
+We cannot reuse Thread in Java ; to overcome this we got Thread Pool concept is used
+t.start(); t.start() - IllegalThreadStateException
+
+
+What are the maximum number of Threads that we can create using Thread Pool
+ max Pool Size = (processorCount * desiredThreadUtilization) + overHeadThreadCount
+
+https://www.scientecheasy.com/2020/08/thread-scheduler-in-java.html/
+
+
+Executors
+---------
+The Concurrency API introduces the concept of an ExecutorService as a higher level replacement for working with threads directly. 
+
+Executors are capable of running asynchronous tasks and typically manage a pool of threads, so we don't have to create new threads manually. 
+
+All threads of the internal pool will be reused under the hood for revenant tasks, so we can run as many concurrent tasks as we want throughout the life-cycle of our application with a single executor service.
+
+- single thread pool 
+- fixed thread pool
+- cached thread pool
+- scheduled thread pool
+
+fixed thread pool ->  - Creates a thread pool that reuses a fixed number of threads operating off a shared unbounded queue. 
+
+single thread pool -> Creates an Executor that uses a single worker thread operating off an unbounded queue.
+
+cached thread pool -> Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available.
+
+threadPool.awaitTermination(2, TimeUnit.SECONDS); -> Blocks until all tasks have completed execution after a shutdown request, or the timeout occurs, or the current thread isinterrupted, whichever happens first.
+
+An Executor is an object that is responsible for threads management and execution of Runnable tasks submitted from the client code. It decouples the details of thread creation, scheduling, etc from the task submission so you can focus on developing the task’s business logic without caring about the thread management details.
+
+
+Difference between the submit() and execute() method in Java Concurrency
+
+1) The submit() can accept both Runnable and Callable tasks but 
+   execute() can only accept the Runnable task.
+
+2) The submit() method is declared in the java.util.concurrent.ExecutorService interface while 
+   the execute() method is declared in the java.util.concurrent.Executor interface.
+
+3) The return type of submit() method is a java.util.concurrent.Future object but 
+  the return type of execute() method is void.
+
+
+-------------------------------------------------------------------------------------
+program shows you how to submit a Callable task to an executor.  
+
+A Callable task returns a value upon completion and we use the java.util.concurrent.Future object to obtain the value
+
+ExecutorService pool = Executors.newSingleThreadExecutor(); 
+        Callable<Integer> task = new Callable<Integer>() {
+            public Integer call() {
+                try {
+                    // fake computation time
+                    Thread.sleep(5000);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+ 
+                return 1000;
+            }
+        };
+ 
+        Future<Integer> result = pool.submit(task);
+ 
+        try { 
+            Integer returnValue = result.get(); 
+            System.out.println("Return value = " + returnValue); 
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+ 
+        pool.shutdown();
+---------------------------------------------------------------------------------------------------------
+Synchronization
+---------------------------------------------
+
+Object Level Lock Vs Class Level Lock
+
+1. Types of Object-Level Locks
+
+Object-level locks in Java can be manifested in two primary forms:
+
+  > Synchronized Methods: Using the synchronized keyword with a method.
+
+  > Synchronized Blocks: Using the synchronized keyword with a specific block of code.
+
+2. Synchronized Methods
+
+A synchronized method allows only one thread to execute the method at a time on the same object.
+
+Example: A Ticket Booking System
+
+Imagine a movie theater where only one ticket can be booked at a time for a particular seat.
+
+public class TicketBooking {
+    private int seatsAvailable = 10;
+
+    public synchronized void bookTicket() {
+        if (seatsAvailable > 0) {
+            seatsAvailable--;
+            System.out.println("Ticket booked successfully!");
+        } else {
+            System.out.println("No seats available!");
+        }
+    }
+}
+
+How It Works: When a thread calls bookTicket, it acquires an intrinsic lock on the object, preventing other threads from accessing the synchronized method on the same object simultaneously.
+
+3. Synchronized Blocks
+A synchronized block provides finer control, allowing synchronization of specific parts of a method.
+
+Example: A Shared Library System
+
+Consider a library where multiple students can borrow books, but only one student can update the library catalog at a time.
+
+public class Library {
+    private int booksAvailable = 100;
+
+    public void borrowBook() {
+        synchronized (this) {
+            if (booksAvailable > 0) {
+                booksAvailable--;
+                System.out.println("Book borrowed successfully!");
+            } else {
+                System.out.println("No books available!");
+            }
+        }
+   //other non-synchronized code here
+}
+
+
+Class Level Lock in Java
+------------------------
+
+Every class in Java has a unique lock which is nothing but class level lock.  
+
+If a thread wants to execute a static synchronized method, then the thread requires a class level lock. 
+
+Class level lock prevents multiple threads to enter a synchronized block in any of all available instances of the class on runtime. 
+
+This means if in runtime there are 10 instances of a class, only one thread will be able to access only one method or block of any one instance at a time. It is used if you want to protect static data.
+
+If a thread wants to execute a static synchronized method, then the thread requires a class level lock. Once a thread got the class level lock, then it is allowed to execute any static synchronized method of that class. Once method execution completes automatically thread releases the lock.
+
+Methods: Thread can acquire the lock at a class level by two methods namely
+    > Using the synchronized static method.
+    > Using synchronized block.
+
+Method 1: Using the synchronized static method
+
+Implementation: We have a Zetta class. We want to use static synchronization method of this class, as soon as the thread entered the synchronized method, the thread acquires the lock at the class level, rest of the threads wait to get the class monitor lock. The thread will leave a lock when it exits from the synchronized method.
+
+class Zetta implements Runnable{
+	@Override
+	public void run() {
+  	  Zetta.lock();
+	}
+
+	public static synchronized void lock() {
+		System.out.println(Thread.currentThread().getName());
+		try {
+			Thread.sleep(1000);
+		}catch(Exception ex) {}
+
+		System.out.println("in block " + Thread.currentThread().getName());
+		System.out.println("in block " + Thread.currentThread().getName()+ " end");
+	}
+}
+
+public class ClassLevelLock {
+	public static void main(String[] args) {
+        Zetta g1 = new Zetta(); 
+        // Sharing the same object across two Threads 
+        // Creating an object of thread class where t1 takes g1
+        Thread t1 = new Thread(g1);
+
+        // Creating an object of thread class where t2 takes g1
+        Thread t2 = new Thread(g1);
+        Zetta g2 = new Zetta();
+        // Creating an object of thread class where t3 takes g2
+        Thread t3 = new Thread(g2);
+        // setName() method is used to set name to the thread
+        t1.setName("t1");
+        t2.setName("t2");
+        t3.setName("t3");
+ 
+        // start() method is used for initiating the current thread
+        t1.start();
+        t2.start();
+        t3.start();
+	}
+}
+
+
+Method 2: Using synchronized block method 
+Implementation: We have a Zetta class. We want to create a synchronization block and pass class name. class as a parameter tells which class has to synchronized at the class level. As soon as the thread entered the synchronized block, the thread acquire the lock at class, rest of the threads wait to get the class monitor lock. The thread will leave lock when it exits from the synchronized block.
+
+class Zetta implements Runnable {
+	@Override
+	public void run() {
+		synchronized (Zetta.class) {
+			System.out.println(Thread.currentThread().getName());
+			try {
+				Thread.sleep(1000);
+			} catch (Exception ex) {
+			}
+
+			System.out.println("in block " + Thread.currentThread().getName());
+			System.out.println("in block " + Thread.currentThread().getName() + " end");
+		}
+	}
+}
+
+
+public class ClassLevelLock {
+	public static void main(String[] args) {
+		Zetta g1 = new Zetta();
+		// Sharing the same object across two Threads
+		// Creating an object of thread class where t1 takes g1
+		Thread t1 = new Thread(g1);
+		// Creating an object of thread class where t2 takes g1
+		Thread t2 = new Thread(g1);
+		Zetta g2 = new Zetta();
+		// Creating an object of thread class where t3 takes g2
+		Thread t3 = new Thread(g2);
+		// setName() method is used to set name to the thread
+		t1.setName("t1");
+		t2.setName("t2");
+		t3.setName("t3");
+		// start() method is used for initiating the current thread
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+}
+
+Thread t1 entered synchronized block and was holding the lock on â€˜Zettaâ€™ class. So, the rest of the threads waited for Thread t1 to release the lock on the â€˜Zettaâ€™ class so that it could enter the synchronized block.
+
+----------------------------------------------------------------------------
+
+Inter-Thread communication in Java
+----------------------------------
+Inter-thread communication is the process by allowing synchronized threads to communicate with each other.
+
+The following methods are used for inter-thread communication:
+
+public final  void wait() - can be used to keep a thread in waiting state
+
+public final native void notify() - can be used to give an activation state to a thread which is in waiting state.
+
+public final native void notifyAll()-can be used to give an activation state to all the threads which are in waiting state.
+
+wait(), notfy(), notifyAll() are the methods of java.lang.Object class 
+
+Inter-thread communication is a mechanism in which a thread is paused running in its critical section and another thread is allowed to enter (or lock) in the same critical section to be executed.
+
+wait() method causes current thread to release the lock and wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+
+The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise it will throw exception.
+
+public final void wait() throws InterruptedException - waits until object is notified.
+
+public final void wait(long timeout)throws InterruptedException - waits for the specified amount of time.
+
+2) notify() method - Wakes up a single thread that is waiting on this object's monitor. If any threads are waiting on this object, one of them is chosen to be awakened. The choice is arbitrary and occurs at the discretion of the implementation. 

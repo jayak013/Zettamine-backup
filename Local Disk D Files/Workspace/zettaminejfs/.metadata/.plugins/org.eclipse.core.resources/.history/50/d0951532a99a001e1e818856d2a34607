@@ -1,0 +1,30 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Student {
+	private static Scanner scn = new Scanner(System.in);
+	private String rollNo;
+	private String stdName;
+	private Set<Integer> subjectMarksHS;
+	private Set<Integer> subjectMarksTS;
+	
+	public Student() {}
+	
+	public Student(String rollNo, String stdName, Set<Integer> subjectMarksHS, Set<Integer> subjectMarksTS) {
+		super();
+		this.rollNo = rollNo;
+		this.stdName = stdName;
+		this.subjectMarksHS = subjectMarksHS;
+		this.subjectMarksTS = subjectMarksTS;
+	}
+
+	public void accept(String rollNo,String stdName) {
+		subjectMarksHS = new HashSet<>();
+		subjectMarksTS = new TreeSet<>();
+		System.out.print("Enter number of Subjects");
+	}
+}

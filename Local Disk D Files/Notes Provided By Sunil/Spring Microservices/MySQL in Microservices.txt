@@ -1,0 +1,195 @@
+Using MySQL Database inside Microservices
+=========================================
+
+--- Create MySQL DB Container for Microservices -----
+
+cmd> docker run -p 3306:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=accountsdb -d mysql
+
+
+SQLECTRON   - a lightweight application to connect to any DB
+
+Download & Install SQLECTRON
+
+Open SQLECTRON
+
+Add  - LocalAccountsDB
+Database Type: MySQL
+Server Address: localhost    --- 3306   databse name: accountsdb
+User: root
+Password: root
+Test  > Save
+
+
+
+
+cmd> docker run -p 3307:3306 --name loansdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
+
+
+-------- Updating Miroservices code to replace H2 Database with MySQL DB ------
+accounts ms 
+
+dependency - mysql (remove H2 depenency)
+
+server:
+  port: 8080
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active: "prod"
+  datasource:
+    url: jdbc:mysql://localhost:3306/accountsdb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+  sql:
+    init:
+      mode: always		---> schema.sql
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+-- do the similar set of changes in cards and loans microservices
+
+start configserver, accounts-ms
+
+use SQLECTRON and connect to LocalaccountsDB 
+
+test the application in POSTMAN
+POST  http://localhost:8080/api/create    
+-- pass CustomerDto payload
+{
+    "name": "Sunil Joseph",
+    "email": "sunil@zettamine",
+    "mobileNumber": "9848586878"
+}
+
+/*--- if rabbitmq error comes ----*/
+- remove the added dependencies of amqp & monitor
+- remove readiness & liveness configuration in application.yml of configserver
+
+Note: In real production , MySQL Database will attach a storage or volume where the data can be stored by the MySQL Container. That's why in real prod MySQL containers, we never lost data even if we delete or replace the MySQL Container.
+
+=================================================================================
+
+-------- Update docker compose files to create & use MySQL DB ------
+
+change the version name in pom.xml of all ms and configserver
+  <image>150478/${project.artifactId}:v3</image>
+
+
+-> create docker images for configserver and other microservices
+
+accounts cmd>mvn clean compile jib:dockerBuild
+ OR Run As ? Maven Build.. > Goals : clean compile jib:dockerBuild
+...
+
+
+cmd> docker images
+
+-- we need to make our microservices like account/loans/cards should work with MySQL Database container
+
+
+----------------- in workspace :: docker-compose\default\commons-config.yml ------------------
+services:
+  network-deploy-service:
+    networks:
+      - zettabank
+
+  microservice-db-config:
+    extends:
+      service: network-deploy-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+----------- in workspace :: docker-compose\default\docker-compose.yml -----------------
+services:
+  accountsdb:
+    image: mysql
+    container_name: accountsdb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: accountsdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+  configserver:
+    image: "150478/configserver:v3"
+    container_name: configserver-ms
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  accounts:
+    image: "150478/accounts:v3"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: "accounts"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
+    depends_on:
+      accountsdb:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+networks:
+  zettabank:
+    driver: "bridge"
+
+
+--------- Running microservices & MySQL DB containers using docker compose file ------
+
+docker-compose\defualt>docker compose up
+
+in docker-compose.yml make sure all all SPRING_DATASOURCE_URL port should be 3306 as it is working inside the container and we are not accessing from outside -- and even ports mapping is not required in docker-compose.yml  (required only for SQLECTRON for checking from outside)
+
+try in POSTMAN
+
+

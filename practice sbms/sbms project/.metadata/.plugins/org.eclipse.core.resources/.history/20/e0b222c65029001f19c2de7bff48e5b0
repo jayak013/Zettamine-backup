@@ -1,0 +1,23 @@
+package com.jayasbms.demo;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.jayasbms.demo.model.Inventory;
+import com.jayasbms.demo.repository.InventoryRepository;
+
+@SpringBootApplication
+public class InventoryServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(InventoryServiceApplication.class, args);
+	}
+	
+	public CommandLineRunner loadData(InventoryRepository inventoryRepository) {
+		Inventory inventory = new Inventory();
+		inventory.setSkuCode("iphone_13");
+		inventory.setQuantity(100);
+	}
+
+}

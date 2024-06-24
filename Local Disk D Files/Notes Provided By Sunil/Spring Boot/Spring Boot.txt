@@ -1,0 +1,284 @@
+Spring Boot
+===========
+-> Spring Boot is an approach to develop spring based applications with minimal/less configurations
+
+-> Spring Boot is not a separate framework
+
+-> All the applications that we can develop using Spring can be created using Spring Boot also
+
+-> If we develop an application using Spring framework we should take care of configurations in project (or) we need to manage all the configurations required for that project. 
+As an example in Spring MVC – we should configure dispatcher-servlet as a front controller for all web applications. The pivotal team (Spring team) thought why cant we go for autoconfiguration 
+
+-> Spring Boot came up with a concept called Auto Configuration. It will configure the things which are required to run our application. 
+The main power or main feature of Spring Boot is Auto Configuration. We don’t need to write much configuration for your application development; where as if we go for Spring framework – we need to write the logic for the application and we need to write the configuration also. In Spring Boot – just write the logic , configuration will be taken care by the spring boot.
+
+-> Auto-configuration means Spring Boot will identify the configuration which is required to run our application and it will provide that. 
+ 
+
+
+Advantages of Spring Boot/ Spring Boot Features
+
+1) Starter POM 
+
+-> Starter poms simplifies maven configuration	-> to simplify maven configuration
+I need a lot of frameworks to build application features:
+ > Build a REST API: I need Spring, Spring MVC, Tomcat, JSON conversion...
+ > Write Unit Tests: I need Spring Test, JUnit, Mockito, ...
+
+How can I group them and make it easy to build applications?
+  Starters: Convenient dependency descriptors for different features
+
+Spring Boot provides variety of starter projects:
+  Web Application & REST API - Spring Boot Starter Web (spring-webmvc, springweb, spring-boot-starter-tomcat, spring-boot-starter-json)
+  Unit Tests - Spring Boot Starter Test
+  Talk to database using JPA - Spring Boot Starter Data JPA
+  Talk to database using JDBC - Spring Boot Starter JDBC
+  Secure your web application or REST API - Spring Boot Starter Security
+(REMEMBER) Starters: Define all application dependencies
+
+-> Starter POMs are a set of convenient dependency descriptors that you can include in your application. You get a one-stop-shop for all the Spring and related technology that you need, without having to hunt through sample code and copy-paste loads of dependency descriptors.
+-> Spring Boot starters can help to reduce the number of manually added dependencies just by adding one dependency. 
+
+Ex: spring-boot-starter-parent - provides default configurations for our application and a complete dependency tree to quickly build our Spring Boot project. It also provides default configuration for Maven plugins such as maven-failsafe-plugin, maven-jar-plugin, maven-surefire-plugin, maven-war-plugin.
+
+    spring-boot-starter-web   - uses Spring MVC, REST , Jackson, and Tomcat as a default embedded server. The single spring-boot-starter-web dependency transitively pulls in all dependencies related to web development. 
+    spring-boot-starter-webflex (to develop reactive applications)
+    spring-boot-starter-data-jpa     spring-boot-starter-mail 	security - starter
+    spring-boot-starter-test - For testing we usually use : Spring Test, JUnit, Hamcrest, and Mockito. We can include all of these libraries manually, but Spring Boot starter can be used to automatically include these libraries by including 
+etc...
+
+2) Spring Boot Auto Configuration
+
+I need lot of configuration to build Spring app: --  Component Scan, DispatcherServlet, Data Sources, JSON Conversion, ...
+How can I simplify this?
+  Auto Configuration: Automated configuration for your app
+    Decided based on:
+      Which frameworks are in the Class Path?
+      What is the existing configuration (Annotations etc)?
+
+Example:  Spring Web (or) spring–boot-starter-web
+  Dispatcher Servlet (DispatcherServletAutoConfiguration)
+  Embedded Servlet Container - Tomcat is the default  (EmbeddedWebServerFactoryCustomizerAutoConfiguration)
+  Default Error Pages (ErrorMvcAutoConfiguration)
+  Bean<->JSON (JacksonHttpMessageConvertersConfiguration)
+
+-> Spring Boot is intelligent to understand the components that are required to run application and will configure them automatically.
+- while running an application some configurations are required and Spring Boot will understand it using the dependencies included
+- Fox example , in a spring boot project with spring-boot-starter-web dependency included - will not have any WEB-INF, web.xml etc
+- No need to deploy the application to server (no need to have any server setup in IDE)
+Right click on Project > Run as > Spring Boot App
+
+Ex : DB conn pool, providing server, generating logs etc..
+
+3) Dependency Version Conflicts Resolved
+-->whenever we add a dependency in the pom.xml of the spring boot application – no need to configure the version number – boot will identify the latest version of the dependency which is compatible with the version of spring boot that we are using.
+
+4) Embedded Container
+
+-> Spring Boot provides embedded servers to run web applications
+
+-> When we create Web App using boot- no need to deploy in server because boot will run our application in embedded container by default.
+
+-> Spring Boot provides Tomcat, Jetty and Undertow as Embedded Containers. 
+By default Tomcat comes as Embedded Server			
+Note: We can deploy Boot applications in External Server also.
+
+5) Embedded Database:
+
+-> Embedded DB is also called as In-Memory DB		
+-> Embedded databases are temporary databases
+-> Spring Boot is having very good integration with In-Memory DBs
+
+When the application starts - Database will be available and gets deleted when the application closes
+Database will be available only when the application is running
+Why embedded databases: for developing POC (Proof Of Concept)
+
+6) Actuators
+Spring Boot Actuators are used to get production ready features for our application
+Using Actuators we can monitor our application
+Spring Boot Actuator is a sub-project of Spring Boot. 
+Ex: we have deployed one java application to server – we want to see heap details of my application (like how many objects are created in the heap , how many objects are currently referenced, how much space utilized in the heap ), what are all the URL patterns available in my application, what are the threads are running in the application, what is the health of the application - matrix of the application we can get using actuators
+
+
+Spring Boot = Spring Framework + Embedded HTTP Servers (Tomcat, Jetty, Undertow) - XML <bean> Configuration 
+
+
+Creating First Spring Boot Application
+
+-> Spring Boot Application we can be created in 3 ways
+	1) Spring Initializr Approach (start.spring.io)  
+	2) Spring Boot CLI
+	3) Using IDE - (STS/IntelliJ) (Internally start.spring.io website will be used)
+
+
+
+=> Folder Structure of Spring Boot Application
+
+
+
+-> Start class contains main method and it is entry point for boot application execution.
+
+-> In application.properties file we will write config properites in the form of key and value format.
+
+-> Test class is used for unit testing	
+
+-> pom.xml file is used to configure maven dependencies
+
+-> To Run the boot application, Right click on project -> Run as -> Spring Boot Application.
+
+-> Boot application will identify the class which contains main method and will start execution from that class main method.
+
+Note: If we have more than one class with main method, boot will ask which class it has to consider as start class.
+
+-> To avoid this ambiguity problem, we can configure default start class in project pom.xml file
+
+<properties>
+	<java.version>1.8</java.version>
+	<start-class>com.company.Application</start-class>
+</properties>
+
+
+
+Internals of Spring Boot
+========================
+-> When we create boot application, we will get start class.	
+-> Start class contains main method
+
+-> Boot application execution will start from main method.	
+-> This main method is entry point for boot application execution.
+
+ @SpringBootApplication
+public class Application{
+       public static void main(String... args){
+		SpringApplication.run(.., args);       }
+}
+
+1) What is @SpringBootApplication ?   -- to specify Spring Boot Start class
+2) What is SpringApplication.run( ) method ?
+
+-> Inside run method spring boot app bootstrapping logic
+
+How IOC Container is starting in Spring Boot?
+
+-> In Spring Boot application, no need for the programmer to start IOC container.
+-> As part of run ( ) method execution, IOC container will start.
+
+-> Spring Boot application will start IOC container based on our application type. 
+
+Below are the application types
+
+	a) Web Servlet Application	b) Reactive Application	 c) Default Standalone Application
+
+-> Spring Boot will identify application type based on starter available in pom.xml file
+
+-> If pom.xml file contains 'spring-boot-starter-web' then it is Web Servlet application. For this application, boot will use 'AnnotationConfigServletWebServerApplicationContext' class to start IOC container.
+
+-> If pom.xml file contains 'spring-boot-starter-webflux' then it is Reactive application. For this application, boot will  use 'AnnotationConfigReactiveWebServerApplicationContext' class to start IOC container.
+
+-> If pom.xml contains 'spring-boot-starter' then it is default standalone application. For this application, boot will use 'AnnotationConfigApplicationContext' class to start IOC container.
+
+How run method working internally
+-> Boot app execution will start from main method
+-> Inside that main method we are calling SpringApplication.run( ) method – bootstrapping process of the Spring Boot Application
+-> Inside the run method below operations are happening
+ 
+Boot supports 2 types of runners – (1) Command-line Runner & (2) Application Runner
+
+public static void main(String[] args){
+   ConfigurableApplicationContext context =   SpringApplication.run(Application.class, args);
+   int beanDefinitionCount = context.getBeanDefinitionCount(); 
+   System.out.println("Bean Definition Count = " + beanDefinitionCount);
+   String[] names = context.getBeanDefinitionNames();
+}
+
+@SpringBootApplication
+Questions:
+ Who is launching the Spring Context?
+ Who is triggering the component scan?
+ Who is enabling auto configuration?
+ Answer: @SpringBootApplication
+
+1: @SpringBootConfiguration: Indicates that a class provides Spring Boot application @Configuration.
+2: @EnableAutoConfiguration: Enable auto-configuration of the Spring Application Context,
+3: @ComponentScan: Enable component scan (for current package and its sub-packages, by default)
+-> This is class level annotation
+-> In Spring Boot, for start class we will use @SpringBootApplication annotation
+
+-> @SpringBootConfiguration annotation is used to represent java class as Configuration class and we can write @Bean methods in our class to create spring bean
+@Configuration
+public class AppConfig{	
+	@Bean	
+	public Engine createEngine(){		//instantiation logic	}
+}
+
+Note: @Bean is a method level annotation, to represent class as Spring Bean. @Bean annotated methods will be called by IOC.
+
+@EnableAutoConfiguration
+-> This annotation enables Auto Configuration for Spring Boot Application.
+-> AutoConfiguration is the process of identifying components required for our application and starting them.
+-> Based on dependencies in classpath it will identify components required to run our application and will provide them.
+
+Ex :
+-> If we have web-starter, it will start embedded server for us
+-> If we have starter-data-jpa, it will start connection pool for us
+-> If we have h2 dependency, it will start Embedded Database for us
+-> If we have boot-starter, it will provide logging properties for us
+
+ @ComponentScan
+-> Component scan is the process of identifying spring beans available in the application.
+-> In Spring Boot Application, Component Scan will start from base package.
+-> The package which contains Spring Boot Start Class is called as Base Package.
+	com.zettamine   (base package)		- Application.java (Start class)
+-> After base package scanning is completed, it will perform scanning for sub-packages of base package.
+-> The packages which are starting with base-package name are called as sub-packages of base package
+	com.zettamine (base-package)
+	com.zettamine.dao  ---> sub package - will be scanned
+	com.zettamine.service ---> sub package - will be scanned (UserService)
+	com.in.sit  ----> It is not sub package - will not be scanned
+
+Note: If package name is not following base package naming convention then that package classes will not participate in component-scanning process.
+Note: In Spring Framework explicitly we need to enable Component scanning where as in Spring Boot it is built-in functionality.
+-> Component Scanning is part of @SpringBootApplication annotation
+@ComponentScan(basePackages = {"com.example","co.example"})
+
+ 
+
+How to represent one java class as a Spring Bean?
+
+To represent java class as Spring Bean we have several annotations. They are
+
+@Component		@Service		@Repository		@Controller	@RestController
+@Configuration		@Bean ----> method level annotation
+
+Note: All above annotations are class level annotations only @Bean is method level annotation.
+
+-> @Component represents class as Spring Bean. Component classes are eligible for auto-wiring.
+
+-> @Service serves as a specialization of @Component, allowing for implementation classes to be auto-detected through classpath scanning. This is used for business layer components.
+
+-> @Repository also serves as a specialization of @Component, allowing for implementation classes to be auto-detected through classpath scanning. This is used for persistent layer components.
+
+-> @Bean is a method-level annotation and a direct analog of the XML <bean/> element.
+
+-> To declare a bean, simply annotate a method with the @Bean annotation. When JavaConfig encounters such a method, it will execute that method and register the return value as a bean within a BeanFactory.
+
+
+ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+
+@SpringBootApplication
+        = @SpringBootConfiguration + 
+          @EnableAutoConfiguration +
+          @ComponentScan
+
+
+
+
+
+
+
+
+
+
+
+

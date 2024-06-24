@@ -1,0 +1,18 @@
+package com.zettamine.java.day06.assignment03;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class CountOfEachWord {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String sentence = scn.nextLine();
+		countOfEachWord(sentence);
+	}
+	
+	private static void countOfEachWord(String sentence) {
+		String[] split = sentence.split("[,;:\\.\\?!]");
+		HashMap<String, Integer> hashMap = new HashMap<>();
+	}
+}

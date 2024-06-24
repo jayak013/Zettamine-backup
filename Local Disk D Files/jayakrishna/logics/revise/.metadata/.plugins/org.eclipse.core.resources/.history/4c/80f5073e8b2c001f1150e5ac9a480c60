@@ -1,0 +1,49 @@
+package acc.code;
+
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+
+public class Testee {
+	
+	static Integer count = 1;
+	
+	public static void main(String[] args) {
+//		List<String> list = Arrays.asList("jaya krishna","hari prasad","chandu ganesh")
+//		.stream().map(e->e.split(" ")[1]).toList();
+//		
+//		System.out.println(list);
+		
+		Map<Integer, String> collect = Arrays.asList("jaya krishna","hari prasad","chandu ganesh","java")
+		.stream().collect(Collectors.toMap(e->count++, e->e,(o,n)->o,TreeMap::new));
+		
+		System.out.println(collect);
+		
+		Map<Character, List<String>> collect2 = Arrays.asList("jaya krishna","hari prasad","chandu ganesh","java").stream()
+		.collect(Collectors.groupingBy(e->e.charAt(0)));
+		System.out.println(collect2);
+		
+		String s = "my name is jaya krishna seethagari";
+		
+		Map<Character,Long> collect3 = s.chars().mapToObj(c->(char)c).filter(c->c!=' ')
+		.collect(Collectors.groupingBy(c->c,Collectors.counting()));
+		
+		System.out.println(collect3);
+		
+		
+		String s1 = "my name is jaya krishna seethagari my name is ";
+		
+		Map<String, Long> collect4 = Arrays.stream(s1.split(" "))
+				.collect(Collectors.groupingBy(e->e,Collectors.counting()));
+		
+		System.out.println(collect4);
+		
+		Map<String, List<Integer>> collect5 = Arrays.asList(1,2,3,4,5,6,7,8,9).stream().collect(Collectors.groupingBy(e->e%2!=0?"odd":"even"));
+		
+		System.out.println(collect5);
+	}
+	
+}

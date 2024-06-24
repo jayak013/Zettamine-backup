@@ -1,0 +1,17 @@
+using Abort Controller with fetch api and react js
+
+useState...?
+useRef...?
+useEffect...?
+useCallback...?
+custom hooks...?
+
+brand
+model
+price
+color--> list on key type
+warranty--> on check box
+rating  
+add button
+
+details of laps & stars as rating below

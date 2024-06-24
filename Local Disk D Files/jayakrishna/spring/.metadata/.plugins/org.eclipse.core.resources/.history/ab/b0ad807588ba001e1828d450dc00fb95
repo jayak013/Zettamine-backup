@@ -1,0 +1,20 @@
+package com.zettamine.jdbctemplate.service;
+
+import com.zettamine.jdbctemplate.dao.EmpDAO;
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public class EmpServiceImpl implements EmpService {
+
+	private EmpDAO empDAO;
+	
+	@Override
+	public int saveEmployee(Employee emp) {
+		empDAO.saveEmployee(emp);
+	}
+
+	@Override
+	public Employee getEmployeeById(Integer id) {
+		
+	}
+
+}

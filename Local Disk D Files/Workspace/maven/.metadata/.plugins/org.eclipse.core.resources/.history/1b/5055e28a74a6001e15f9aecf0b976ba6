@@ -1,0 +1,13 @@
+package com.zettamine.web.service;
+
+import com.zettamine.web.dto.Employee;
+
+public class EmpService {
+	public static EmpDAO dao;
+	public EmpService() {
+		dao = new EmpDAO();
+	}
+	public void addEmp(Employee e) {
+		
+	}
+}

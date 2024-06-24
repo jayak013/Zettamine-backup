@@ -1,0 +1,32 @@
+package com.zettamine.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zettamine.hibernate.entity.Student;
+import com.zettamine.hibernate.utils.SessionFactoryUtils;
+
+public class StudentDMLDemo {
+	
+	public static void main(String[] args) {
+		searchByGet(2);
+	}
+	
+	public static void searchByLoad(Integer id) {
+		SessionFactory sF = SessionFactoryUtils.getseSessionFactory();
+		Session session = sF.openSession();
+		try {
+			Student st = session.load(Student.class, id);
+			System.out.println(st);
+		}catch(Exception e) {
+			System.out.println("no records found...");
+		}
+	}
+	
+	public static void searchByGet(Integer id) {
+		SessionFactory sF = SessionFactoryUtils.getseSessionFactory();
+		Session session = sF.openSession();
+		Student st = session.get(Student.class, id);
+		System.out.println(st);
+	}
+}

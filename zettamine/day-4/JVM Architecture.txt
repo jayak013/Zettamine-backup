@@ -1,0 +1,59 @@
+A Virtual Machine is a software simulation of a machine, that can perform operations like a physical machine, but it is not having physical existence
+
+2 type of virtual machines - (a) Hardware/ System based VM, (b) Application/Process based VM
+JVM is a Application based Virtual Machine
+
+Class Loader Subsystem
+ 1) Class Loading 
+     a) Bootstrap Class Loader - all java API classes are loaded
+     b) Extension Class Loader - loads all the classes in exe, bin, lib folder, 3rd Party libraries
+     c) Application Class Loader - our classes
+  - Delegation Hierarchy Algorithm	
+ 2) Linking
+      a) Verify - verifies byte codes
+      b) Prepare - initialize with default values of static variables
+      c) Resolve - all memory symbolic representations will the changed with actual reference
+
+ 3) Initialization
+      a) Initialization
+
+Various Memory Area of JVM
+ 1) Method Area - class data will be available (metaspace), static variables also
+ 2) Heap Area - object data, instance variable
+ 3) Stack Area - separate runtime area/stack for each thread, each entry in stack is called stack frame
+       stack frame contains - local variable array, frame data, operand stack 
+ 4) PC Registers - PC register for thread-1, thread-2 etc, to hold the address of current executing instructions
+ 5) Native Method stacks - every thread a separate stack will be avilable - to hold native method informations
+
+Execution Engine will execute our application
+   - Interpreter  
+   - JIT Compiler 
+	-> Intermediate Code Generator - produces Intermediate Code
+        -> Code Optmizer
+        -> Target code Generator
+            -- > generates machine code/ native code
+   - Profiler - to identify hotspot methods - to identify whether a method is called multiple times, 
+   - Garbage collector etc
+
+Native Method Libraries
+Java Native Interfaces will provide the information about Native Method Libraries
+   
+https://www.scaler.com/topics/memory-management-in-java/
+
+Java Has Five Types of Garbage Collector Implementations 
+1) Serial GC :
+2) Parallel GC :
+3) Concurrent Mark Sweep (CMS) Collector
+4) G1 (Garbage First) Garbage Collector
+5) Z garbage collector
+
+Memory management in Java refers to the process of allocating and freeing up space for objects.
+
+Java Memory Management is divided into two major part :
+
+    JVM Memory Structure
+    Working of the Garbage Collector
+
+The Java memory model explains how threads communicate with one another through memory in the Java programming language. The objects of the programs are stored in various locations in the JVM memory structure.
+
+Process of freeing space in the heap for the allocation of new objects is known as "Garbage collection".

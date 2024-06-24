@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flex</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            background-color: aquamarine;
+            padding: 20px;
+            height: 450px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .container h1{
+            background-color: beige;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0px 0px 20px;
+            margin: 10px;
+        }
+        .container h1:first-child{
+            flex-grow: 12;
+        }
+        .container h1:nth-child(2){
+            flex-grow: 3;
+        }
+        .container h2:first-child{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="one" style="font-size: 30px;" onclick="anEventOne()">ONE</h1>
+        <h1 id="two" onclick="anEventTwo()">TWO</h1>
+        <h1 id="three" onclick="anEventThree()">THREE</h1>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        let anEventOne = ()=>{
+            let val = "You clicked One";
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#result').style.color = 'red';
+            document.querySelector('#result').innerText = val;
+        }
+        let anEventTwo = ()=>{
+            let val = "You clicked Two";
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#result').style.color = 'blue';
+            document.querySelector('#result').innerText = val;
+        }
+        let anEventThree = ()=>{
+            let val = "You clicked Three";
+            document.querySelector('#result').style.display = 'block';
+            document.querySelector('#result').style.color = 'violet';
+            document.querySelector('#result').innerText = val;
+        }
+    </script>
+</body>
+</html>

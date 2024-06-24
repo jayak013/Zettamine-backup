@@ -1,0 +1,12 @@
+package com.zettamine.mt;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FixedThreadPoolTest {
+	
+	public static void main(String[] args) {
+		List<Employee> empList = EmployeeDAO.getAllEmployees();
+	}
+	
+}

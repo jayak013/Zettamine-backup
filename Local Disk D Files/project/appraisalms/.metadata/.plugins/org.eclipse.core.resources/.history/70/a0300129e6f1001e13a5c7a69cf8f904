@@ -1,0 +1,9 @@
+package com.zettamine.amc.dto;
+
+public class ResponseDto {
+	
+	private String statusCode;
+	
+	private String statusMsg;
+	
+}

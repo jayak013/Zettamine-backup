@@ -1,0 +1,5 @@
+package com.zettamine.amc.repository;
+
+public class AppraiserRepository {
+
+}

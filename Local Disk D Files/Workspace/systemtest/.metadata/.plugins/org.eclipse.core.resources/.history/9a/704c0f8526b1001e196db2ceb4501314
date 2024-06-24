@@ -1,0 +1,15 @@
+package com.zettamine.utils;
+
+public class SumOfDigits {
+
+	public int getDigitsSum(String[] alphaNums) {
+		if (alphaNums == null)
+			throw new NullPointerException();
+		if (alphaNums.length == 0)
+			throw new NoElementsFound();
+		for(String alphaNum:alphaNums) {
+			if(alphaNum.length()==0) throw new EmptyStringFound();
+		}
+	}
+
+}

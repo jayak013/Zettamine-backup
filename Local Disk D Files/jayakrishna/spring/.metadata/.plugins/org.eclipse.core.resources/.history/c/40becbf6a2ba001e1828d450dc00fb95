@@ -1,0 +1,43 @@
+package com.zettamine.jdbctemplate;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+import com.zettamine.jdbctemplate.service.EmpService;
+
+
+@Configuration
+@ComponentScan
+public class MainClass {
+	
+	public static void main(String[] args) {
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainClass.class);
+		
+		EmpService service = context.getBean(EmpService.class,"emp-service");
+//		int saveEmployee = service.saveEmployee(new Employee(99,"raghava","ragahava@gmail.com",50000));
+//		System.out.println(saveEmployee);
+		
+		Employee emp = service.getEmployeeById(101);
+		System.out.println(emp);
+	}
+	
+	@Bean(value = "template")
+	public JdbcTemplate getJdbcTemplate() {
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setUrl("jdbc:postgresql://localhost:5432/Hibernate");
+		ds.setUsername("postgres");
+		ds.setPassword("Jayak@013");
+		return new JdbcTemplate(ds);
+	}
+	
+}

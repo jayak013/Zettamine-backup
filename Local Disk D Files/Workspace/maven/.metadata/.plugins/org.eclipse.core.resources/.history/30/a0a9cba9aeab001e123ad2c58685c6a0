@@ -1,0 +1,19 @@
+package com.zettamine.mt;
+
+public class Account {
+	private Integer  initialDeposit;
+
+	@Override
+	public String toString() {
+		return "Account [accName=" + accName + "]";
+	}
+
+	public String getAccName() {
+		return accName;
+	}
+
+	public void setAccName(String accName) {
+		this.accName = accName;
+	}
+	
+}

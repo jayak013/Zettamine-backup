@@ -1,0 +1,3 @@
+21 jaya Marks 67 89 78 Sorted Marks 67 78 89 
+6 hari Marks 67 89 Sorted Marks 67 89 
+2 krishna Marks 89 77 Sorted Marks 77 89 

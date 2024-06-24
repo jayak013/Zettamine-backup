@@ -1,0 +1,12 @@
+package com.zettamine.java.practice;
+
+public class MainClassTes {
+	public static void main(String[] args) {
+		String s1 = new String("jaya");
+		String s2 = new String("jaya");
+		String s3 = "jaya";
+		String s4 = "jaya";
+		System.out.println(s1==s2);
+		System.out.println(s3==s4);
+	}
+}

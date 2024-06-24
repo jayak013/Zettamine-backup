@@ -1,0 +1,22 @@
+package logics.revise;
+
+import java.util.Arrays;
+
+public class ArrayDuplicatesRemover {
+	public static void main(String[] args) {
+		String [] a = {"hi","hi","hi","hi","hi"};
+ 		System.out.println(Arrays.toString(duplicateRemover(a)));
+	}
+	
+	public static String[] duplicateRemover(String[] array) {
+		Arrays.sort(array);
+		Integer count = 0;
+		String[] distinctVal = new String[array.length];
+		for(int i = 0;i<array.length;i++) {
+			if(i<array.length-1 && !array[i].equals(array[i+1])) {
+				distinctVal[count++] = array[i];
+			}
+		}
+		return distinctVal;
+	}
+}

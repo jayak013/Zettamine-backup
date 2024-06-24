@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SumOfDigitsTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">SumOfDigitsTest (12-Jan-2024 2:42:30 pm)</a> &gt; <a href="../../index.html" class="el_group">unit-testing-case</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.zettamine.utils</a> &gt; <span class="el_source">SumOfDigitsTest.java</span></div><h1>SumOfDigitsTest.java</h1><pre class="source lang-java linenums">package com.zettamine.utils;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L11">class SumOfDigitsTest {</span>
+
+	public static SumOfDigits sumOfDigits;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+<span class="fc" id="L17">		sumOfDigits = new SumOfDigits();</span>
+<span class="fc" id="L18">	}</span>
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+<span class="fc" id="L22">		sumOfDigits = null;</span>
+<span class="fc" id="L23">	}</span>
+
+	@Test
+	@DisplayName(&quot;Arrays Of Strings&quot;)
+	void testGetDigitsSum() {
+<span class="fc" id="L28">		String[] strings = { &quot;1@ws2%&quot;, &quot;AB3&amp;%4&quot;, &quot;42RT&amp;*32&quot;, &quot;80ABrt$U7&quot; };</span>
+<span class="fc" id="L29">		int actualValue = sumOfDigits.getDigitsSum(strings);</span>
+<span class="fc" id="L30">		int expectedValue = 36;</span>
+<span class="fc" id="L31">		assertEquals(expectedValue, actualValue);</span>
+<span class="fc" id="L32">	}</span>
+
+	@Test
+	@DisplayName(&quot;Null Value&quot;)
+	void testGetDigitsSum1() {
+<span class="fc" id="L37">		String[] nullObj = null;</span>
+<span class="pc" id="L38">		assertThrows(NullPointerException.class, () -&gt; sumOfDigits.getDigitsSum(nullObj));</span>
+<span class="fc" id="L39">	}</span>
+
+	@Test
+	@DisplayName(&quot;Empty Object&quot;)
+	void testGetDigitsSum2() {
+<span class="fc" id="L44">		String[] emptyObj = {};</span>
+<span class="pc" id="L45">		assertThrows(NoElementsFoundException.class, () -&gt; sumOfDigits.getDigitsSum(emptyObj));</span>
+<span class="fc" id="L46">	}</span>
+
+	@Test
+	@DisplayName(&quot;Empty String in the Array Of Strings&quot;)
+	void testGetDigitsSum3() {
+<span class="fc" id="L51">		String[] emptyObj = { &quot;&quot;, &quot;1@ws2%&quot; };</span>
+<span class="pc" id="L52">		assertThrows(EmptyStringFoundException.class, () -&gt; sumOfDigits.getDigitsSum(emptyObj));</span>
+<span class="fc" id="L53">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span>SumOfDigitsTest (12-Jan-2024 2:42:30 pm)</div></body></html>

@@ -1,0 +1,46 @@
+package com.zettamine.vertex.entities;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "spares_uid_pur_hist")
+@IdClass(SparesUidPurchaseHist.class)
+public class SparesUidPurchaseHist {
+	
+	@Id
+	@Column(name = "part_id")
+	private Long partId;
+	
+	@Id
+	@Column(name = "pur_id")
+	private Long purId;
+	
+	@ManyToOne
+	@MapsId("partId")
+	@JoinColumn(name = "part_id", nullable = false, insertable = false, updatable = false)
+	private SparePart sparePart;
+	
+	@ManyToOne
+	@MapsId("purId")
+	@JoinColumn(name = "pur_id", nullable = false, insertable = false, updatable = false)
+	private SparesPurchaseHistory sparesPurHist;
+	
+	@Column(name = "lead_time")
+	private Integer leadTime;
+	
+}

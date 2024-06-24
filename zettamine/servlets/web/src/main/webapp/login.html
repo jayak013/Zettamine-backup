@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>zettamine | login</title>
+<link rel="icon" href="images/logo.jpg"/>
+<style>
+	body{
+		
+	}
+	form{
+		width:35%;
+		/*background:linear-gradient(45deg, red, yellow);*/
+		background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+		border-radius:20px;
+		box-shadow:0 0 10px black;
+		padding:10px;
+		color:white;
+		margin:100px auto;
+	}
+	table{
+		font-size:18px;
+		width:99%;
+	}
+	tr{
+		height:45px;
+	}
+	input{
+		font-size:18px;
+	}
+	input[type=submit]{
+		display:block;
+		text-align:center;
+		padding:5px 30px;
+		margin:auto;
+		border:none;
+		border-radius:15px;
+	}
+	input[type=submit]:hover{
+		background: linear-gradient(45deg, red, yellow);
+	}
+</style>
+</head>
+<body>
+  <form action="welcome" method="post">	
+	<table>
+		<tr>
+			<td>User Name</td>
+			<td><input type="text" name="txt_uid" size=20 required=required autofocus></td>
+		</tr>
+		
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="txt_pwd" size=20 required=required></td>
+		</tr>	
+		
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="L o g i n"/>
+			</td>
+		</tr>	
+	</table>
+  </form>	
+</body>
+</html>

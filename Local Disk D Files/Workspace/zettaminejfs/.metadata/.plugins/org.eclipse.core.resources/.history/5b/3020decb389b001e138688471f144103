@@ -1,0 +1,26 @@
+package com.zettamine.java.practice;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+public class FlatMapTest {
+	static FlatMapTest f;
+	public static void main(String[] args) {
+		List<Book> list = Arrays.asList(new Book(1,"copyOfJava"),new Book(1,"java"),new Book(2,"python"),new Book(3,"mysql"));
+		List<Book> list1 = Arrays.asList(new Book(1,"copyOfJava"),new Book(1,"java"),new Book(2,"python"),new Book(3,"mysql"));
+		List<Book> list2 = Arrays.asList(new Book(1,"copyOfJava"),new Book(1,"java"),new Book(2,"python"),new Book(3,"mysql"));
+		int id = 1;
+		Optional<Book> or = list.stream().filter(e->e.getBookId()==id).skip(6)
+				.findFirst().or(FlatMapTest.f::anEmptyBook );
+		if(or.isPresent()) {
+			System.out.println(or.get());
+		}
+	}
+	public Optional<Book> anEmptyBook(){
+		return Optional.of(new Book());
+	}
+	public static Optional<Book> anEmptyBook1(){
+		return Optional.of(new Book());
+	}
+}

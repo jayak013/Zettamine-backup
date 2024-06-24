@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <style>
+body {
+    text-align: center;
+}
+.employee-table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.employee-table th, .employee-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.employee-table th {
+    background-color: #f2f2f2;
+}
+
+.employee-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+td, th {
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child {
+    background-color: darkgray;
+}
+tr:hover {
+    background-color: #ddd;
+}
+    </style>
+</head>
+<body style="text-align: center;align-items: center;">
+    <h2><span>Java Script | Array of Employee</span></h2>
+    <div>
+        <button onclick="displayAllEmployees(employees)">All Employees</button>
+        <button onclick="displayAllEmployees(activeEmployees)">Active Employees</button>
+        <button onclick="displayAllEmployees(inActiveEmployees)">In-Active Employees</button>
+        <button onclick="displayAllEmployees(juniorStaff)">Junior Staff</button>
+    </div><br>
+    <table class="employee-table" border="1" style="width: 50%;margin: 0px auto;">
+        <thead >
+            <tr colspan="4" style="background-color: whitesmoke;">
+                <td>Name</td>
+                <td>Age</td>
+                <td>Designation</td>
+                <td>Active</td>
+            </tr>
+        </thead>
+        <tbody id="e_body">
+
+        </tbody>
+    </table>
+    <script>
+        let employees = [
+    {
+        name : 'Sunil',
+        age : 40,
+        designation : 'Manager',
+        active : true
+    },
+    {
+        name : 'Naveen',
+        age : 35,
+        designation : 'Sr.Manager',
+        active : false
+    },
+    {
+        name : 'Rahul',
+        age : 25,
+        designation : 'Software Engineer',
+        active : true
+    },
+    {
+        name : 'Harsha',
+        age : 30,
+        designation : 'Team Lead',
+        active : false
+    }
+];
+
+let activeEmployees = employees.filter(employee=> employee.active)
+
+let inActiveEmployees = employees.filter(employee=> !employee.active)
+
+let juniorStaff = employees.filter(employee=>employee.age<=30)
+
+
+let displayAllEmployees = (employees)=>{
+    let display = ''
+    for(let i = 0;i<employees.length;i++){
+        display+=`<tr>
+                        <td>${employees[i].name}</td>
+                        <td>${employees[i].age}</td>
+                        <td>${employees[i].designation}</td>
+                        <td>${employees[i].active}</td>
+                    </tr>`
+    }
+    document.querySelector('#e_body').innerHTML = display
+}
+    </script>
+</body>
+</html>

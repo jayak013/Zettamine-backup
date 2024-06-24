@@ -1,0 +1,9 @@
+package com.zettamine.amc.exception;
+
+public class AppraisalCompanyAlreadyExistException extends RuntimeException{
+
+	public AppraisalCompanyAlreadyExistException(String message) {
+		super(message);
+	}
+	
+}

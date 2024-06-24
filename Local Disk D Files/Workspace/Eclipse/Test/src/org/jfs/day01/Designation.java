@@ -1,0 +1,9 @@
+package org.jfs.day01;
+
+public enum Designation {
+	SOFTWARE_ENGINEER,
+	SENIOR_SOFTWARE_ENGINEER,
+	TECHNICAL_LEAD,
+	PROJECT_LEAD,
+	DELIVERY_MANAGER;
+}

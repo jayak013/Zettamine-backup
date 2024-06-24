@@ -1,0 +1,210 @@
+HTTP Request Object
+ Initial Request Line    method  URI  HTTP Protocol/Ver       	GET  /login   HTTP/1.1
+ Request Headers	 header_name:value	
+ <<blank line>>
+ Request Data/ Payload
+
+
+HTTP Respponse Object
+ Initial Response Line		POST  200  OK
+ Response Headers
+ <<blank line>>
+ Response Data/ Payload
+
+URL
+ - Protocol
+ - Hostname
+ - Portno
+ - request path
+http://irctc:8080/irctc/ticket/new
+
+Lifecycle of a Servlet
+  javax.servlet.Servlet (interface)  - jakarta.servlet.Servlet (interface)
+
+1) Initialization
+      public void init(ServletConfig) throws ServletException
+
+2) Servicing
+      public void service(ServletRequest, ServletResponse) throws ServletException, IOException
+
+3) Destroying
+      public void destroy();
+    4) & 5)
+
+
+Lifecycle of a Servlet
+
+1) GenericServlet
+2) HtttpServlet
+3) FilterServlets
+
+
+Tomcat Server - It provides a "pure Java" HTTP web server environment in which Java code can also run. Thus it is a Java web application server, although not a full JEE application server. 
+
+default port of tomcat is 8080
+
+port configurations - C:\Tomcat 10.1\conf\server.xml
+web application folder - C:\Tomcat 10.1\webapps
+
+how to  create your own web application with name "zettamine"
+   C:\Tomcat 10.1\webapps\zettamine
+				HTML files, JSP files etc
+   C:\Tomcat 10.1\webapps\zettamine\WEB-INF
+   C:\Tomcat 10.1\webapps\zettamine\WEB-INF\web.xml  - web deployment descriptor
+   C:\Tomcat 10.1\webapps\zettamine\WEB-INF\classes
+						all servlet classes
+   C:\Tomcat 10.1\webapps\zettamine\WEB-INF\lib			
+						dependency files
+
+
+
+import java.io.IOException;
+import jakarta.servlet.*;
+
+public class LifecycleServlet extends GenericServlet
+{
+	public void init(ServletConfig config) throws ServletException{
+		super.init(config);
+		System.out.println("inside init() method");
+	}
+
+	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException{
+		System.out.println("inside service() method");
+	}
+
+	public void destroy(){
+		System.out.println("inside ddestroy() method");
+	}
+}
+
+javac -cp "C:\Tomcat 10.1\lib\servlet-api.jar";.; LifecycleServlet.java
+		
+
+http://localhost:8080/zettamine/life
+    /zettamine - context/application path
+    /life - servlet path
+
+<servlet>
+ <servlet-name>lifeCycle</servlet-name>
+ <servlet-class>LifecycleServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+ <servlet-name>lifeCycle</servlet-name>
+ <url-pattern>/life</url-pattern>
+</servlet-mapping>
+---------------------------------------------------------------------
+
+Configure a Dynamic Web Project - "web" in IDE
+
+1) integrate tomcat server with eclise
+      Window (menu) > Preferences > Server > Runtime Environments
+						Add > Apache > 10.1 > Next 
+		Tomcat Installation Directory : C:\Tomcat 10.1
+
+2) File (menu) > New > Other > Web > Dynamic Web Project
+
+
+HTTP GET Method ------> doGet(HttpServletRequest, HttpServletResponse)
+HTTP POST Method ------> doPost(HttpServletRequest, HttpServletResponse)
+
+
+HTTP Get Vs Http Post
+
+http://www.zettamine.com/login?user=sunil&pass=123456   - Query String in GET
+							  HTTP Request Object body in POST
+
+
+http://localhost:8080/web/test
+		GET method -----> give a plain text response back
+		POST method ---> give an html reponse back
+TestServlet extends HttpServlet
+
+http://localhost:8080/web/test?
+
+
+
+http://localhost:8080/web/welcome     GET/POST
+
+
+		ZETTAMINE LABS PRIVATE LIMITED
+			<image>
+
+
+
+package com.zettamine.web;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class WelcomeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+		out.println("<body style=\"text-align:center;background:linear-gradient(to right, orange, white, green)\">");
+		out.println("<h1 style=\"text-shadow:0 0 10px blue\">ZETTAMINE LABS PRIVATE LIMITED</h1>");
+		out.println("<img src=images/zetta.jpg width=400px style=\"box-shadow: 0px 0px 20px black; border-radius:20px\">");
+		out.println("</body>");
+		out.println("</html>");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

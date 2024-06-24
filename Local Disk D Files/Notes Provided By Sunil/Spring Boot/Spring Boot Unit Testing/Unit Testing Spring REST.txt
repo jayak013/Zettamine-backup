@@ -1,0 +1,112 @@
+How to perform Unit Testing for REST APIs?
+
+> Create a New Spring Starter 
+> Create a Controller & Service
+
+package com.zettamine.rest.services;
+@Service
+public class WelcomeService{
+public String getWelcomeMsg(){
+   return "Welcome to Spring Boot REST Testing";
+}
+}
+
+package com.zettamine.rest.controllers;
+@RestController
+public class WelcomeRestController{
+  @Autowired
+  private WelcomeService welcomeService;
+
+  @GetMapping("/welcome")
+  public ResponseEntity<String> welcomeMsg(){
+   String welcomeMsg = welcomeService.getWelcomeMsg();
+   return new ResponseEntity<String>(welcomeMsg, HttpStatus.OK);
+  } 
+}
+
+> Run the Application		
+> Check it in Browser
+
+Testing Spring Applications:
+
+-> Spring Boot provides a number of utilities and annotations to help when testing your application
+
+-> Test support provided by two modules
+  a) spring-boot-starter-test (core items available in this)
+  b) spring-boot-test-autoconfigure (supports auto-configuration for tests)
+
+How to test a Spring boot web application?
+
+-> Verifying that the application has been initialized successfully
+-> Unit testing REST Controller with @WebMvcTest
+-> Unit testing Service Layer with Mockito
+-> Unit testing DAO Layer with @DataJpaTest and @AutoConfigureTestDatabase
+-> Integration testing using @SpringBootTest
+-> System testing using RestTemplate
+
+
+Case 1 => Testing if Application Loads Correctly (Controller and Service is injected)
+This is the simplest of all. 
+Write a Test class annotated with @SpringBootTest and check for any important eagerly initialized bean if it has been successfully injected into an auto-wired attribute or not.
+
+@SpringBootTest
+class ApplicationTests {
+ @Autowired
+ WelcomeRestController controller;
+	
+ @Autowired
+ WelcomeService service;
+	
+ @Test
+ public void contextLoads() {
+  Assertions.assertThat(controller).isNotNull();	
+  Assertions.assertThat(service).isNotNull();
+ }
+}
+
+Case 2 => Unit Testing the REST Controller
+
+- Write a Test class annotated with @WebMvcTest. 
+- We can specify which Controller we want to test in the annotation value itself.
+
+> Create a Test Case for WelcomeRestController in src/test/java
+
+@WebMvcTest(value = WelcomeRestController.class) 
+class WelcomeRestControllerTest {
+	 @MockBean //to create a mock object / substitute object
+	 private WelcomeService welcomeService;  
+
+	 @Autowired
+	 private MockMvc  mockMvc; //used to send a request to REST API
+
+	 @Test
+	 public void testWelcomeMsg() throws Exception{
+		// define mock object behaviour
+		Mokito.when(service.getWelcomeMsg()).thenReturn("Welcome to Zettamine..!!");
+		
+		// prepare http get request
+		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.get("/welcome");
+		
+		// send request 
+  		ResultActions perform = mockMvc.perform(reqBuilder);
+
+		// hold the response
+		MvcResult mvcResult = perform.andReturn();
+		
+		// validate response
+		MockHttpServletResponse response = mvcResult.getResponse();
+		
+		//String contentAsString = response.getContentAsString();
+		
+		int status = response.getStatus();
+		assertEquals(200, status);
+	 	    
+	    /*
+	   Mockito.when(welcomeService.getWelcomeMsg()).thenReturn("Good Morning..");
+	   mockMvc.perform(MockMvcRequestBuilders.get("/welcome"))
+	   		  .andExpect(MockMvcResultMatchers.status().isOk());
+	   */
+	   //.andExpect(jsonPath("$", Matchers.hasSize(1)))
+           //.andExpect(jsonPath("$[0].firstName", Matchers.is("Lokesh")));	 
+  } 
+}

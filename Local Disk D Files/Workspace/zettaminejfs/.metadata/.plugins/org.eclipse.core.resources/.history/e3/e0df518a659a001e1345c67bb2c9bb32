@@ -1,0 +1,8 @@
+package com.zettamine.java.practice;
+
+public class FITest {
+	public static void main(String[] args) {
+		Test t = (a,b)->a+b;
+		System.out.println(t.add(10, 30));
+	}
+}

@@ -1,0 +1,28 @@
+package com.zettamine.amc.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "appraisal_service_area",schema = "mpa")
+public class ServiceArea {
+	
+	private Integer area_id;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "amc_id")
+	private AppraisalCompany amcId;
+	
+	private String county;
+	
+	private String city;
+	
+	private String state;
+	
+	private String zipcode;
+	
+}

@@ -1,0 +1,41 @@
+----------------------------------Controller----------------------------------------
+@GetMapping(path = "/search-lotId")
+	public String searchBasedOnLotId(@RequestParam("lotId") Integer lotId,Model model) {
+		
+		MaterialInspLot matInspLot = matInspLotService.getByLotId(lotId);
+		System.out.println(matInspLot);
+		List<MaterialInspLot> matInspLots = new ArrayList<>();
+		if(matInspLot!=null) {
+			matInspLots.add(matInspLot);
+			model.addAttribute("matInspLots", matInspLots);
+			model.addAttribute("matInspLotService",matInspLotService);
+		}else model.addAttribute("message", "No Records Found");
+		return "view-insp-lots-search";
+	}
+
+------------------------------------------------------------------------------------------
+
+-----------------------------------Service-------------------------------------------------
+
+	@Override
+	public List<MaterialInspLot> getSearchBasedResults(Search search) {
+		List<MaterialInspLot> matInspLots = matInspLotRepo.findByCreatedOnBetween(search.getFromDate(),search.getToDate() );
+		if(!search.getPlantId().isEmpty()) {
+			matInspLots = matInspLots.stream().filter(mil->mil.getPlant().getPlantId().equals(search.getPlantId())).collect(Collectors.toList());
+		}
+		if(!search.getMaterialId().isEmpty()) {
+			matInspLots = matInspLots.stream().filter(mil->mil.getMaterial().getMaterialId().equals(search.getMaterialId())).collect(Collectors.toList());
+		}
+		if(!search.getStatus().isEmpty()) {
+				matInspLots = matInspLots.stream().filter(mil->mil.getResult().equals(search.getStatus())).collect(Collectors.toList());
+		}
+		return matInspLots;
+	}
+
+--------------------------------------------------------------------------------------------------------------
+
+------------------------------------Repository------------------------------------------
+
+List<MaterialInspLot> findByCreatedOnBetween(Date startDate, Date endDate);
+
+-----------------------------------------------------------------------------

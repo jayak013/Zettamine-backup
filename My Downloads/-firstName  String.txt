@@ -1,0 +1,29 @@
+-firstName : String
+
+-lastName : String
+
+-dateOfBirth : Date
+
+-gender : String
+
+-mobileNumber : String
+
+-email : String
+
+-aadhar : String
+
+-userName : String
+
+-passWord : String
+
+-address: String
+
++getters&setters()
+
++toString()
+
++Customer()
+
++Customer(String userName,String password)
+
++Customer(all args)

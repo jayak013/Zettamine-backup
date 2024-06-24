@@ -1,0 +1,6 @@
+package com.zettamine.spring.core.controller;
+
+@org.springframework.stereotype.Controller
+public class UserController {
+
+}

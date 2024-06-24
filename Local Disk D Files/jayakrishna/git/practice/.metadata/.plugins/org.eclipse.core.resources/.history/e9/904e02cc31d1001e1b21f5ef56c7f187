@@ -1,0 +1,27 @@
+package test;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Test {
+
+	
+	public static void main(String[] args) {
+		List<String> list = List.of("jaya", "jaya", "hari", "hari", "vishnu", "gani", "Zai");
+		Map<String, Integer> collect = list.stream().collect(Collectors.toMap(e->e.toString(), e->e.length()));
+		/**
+		 * Here It will give me a map of Strings along with their length of the String 
+		 * I have used Collectors.toMap() here 
+		 */
+		System.out.println(collect);
+		
+		Map<String, Long> collect2 = list.stream().collect(Collectors.groupingBy(e->e.toString(),Collectors.counting()));
+		/**
+		 * Here It will give me a map of Strings along with their length of the String 
+		 * I have used Collectors.toMap() here 
+		 */
+		System.out.println(collect2);
+	}
+	
+}

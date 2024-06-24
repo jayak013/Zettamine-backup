@@ -1,0 +1,28 @@
+package newassignments;
+
+import java.util.Scanner;
+
+public class NumbersToCharacters {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	private static void numToChar() {
+		System.out.print("Enter the first number: ");
+		int firstNum = scn.nextInt();
+		System.out.print("Enter the second number: ");
+		int secondNum = scn.nextInt();
+		System.out.print("Enter the third number: ");
+		int thirdNum = scn.nextInt();
+		System.out.print("Enter the fourth number: ");
+		int fourthNum = scn.nextInt();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+	}
+	
+}

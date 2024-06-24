@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="reportGen"
+		class="com.zettamine.aop.services.ReportGenerator"></bean>
+	<bean id="logAsp" class="com.zettamine.aop.aspects.LoggingAspect"></bean>
+	<bean id="proxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="reportGen" />
+		<property name="interceptorNames">
+			<list>
+				<value>logAsp</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

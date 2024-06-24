@@ -1,0 +1,12 @@
+package com.zettamine.java.day05.assignment02;
+
+import java.io.File;
+
+public class RenameFile {
+	
+	public static void main(String[] args) {
+		File f = new File("C:/CJava/java/java.txt");
+		f.renameTo("changed.txt");
+	}
+	
+}

@@ -1,0 +1,21 @@
+package org.jfs.practice;
+
+import java.util.function.Function;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		
+		Function<String, Integer> function = new Function<String, Integer>() {
+
+			@Override
+			public Integer apply(String t) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+		};
+		
+	}
+	
+}

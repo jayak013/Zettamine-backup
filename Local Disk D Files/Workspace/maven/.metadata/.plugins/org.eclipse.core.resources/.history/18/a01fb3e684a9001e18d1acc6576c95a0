@@ -1,0 +1,9 @@
+package com.zettamine.web.app;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+@WebServlet("/servlet1")
+public class Servlet1 extends HttpServlet{
+	
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report Card</title>
+</head>
+<body>
+    <div>
+        <button style="font-size: 20px;" onclick="dataEntry()">Data Entry</button>
+        <button style="font-size: 20px;" onclick="generateReport()">Generate Report Card</button>
+    </div><br>
+    <h1 id="studName"></h1>
+    <table border="1" style="width: 30%;text-align: center;">
+        <thead>
+            <tr colspan="2">
+                <td>Subject</td>
+                <td>Marks</td>
+            </tr>
+        </thead>
+        <tbody id="rg_body">
+
+        </tbody>
+        <tfoot id="rg_foot"></tfoot>
+    </table>
+    <script>
+        let marks = new Array()
+        let studentName = ''
+        let sum = 0;
+        function dataEntry(){
+            studentName = prompt('Enter the student name')
+            var noOfSubs = parseInt(prompt('Enter the number of subjects'))
+            for(let i=0;i<noOfSubs;i++){
+                marks[i] = parseInt(prompt('Enter the subject-'+(i+1)+' details'))
+            }
+        }
+        function generateReport(){
+            let sub_marks = ''
+            for(let i = 0;i<marks.length;i++){
+                sub_marks += `<tr><td>${i+1}</td><td>${marks[i]}</td></tr>`
+                sum+=marks[i]
+            }
+            let average = sum/marks.length
+            // document.querySelector('#studName').innerText = studName
+            document.querySelector('#rg_body').innerHTML = sub_marks
+            document.querySelector('#rg_foot').innerHTML = `<tr colspan = "1"><td>average</td> <td>${average.toFixed(2)}</td></tr>`
+        }
+    </script>
+</body>
+</html>

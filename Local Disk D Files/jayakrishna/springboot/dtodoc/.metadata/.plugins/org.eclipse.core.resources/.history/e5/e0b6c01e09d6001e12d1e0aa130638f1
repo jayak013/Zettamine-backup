@@ -1,0 +1,16 @@
+package com.zettamine.mat.dto;
+
+import com.zettamine.mat.entity.Material;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class MaterialModel {
+	private String materialId;
+	private String name;
+	private String type;
+}

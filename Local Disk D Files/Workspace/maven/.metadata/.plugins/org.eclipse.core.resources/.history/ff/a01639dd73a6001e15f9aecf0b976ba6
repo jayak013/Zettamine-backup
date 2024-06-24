@@ -1,0 +1,5 @@
+package com.zettamine.web.dao;
+
+public class EmpDAO {
+
+}

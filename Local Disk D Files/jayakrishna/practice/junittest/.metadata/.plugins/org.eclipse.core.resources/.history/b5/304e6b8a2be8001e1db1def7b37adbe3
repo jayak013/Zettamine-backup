@@ -1,0 +1,15 @@
+package com.zettamine.junit;
+
+
+public class CustomAnnotation {
+	
+	@books
+	private String s;
+	
+}
+
+@interface books{
+	private String name;
+}
+
+

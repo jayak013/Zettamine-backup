@@ -1,0 +1,22 @@
+package com.zettamine.iostreams.factories;
+
+import com.zettamine.iostreams.copiers.FolderCopier;
+
+public class FolderCopierApplication {
+	
+	private CopierFactory copierFactory;
+	private FolderCopier folderCopier;
+	
+	public FolderCopierApplication(CopierFactory copierFactory) {
+		this.copierFactory = copierFactory;
+	}
+	
+	public void createFolderCopier() {
+		folderCopier = copierFactory.createFileCopier();
+	}
+	
+	public void runFolderCopier(String sourceFolder,String destinationFolder) {
+		folderCopier.replicate(sourceFolder, destinationFolder);
+	}
+	
+}

@@ -1,0 +1,119 @@
+Associations or Relationships in Java
+
+The Composition is a way to design or implement the "HAS-A" relationship. 
+Composition and Inheritance both are design techniques. 
+The Inheritance is used to implement the "IS-A" relationship. 
+The "HAS-A" relationship is used to ensure the code reusability in our program. 
+
+In Composition, we use an instance variable that refers to another object.
+
+class Address{
+  private String street;
+  private String city;
+  private String state;
+  //getters, setters, constructor
+}
+
+class Employee{
+  private Long employeeId;
+  private String employeeName;
+  private Address employeeAddress;
+  //setter, getter, constructor
+}
+
+
+The composition relationship of two objects is possible when one object contains another object, and that object is fully dependent on it. The contained object should not exist without the existence of its parent object. In a simple way, we can say it is a technique through which we can describe the reference between two or more classes. And for that, we use the instance variable, which should be created before it is used.
+
+
+-> The Composition represents a part-of relationship.
+-> Both entities are related to each other in the Composition.
+-> The Composition between two entities is done when an object contains a composed object, and the composed object cannot exist without another entity. 
+
+For example, if a university (JNTU) HAS-A college-lists, then a college is a whole, and college-lists are parts of that university.
+-> Favor Composition over Inheritance.
+-> If a university is deleted, then all corresponding colleges for that university should be deleted.
+
+
+Let's take an example of a university and its colleges to understand the concept of Composition.
+
+We create a class College that contains variables, i.e., name and address. We also create a class University that has a reference to refer to the list of colleges. A University can have more than one collages. So, if a university is permanently closed, then all colleges within that particular university will be closed because colleges cannot exist without a university. The relationship between the university and colleges is Composition.
+
+class College {   
+    public String name;   
+    public String address;   
+    College(String name, String address)   
+    {   
+        this.name = name;   
+        this.address = address;   
+    }   
+}   
+// University has more than one college.   
+class University {   
+    // reference to refer to list of college.   
+    private final List<College> colleges;   
+    University(List<College> colleges)  
+    {  
+        this.colleges = colleges;  
+    }   
+    // Getting total number of colleges  
+    public List<College> getTotalCollegesInUniversity()   
+    {   
+        return colleges;   
+    }   
+} 
+  
+class CompositionExample {   
+    public static void main(String[] args)   
+    {   
+        // Creating the Objects of College class.   
+        College c1   
+            = new College("ABES Engineering College", "Ghaziabad");   
+        College c2   
+            = new College("AKG Engineering College", "Ghaziabad");   
+        College c3 = new College("ACN College of Engineering & Management Sudies",   
+                           "Aligarh");   
+        // Creating list which contains the no. of colleges.   
+        List<College> college = new ArrayList<College>();   
+        college.add(c1);   
+        college.add(c2);   
+        college.add(c3);   
+        University university = new University(college);   
+        List<College> colleges = university.getTotalCollegesInUniversity();   
+        for (College cg : colleges) {   
+            System.out.println("Name : " + cg.name   
+                               + " and "  
+                               + " Address : " + cg.address);   
+        }   
+    }   
+}  
+
+
+Benefits of using Composition:
+------------------------------
+-> Composition allows us to reuse the code.
+-> In Java, we can use multiple Inheritance by using the composition concept.
+-> The Composition provides better test-ability of a class.
+-> Composition allows us to easily replace the composed class implementation with a better and improved version.
+-> Composition allows us to dynamically change our program's behavior by changing the member objects at run time.
+
+
+Difference between Inheritance and Composition in Java
+
+https://www.infoworld.com/article/3409071/java-challenger-7-debugging-java-inheritance.html
+
+
+
+Difference Between Aggregation and Composition in Java
+------------------------------------------------------
+Aggregation and composition describe the type of relationships between objects when communicating with each other, this might be used in low-level design to depict associations between objects. In this article, we are going to discuss the differences between Aggregation and Composition in Java programming language. 
+
+It is a special form of Association where:
+
+    It represents Has-A’s relationship.
+    It is a unidirectional association i.e. a one-way relationship. For example, a department can have students but vice versa is not possible and thus unidirectional in nature.
+    In Aggregation, both the entries can survive individually which means ending one entity will not affect the other entity.
+
+https://www.javatpoint.com/aggregation-vs-composition-in-java
+
+https://www.geeksforgeeks.org/difference-between-aggregation-and-composition-in-java/
+

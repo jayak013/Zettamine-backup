@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+	<session-factory>
+		<property name = "connection.driver.class">org.postgresql.Driver</property>
+		<property name = "connection.url">jdbc:postgresql://localhost:5432/Hibernate</property>
+		<property name = "connection.username">postgres</property>
+		<property name = "connection.password">Jayak@013</property>
+		<property name = "dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name = "show_sql">true</property>
+		<mapping resource = "student.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

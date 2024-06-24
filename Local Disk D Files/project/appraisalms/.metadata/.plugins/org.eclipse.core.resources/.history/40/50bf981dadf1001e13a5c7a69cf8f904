@@ -1,0 +1,41 @@
+package com.zettamine.amc.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "property_appraiser",schema = "mpa")
+public class Appraiser extends BaseEntity{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer appraiserId;
+	
+	@Column(nullable = false,unique = true)
+	private String appraiserLicenseId;
+	
+	@Column(nullable = false)
+	private String firstName;
+	
+	@Column(nullable = false)
+	private String lastName;
+	
+	@Column(nullable = false,unique = true)
+	private String email;
+	
+	@Column(nullable = false,unique = true)
+	private String phone;
+	
+	@ManyToOne
+	@JoinColumn(name = "amc_id")
+	private AppraisalCompany amc;
+	
+	@Column(nullable = false)
+	private Boolean expertWitnessTestimony;
+}

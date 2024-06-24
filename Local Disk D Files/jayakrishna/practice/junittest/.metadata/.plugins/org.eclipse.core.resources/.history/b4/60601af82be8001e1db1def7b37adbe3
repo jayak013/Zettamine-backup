@@ -1,0 +1,19 @@
+package com.zettamine.junit;
+
+
+public class CustomAnnotation {
+	
+	@books(book_name = "jaya")
+	private static String s;
+	
+	public static void main(String[] args) {
+		System.out.println(s);
+	}
+	
+}
+
+@interface books{
+	String book_name();
+}
+
+

@@ -1,0 +1,42 @@
+Access Modifiers
+-------------------------
+Java provides a number of access modifiers to set access levels for classes, variables, methods and constructors. 
+
+Modifiers are keywords that we add to those definitions to change their meanings. There are two type of modifiers in java: 
+
+ (1) Java Access Modifiers 
+ (2) Non-access Modifiers
+
+To use a modifier, we need to  include the modifier keyword in the definition of a class, method, or variable.
+
+Java Access Modifiers:
+--------------------------
+There are 4 types of Java access modifiers, to specify from where we can access a member data, method, class etc:
+
+    1) private
+    2) default
+    3) protected
+    4) public
+
+(1) An outer class (first level class) or an interface cannot be declared as "private" or "protected" [Not inner classes].
+
+(2) If you make class constructor private, you cannot create the instance of that class from outside the class. 
+
+(3) If a member data or a method is declared as "private" then they can be accessed only within the context where it is declared. The private access modifier is accessible only within the class where it is declared.
+
+(4) If you don't use any modifier, it is treated as default. The default modifier is accessible only within package.
+
+ The default access modifier of Java is "private to package"
+
+(5) The protected access modifier is accessible within package and outside the package but through inheritance only. If a member data or a method is declared as "protected" then that can be accessed within the package [directory] and also by the child class present in other packages ie directories.
+
+(6) The protected access modifier can be applied on the data member, method and constructor. It can't be applied on the class. 
+
+(7) "public" access specified classes, interfaces and members can be accessed within the package and also from out side the directory. The public access modifier is accessible everywhere. It has the widest scope among all other modifiers.
+
+(8) When you override a method in child class , the access modifier of the overriding method in child class should be similar or should have higher degree of accessibility
+
+(9) In a java program if there exists any class with the access modifier of "public" then that program should be saved with the name of that class. 
+
+(10) In a java program it is not possible to have more than one class with the access modifier of "public".
+

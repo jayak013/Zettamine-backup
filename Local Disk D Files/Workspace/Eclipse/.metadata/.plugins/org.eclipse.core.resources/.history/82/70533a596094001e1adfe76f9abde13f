@@ -1,0 +1,26 @@
+package newassignments;
+
+import java.util.Scanner;
+
+public class ConvertToUpperCase {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String personName = "";
+		System.out.println("Enter Inmate's name");
+		personName.concat(scn.nextLine());
+		System.out.println("Enter Inmate's father's name");
+		personName.concat(scn.nextLine());
+		System.out.println(personName);
+		convertToUpperCase(personName);
+	}
+
+	private static void convertToUpperCase(String personName) {
+		String[] split = personName.split(" ");
+		for(String name:split) {
+			
+		}
+	}
+	
+	
+}

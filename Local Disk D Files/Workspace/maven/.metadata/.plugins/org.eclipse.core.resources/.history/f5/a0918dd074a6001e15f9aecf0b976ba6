@@ -1,0 +1,23 @@
+package com.zettamine.web.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.zettamine.web.configs.DBHandler;
+import com.zettamine.web.dto.Employee;
+
+public class EmpDAO {
+	public static Connection con = null;
+	public void saveEmp(Employee emp) {
+		try {
+			con = DBHandler.establishConnection()
+			PreparedStatement pst = con.prepareStatement("insert into emp values(?,?,?)");
+			pst.setInt(1, 0);
+			pst.setString(2, emp.);
+			pst.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

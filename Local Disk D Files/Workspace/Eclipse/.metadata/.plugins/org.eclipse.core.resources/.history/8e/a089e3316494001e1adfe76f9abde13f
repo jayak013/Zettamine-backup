@@ -1,0 +1,17 @@
+package newassignments;
+
+import java.util.Scanner;
+
+public class ProductWithMinDiscount {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		System.out.println("Enter the no of Products:");
+		findMinDiscount(new String[]);
+	}
+
+	private static void findMinDiscount(String[] products) {
+		
+	}
+	
+}

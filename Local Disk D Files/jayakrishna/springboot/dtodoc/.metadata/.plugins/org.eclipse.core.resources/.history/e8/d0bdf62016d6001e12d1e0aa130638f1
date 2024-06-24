@@ -1,0 +1,9 @@
+package com.zettamine.mat.services;
+
+import com.zettamine.mat.dto.MaterialModel;
+
+public interface MaterialService {
+	
+	public Material addMaterial(MaterialModel material);
+	
+}

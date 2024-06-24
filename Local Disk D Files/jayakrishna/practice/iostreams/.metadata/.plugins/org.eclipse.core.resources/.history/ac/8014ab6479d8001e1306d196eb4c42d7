@@ -1,0 +1,11 @@
+package com.zettamine.iostreams.copy;
+
+public class CharStreamFolderCopierFactory implements CopierFactory {
+
+	@Override
+	public FolderCopier createFileCopier() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

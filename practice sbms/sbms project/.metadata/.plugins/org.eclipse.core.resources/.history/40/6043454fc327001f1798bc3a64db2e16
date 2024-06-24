@@ -1,0 +1,9 @@
+package com.jayasbms.demo.service;
+
+import com.jayasbms.demo.dto.ProductRequest;
+
+public interface ProductService {
+	
+	public void createProduct(ProductRequest productRequest);
+	
+}

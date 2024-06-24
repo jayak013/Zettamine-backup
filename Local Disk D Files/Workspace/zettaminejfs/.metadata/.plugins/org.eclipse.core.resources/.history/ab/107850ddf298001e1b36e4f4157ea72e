@@ -1,0 +1,13 @@
+package com.zettamine.java.day05.assignment02;
+
+import java.io.File;
+import java.io.IOException;
+
+public class RenameFile {
+	
+	public static void main(String[] args) throws IOException {
+		File f = new File("C:/CJava/java/java.txt");
+		f.createNewFile();
+	}
+	
+}

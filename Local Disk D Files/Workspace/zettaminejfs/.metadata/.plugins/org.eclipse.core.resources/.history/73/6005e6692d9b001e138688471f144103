@@ -1,0 +1,12 @@
+package com.zettamine.java.practice;
+
+import java.util.Optional;
+
+public class FlatMapTest {
+	public static void main(String[] args) {
+		
+	}
+	public static Optional<Book> anEmptyBook(){
+		return Optional.of(new Book());
+	}
+}

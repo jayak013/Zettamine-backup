@@ -1,0 +1,12 @@
+package com.zettamine.java.day05.assignment02;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+public class ApachePoiTest {
+	public static void main(String[] args) {
+		Workbook wb = new HSSFWorkbook();
+		Sheet s = wb.createSheet("example");
+	}
+}

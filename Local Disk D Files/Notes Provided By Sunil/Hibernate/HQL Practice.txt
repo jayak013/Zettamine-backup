@@ -1,0 +1,11 @@
+-> fetch all students
+-> fetch student whose name is ?
+-> fetch students whose name like (?,?,?)
+-> fetch students whose name ends with 's'
+-> fetch students whose id between 101 and 108 using positional parameters
+-> display all students in the ascending order of email/ id
+-> perform DML operations
+-> apply pagination
+-> apply aggregate functions -- count(), min(), avg(), sum()
+-> fetch some columns/properties only
+etc

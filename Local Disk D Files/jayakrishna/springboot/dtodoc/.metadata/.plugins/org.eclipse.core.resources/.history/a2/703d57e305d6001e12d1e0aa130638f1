@@ -1,0 +1,24 @@
+package com.zettamine.mat.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zettamine.mat.entity.Material;
+import com.zettamine.mat.services.MaterialService;
+
+@RestController
+@RequestMapping("/material")
+public class MaterialController {
+	
+	@Autowired
+	private MaterialService matService;
+	
+	@PostMapping("/material")
+	public ResponseEntity<Material> saveMaterial(Material material){
+		
+	}
+	
+}

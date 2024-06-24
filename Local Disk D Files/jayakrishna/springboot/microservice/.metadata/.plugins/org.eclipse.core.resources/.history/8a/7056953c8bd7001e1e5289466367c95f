@@ -1,0 +1,25 @@
+package com.zettamine.accounts.mapper;
+
+import java.time.LocalDateTime;
+
+import com.zettamine.accounts.dto.CustomerDto;
+import com.zettamine.accounts.entities.Customer;
+
+public class CustomerMapper {
+
+	public static Customer mapToCustomer(Customer customer, CustomerDto customerDto) {
+		Customer mapToCustomer = new Customer();
+		mapToCustomer.setName(customerDto.getName());
+		mapToCustomer.setEmail(customerDto.getEmail());
+		mapToCustomer.setCreatedAt(LocalDateTime.now());
+		mapToCustomer.setCreatedBy("Jaya Krishna");
+		return mapToCustomer;
+	}
+
+	public static CustomerDto mapToCustomerDto(Customer customer, CustomerDto customerDto) {
+		CustomerDto mapToCustomerDto = new CustomerDto();
+		mapToCustomerDto.setName(customerDto.getName());
+		mapToCustomerDto.setEmail(customerDto.getEmail());
+		return mapToCustomerDto;
+	}
+}

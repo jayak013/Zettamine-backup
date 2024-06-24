@@ -1,0 +1,10 @@
+package com.zettamine.java.day05.assignment02;
+
+public class ExceptionTest {
+	public static void main(String[] args) {
+		m1();
+	}
+	public static void m1() throws ArithmeticException {
+		
+	}
+}

@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "14011cbe-fd79-49ef-8da9-be68dfae0c71",
+		"name": "Appraisal-MS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32796325"
+	},
+	"item": [
+		{
+			"name": "appraisal company",
+			"item": [
+				{
+					"name": "add appraisal company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amcRegId\": \"AGZ005\",\r\n    \"amcName\": \"PQR Appraisal Services\",\r\n    \"address\": \"123 Main St\",\r\n    \"city\": \"Santa Cruz\",\r\n    \"state\": \"California\",\r\n    \"zipcode\": \"95060\",\r\n    \"country\": \"United States\",\r\n    \"phone\": \"8315551234\",\r\n    \"email\": \"connect@pqr.com\",\r\n    \"website\": \"www.abc-appraisals.com\",\r\n    \"notes\": \"Changing the notes\",\r\n    \"appraisalMethodology\": \"Methodology description\",\r\n    \"valueLowLimit\": 78000,\r\n    \"propertyTypes\": [ ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/create"
+					},
+					"response": []
+				},
+				{
+					"name": "updating an AMC",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amcId\" : 7,\r\n    \"amcRegId\" : \"DTN777\",\r\n    \"amcName\" : \"SkyHigh Appraisal Company\",\r\n    \"address\" : \"675 Christopher Ln\",\r\n    \"city\" : \"New York\",\r\n    \"state\" : \"New York\",\r\n    \"zipcode\" : \"45454\",\r\n    \"country\" : \"USA\",\r\n    \"phone\" : \"888-666-7777\",\r\n    \"email\" : \"connect@skyhigh.com\",\r\n    \"website\" : \"www.skyhigh.com\",\r\n    \"notes\" : \"Skyhigh Landers has over 20 years of experience in the appraisal industry.\",\r\n    \"appraisalMethodology\" : \"\",\r\n    \"valueLowLimit\" : 2200000,\r\n    \"propertyTypes\" : []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/update"
+					},
+					"response": []
+				},
+				{
+					"name": "fetching all appraisal companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/fetch/appraisal-companies"
+					},
+					"response": []
+				},
+				{
+					"name": "fetching appraisal company by amc name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9050/api/v1/amc/fetch/byAmcName/XYZ Appraisal Consultants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9050",
+							"path": [
+								"api",
+								"v1",
+								"amc",
+								"fetch",
+								"byAmcName",
+								"XYZ Appraisal Consultants"
+							],
+							"query": [
+								{
+									"key": "amcName",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetching amc name by regId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/fetch/byAmcRegId/AGZ001"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Criteria - AMC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amcName\": null,\r\n  \"amcRegId\": null,\r\n  \"city\": \"CHICAGO\",\r\n  \"state\": \"FLORIDA\",\r\n  \"zipCode\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "property type",
+			"item": [
+				{
+					"name": "fetch property type based on amc id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/property-type/properties/1"
+					},
+					"response": []
+				},
+				{
+					"name": "fetching all property types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/amc/property-type/properties"
+					},
+					"response": []
+				},
+				{
+					"name": "updating property type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"propId\" : 8,\r\n    \"propTypeName\" : \"Farmhouse\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/property-type/update"
+					},
+					"response": []
+				},
+				{
+					"name": "add property type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"propTypeName\"  : \"Intangible Property\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/property-type/create-property"
+					},
+					"response": []
+				},
+				{
+					"name": "adding property type for an amc",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"propTypeName\" : \"Intangible Property\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/property-type/create/7"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service area",
+			"item": [
+				{
+					"name": "adding service area",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amcId\" : 7,\r\n    \"county\" : \"Orange County\",\r\n    \"city\" : \"Los Angeles\",\r\n    \"state\" : \"California\",\r\n    \"zipcode\" : \"38383\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/service-area/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Updating service area",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"areaId\" : 1,\r\n  \"amcId\": 1,\r\n  \"county\": \"string\",\r\n  \"city\": \"string\",\r\n  \"state\": \"string\",\r\n  \"zipcode\": \"54467\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/service-area/update"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetching service area based on area id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/service-area/fetch/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetching service areas based on amc id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/service-area/fetch/areas/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "appraiser",
+			"item": [
+				{
+					"name": "updating appraiser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appraiserId\" : 9,\r\n    \"amcId\" : 2,\r\n    \"appraiserLicenseId\" : \"APL009\",\r\n    \"firstName\" : \"James\",\r\n    \"lastName\" : \"Jacob\",\r\n    \"email\" : \"james.jacob@gmail.com\",\r\n    \"phone\" : \"898-899-9922\",\r\n    \"expertWitnessTestimony\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9050/api/v1/amc/appraiser/update"
+					},
+					"response": []
+				},
+				{
+					"name": "fetching appraiser based on license id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:9050/api/v1/amc/appraiser/fetch/APL005"
+					},
+					"response": []
+				},
+				{
+					"name": "fetching appraiser based on amc id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9050/api/v1/amc/appraiser/fetch/appraisers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9050",
+							"path": [
+								"api",
+								"v1",
+								"amc",
+								"appraiser",
+								"fetch",
+								"appraisers",
+								"1"
+							],
+							"query": [
+								{
+									"key": "amcId",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create appraiser",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

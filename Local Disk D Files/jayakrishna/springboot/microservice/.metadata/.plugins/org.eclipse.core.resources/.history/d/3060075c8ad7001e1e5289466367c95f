@@ -1,0 +1,14 @@
+package com.zettamine.accounts.exception;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+	
+	@ExceptionHandler
+	public String customerAlreadyExistsExceptionHandler() {
+		return "Customer Already Exists";
+	}
+	
+}

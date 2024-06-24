@@ -1,0 +1,16 @@
+package com.zettamine.java.day06.assignment01;
+
+public class LibraryApp {
+
+	public static void main(String[] args) {
+		while(true) {
+			System.out.print("1. Add Book\n"
+					+ "2. Display all Book Details\n"
+					+ "3. Search Book by Author\n"
+					+ "4. Count Number of Books\n"
+					+ "5. Exit\n");
+			System.out.print("Enter your choice: ");
+		}
+	}
+
+}

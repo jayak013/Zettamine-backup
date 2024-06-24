@@ -1,0 +1,10 @@
+<html>
+	<head>
+		<title>Test Servlet</title>
+	</head>
+	<body>
+		<h1><a href="/test?id=1">LOGIN</a></h1>
+		<h1><a href="/test?id=2">SUBMIT</a></h1>
+		<h1><a href="/test?id=3">LOGIN</a></h1>
+	</body>
+</html>

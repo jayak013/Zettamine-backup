@@ -1,0 +1,24 @@
+Practical Example-2:
+
+// A java program for Student Registration in a College where;
+studentId
+studentName;
+studentEmail;		List<Student> students = new ArrayList<Student>();
+collegeName
+
+> admission number should be generated automatically-(auto_increment) - ZETTA_101, ZETTA_102, ZETTA_103
+
+> college name should be common for all students (objects) 
+
+enter student name and email:
+xxxxx
+xxxxxxxx
+do you want to add more students?[Y/N] : Y
+enter student name and email:
+xxxxx
+xxxxxxxx
+
+do you want to want add more students?[Y/N] : N
+---- display all student details with ID  :   NAME   : EMAIL  : COLLEGE NAME
+
+Note: apply regular expression / validation for student name and student email - if not validated generate custom exception

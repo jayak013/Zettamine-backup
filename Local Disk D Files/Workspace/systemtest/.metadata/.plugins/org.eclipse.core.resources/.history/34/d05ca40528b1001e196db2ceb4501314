@@ -1,0 +1,33 @@
+package com.zettamine.utils;
+
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class SumOfDigitsTest {
+
+	public static SumOfDigits sumOfDigits;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		sumOfDigits = new SumOfDigits();
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		sumOfDigits = null;
+	}
+
+	@Test
+	void testGetDigitsSum() {
+		String[] strings = {
+				  "1@ws2%",
+				  "AB3&%4",
+				  "42RT&*32",
+				  "80ABrt$U7" };
+		sumOfDigits.getDigitsSum(strings);
+	}
+
+}

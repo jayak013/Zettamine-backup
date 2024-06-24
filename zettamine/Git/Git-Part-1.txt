@@ -1,0 +1,119 @@
+Version Control Tools
+=====================
+
+In real-time project, multiple developers available for development activity.
+
+The developers may be working from different locations for same project.
+
+All the developers code should be stored in one place.
+
+We need monitored access for source control - We need to track who created files and who modified and who deleted files.
+
+To have code integration and monitored access, we will use Version Control Softwares
+Version Control - client version and server version
+Who, When, Why, What in codes will be tracked and monitored
+
+Source Code Repository:-
+
+There are several Version Control Softwares are available in market. They are:
+
+1) SVN (Sub Version) - almost outdated		
+2) GITHUB
+3) GITLAB		
+4) BitBucket etc
+
+GitHub  (google for GitHub)
+
+- GitHub is a cloud platform that provides software projects hosting and Version Control Management. 
+- GitHub uses Git as Version Control 
+- If we create account in GitHub , it will provide some free space in cloud to create repositories for source code management	
+
+Create GitHub Account
+
+In GitHub we can create 2 repositories. They are
+ a) public repository		 
+ b) private repository
+
+Git client software is used to interact with GitHub Repository
+Git Bash is a CLI to execute Git commands
+
+Git is a Version Control System that lets you manage and keep track of your source code history. 
+GitHub is a cloud based hosting service that lets you manage Git Repositories.
+Git is version control software on your local machine. 
+GitHub is the remote server that stores your code.
+
+
+Download & Install Git Client Software to communicate with GitHub (cloud)
+
+Google : "Download Git Client" - https://git-scm.com/downloads
+
+
+ Git Commands:
+-	Create a New Folder (git-practice) and Open gitbash CLI
+
+$git help  (shows all the frequently used git commands)     
+$pwd  (present working directory)
+
+$git help <command_name>   (it opens the documentation of that git command in browser)    
+$git help init
+
+$git init – It is used to create an empty Git Repository or re-initialize an existing one
+   .git folder gets created in our directory
+
+
+$git status - will display status of current repository - it shows un-tracked, staged and un-staged files
+
+(a) Un-Tracked files - newly created files, we need to stage them to commit; these file names will be displayed in red color
+(b) Staged files -files which are added and ready to commit; these file names will be displayed in green color
+(c) Un-Staged files - modified files will be displayed here, we need to stage these files to commit; these file names will be displayed in red color
+
+$clear - to clear the console
+
+- Create a New file "Test.java" (empty file)
+$git status
+
+$git add <file_name> -  this command is used to add file to staging area, now this file is eligible to commit
+$git add Test.java		
+$git status
+
+-	create 2 more files in folder  Demo.java, UserService.java
+$git status
+
+$git add --a   - -to add all files at a time (git add - -a)  
+
+git rm – This command is used to un-stage newly created files
+$git rm --cached Test.java		
+$git status    
+
+$git add Test.java
+$git status
+
+
+To un-stage all files at a time
+$git rm -- cached *
+
+
+
+git commit  –this command  is used to commit the files in staging area  to local repository (in our system), this changes will not be committed to central repository. This command will consider only the files in staging area
+
+Syntax: git commit –m  "commit-message "
+$git commit –m "Initial Commit" [-m (message)  | message should represent the reason of commit; what was changed", and "why was the change made", is this a part of story - then write the story number , is it a bug fix, development story etc JIRA will give STORY ID]
+-----------------------------------------------------------------------------------------------------
+
+**** To commit our files to remote repository we should execute below commands ****
+
+1) $git remote add origin <repo_url>  [this requires only first time]
+
+2) $git push –u origin master [this is used to move changes from local repo to central repository main –branch name] [the origin is your default remote repository name and '-u' flag is upstream, which is equivalent to '-set-upstream.' and the master is the branch name .upstream is the repository that we have cloned the project.]
+
+If required - $git branch –M main   (-M  master branch)  -- not required
+
+
+Add a method to "Test.java "		$git status
+$git reset HEAD Test.java   [ It is used to un-stage a file]
+
+
+$git config --list  -> to view all of your settings
+$git config --global user.name "Sunil Joseph"
+$git config --global user.email sunil.edureka@gmail.com
+git config --global user.name and user.email

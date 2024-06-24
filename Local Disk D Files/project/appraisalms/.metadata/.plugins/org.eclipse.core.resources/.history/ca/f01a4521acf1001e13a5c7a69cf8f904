@@ -1,0 +1,10 @@
+package com.zettamine.amc.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.zettamine.amc.service.AppraisalCompanyService;
+
+@Service
+public class AppraisalCompanyServiceImpl implements AppraisalCompanyService {
+
+}

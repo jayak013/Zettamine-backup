@@ -1,0 +1,21 @@
+UserDAOIimpl 
+
+public double getBalanceByAccountNo(Integer accountNo) {
+		String query = "select balance from bank_app.account where account_no = ?";
+		double checkBalance = 0;
+		try {
+			pst = con.prepareStatement(query);
+			pst.setInt(1, accountNo);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				checkBalance= rs.getDouble(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return checkBalance;
+		
+	}
+--------------------------------------------------------------------------------------------------
+

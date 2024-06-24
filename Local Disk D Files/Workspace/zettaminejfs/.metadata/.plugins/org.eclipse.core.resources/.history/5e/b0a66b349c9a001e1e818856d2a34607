@@ -1,0 +1,38 @@
+package com.zettamine.java.day06.assignment05;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Policies {
+	static Map<Integer, String> treeMap = new TreeMap<>();
+	public static void addPolicyDetails(int policyId,String policyName) {
+		treeMap.put(policyId, policyName);
+	}
+	public static List<String> searchBasedOnPolicyType(String policyName){
+		List<String> listOfPolicies = new ArrayList<String>();
+		Set<Entry<Integer, String>> entrySet = treeMap.entrySet();
+		String[] splittedPolicyName = policyName.split(" ");
+		for(Entry<Integer,String> e:entrySet) {
+			String[] splitPolicyType = e.getValue().split(" ");
+			int j = 0;
+			for(int i = 0;i<splitPolicyType.length;i++) {
+				if(j<splittedPolicyName.length&&splitPolicyType[i].equalsIgnoreCase(splittedPolicyName[j])) {
+					j++;
+				}
+				if(j==splittedPolicyName.length) {
+					listOfPolicies.add(e.getValue());
+					break;
+				}
+			}
+		}
+		return listOfPolicies;
+	}
+	public static void main(String[] args) {
+		addPolicyDetails(1, "Max Bupa praga Health Insurance");
+		System.out.println(searchBasedOnPolicyType("Insurance Health"));
+	}
+}

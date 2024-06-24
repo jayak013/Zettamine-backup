@@ -1,0 +1,16 @@
+package com.zettamine.java.day05.assignment03;
+
+import java.io.File;
+import java.io.IOException;
+
+public class CopyFile {
+	
+	public static void main(String[] args) throws IOException {
+		File f = new File("C:/CJava/java/renamedjava.txt");
+		File copy = new File("C:/CJava/java/copied/renamedjava.txt");
+		if(f.exists()) {
+			copy.createTempFile("1", "2", f);
+		}
+	}
+	
+}

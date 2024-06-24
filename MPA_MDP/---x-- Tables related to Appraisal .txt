@@ -1,0 +1,66 @@
+---x-- Tables related to Appraisal Management Company (AMC) - START  --x---
+CREATE TABLE mpa.appraisal_company (
+  amc_id SERIAL PRIMARY KEY,
+  amc_reg_id CHARACTER VARYING(10) NOT NULL UNIQUE, -- Registration ID (unique identifier)
+  amc_name CHARACTER VARYING(60) NOT NULL UNIQUE,  -- Company Name (unique identifier)
+  address VARCHAR(255),
+  city VARCHAR(100),
+  state VARCHAR(50),
+  zipcode VARCHAR(5) CHECK (zipcode ~ '^([0-9]{5})?$'), -- Enforces US zip code format
+  country VARCHAR(100),
+  phone VARCHAR(20),
+  email VARCHAR(100) UNIQUE,  -- Ensures unique email addresses
+  website VARCHAR(255),
+  notes TEXT,				-- some writeup about the appraisal company
+  
+  --fields added on 19th March
+  appraisal_methodology TEXT, -- Description of the methodology used by the appraisal company to determine property values (some follow comparable sales approach, some follow income approach etc)
+  valu_low_limit DECIMAL(18,2)  -- Lower limit of the property valuation that will be taken up
+);
+
+COMMENT ON TABLE mpa.appraisal_company IS 'Appraisal Company master data';
+
+CREATE TABLE mpa.appraisal_service_area (
+  appraisal_area_id SERIAL PRIMARY KEY,
+  amc_id INTEGER REFERENCES mpa.appraisal_company(amc_id) NOT NULL,  -- Foreign key to appraisal_company table
+  county VARCHAR(100),
+  city VARCHAR(100),
+  state VARCHAR(50),
+  zipcode VARCHAR(5) CHECK (zipco de ~ '^([0-9]{5})?$') -- Enforces US zip code format
+  
+);
+
+COMMENT ON TABLE mpa.appraisal_service_area IS 'Areas in which services are provided by an Appraisal Company.';
+
+CREATE TABLE mpa.appraisal_property_types (
+    prop_type_id SERIAL PRIMARY KEY,
+    prop_type_name VARCHAR(100) NOT NULL
+);
+
+COMMENT ON TABLE mpa.appraisal_property_types IS 'Master data related to property types';
+
+CREATE TABLE mpa.appraisal_company_property_type (
+	amc_id	INTEGER,
+	prop_type_id INTEGER,
+	PRIMARY KEY (amc_id, prop_type_id), 
+	FOREIGN KEY (amc_id) REFERENCES mpa.appraisal_company(amc_id), 
+	FOREIGN KEY (prop_type_id) REFERENCES mpa.appraisal_property_types(prop_type_id)
+);
+COMMENT ON TABLE mpa.appraisal_property_types IS 'Junction table for Appraisal Company & Property Type';
+
+CREATE TABLE mpa.property_appraiser (
+  appraiser_id SERIAL PRIMARY KEY,
+  appraiser_licence_id VARCHAR(10) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  license_number VARCHAR(50),  -- Optional field for Property Appraiser license number
+  email VARCHAR(100) UNIQUE,  -- Ensures unique email addresses
+  phone VARCHAR(20),
+  amc_id INTEGER REFERENCES mpa.appraisal_company(amc_id) NOT NULL,  -- Foreign key to appraisal_company table 
+  
+  -- field added on 19th March
+  expert_witness_testimony BOOLEAN -- does this appraiser work on Expert witness testimony service or not
+);
+COMMENT ON TABLE mpa.property_appraiser IS 'Property Appraiser master data.';
+
+---x-- Tables related to Appraisal Management Company (AMC) - END  --x---

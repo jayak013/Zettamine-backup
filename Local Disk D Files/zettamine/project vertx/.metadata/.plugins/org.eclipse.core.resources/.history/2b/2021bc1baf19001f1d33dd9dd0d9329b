@@ -1,0 +1,17 @@
+package com.zettamine.vertex.entities;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Table(name = "spares_supplier")
+public class SparesSupplier extends BaseEntity{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer supplierId;
+	
+	private String supplier_name;
+
+}

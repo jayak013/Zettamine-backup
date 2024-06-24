@@ -1,0 +1,320 @@
+"static" Modifier
+-----------------
+The "static" modifier is mainly used for memory management in Java. 
+
+The static modifier belongs to the class , not the instance of the class.
+
+The static modifier can be applied to 
+a) variable (also known as class variable)
+b) method (also known as class method)
+c) block
+d) nested class (class defined inside another class)
+
+Points:
+------
+(1) A static member data or a method can be accessed without the help of an object
+
+(2) A static member can be accessed with class name
+  class_name.static_member
+
+(3) When a member is declared as static, it can be accessed before any objects of its class are created.
+
+(4) When a variable is declared as static in a class, then a single copy of variable is created and gets initialized (in method area) with class loading
+
+(5) Static variables are shared among all objects. 
+
+(6) The static variable can be used to refer the common property of all objects (that is not unique for each object) e.g. company name of employees, college name of students etc.
+
+(7) A local variable cannot be declared as static
+
+(8) Static variables makes our program -memory efficient 
+
+
+class Employee
+{  
+ int empno;  
+ String ename;  
+ String c_name="Zettamine";  
+}  
+
+Suppose there are 500 employees in an organization, now all instance data members will get memory each time when object is created. All employees have its unique empno and ename but c_name will have the same value of company name ie; "Zetttamine"- refers to the common property of all objects. So it is better to make it as static ; so that c_name class variable will get memory only once in method area.
+
+class Employee
+{  
+ int empno;  
+ String ename;  
+ static String c_name="Zettamine";  
+
+ Employee(int empno,String ename)
+ {
+  this.empno=empno;
+  this.ename=ename; 
+ }
+
+ void getDetails()
+ {
+  System.out.println(empno+" | "+ename  +" | "+ c_name);
+ }
+ 
+public static void main(String[] args)
+{
+ Employee e1=new Employee(101,"Sunil");
+ Employee e2=new Employee(102,"Praveen");
+
+ e1.getDetails();
+ e2.getDetails();
+
+ System.out.println();
+
+ e1.c_name="Accenture";
+//Employee.c_name="Accenture";
+
+ e1.getDetails();
+ e2.getDetails();
+}
+}
+
+
+
+
+(9) static method can access only static members.
+
+(10) the static method can not use non static data member or call non-static method directly.
+
+(11) "this" and "super" keywords cannot be used in a static context or method.
+
+
+class Calculate
+{  
+  static int cube(int n)
+  {  
+    return n * n * n;  
+  }  
+  
+  public static void main(String[] args)
+  {  
+    int result = Calculate.cube(5);  
+    System.out.println(result); 
+    result = cube(4);  
+    System.out.println(result);  
+  }  
+}  
+
+
+
+(12) A static block gets executed with class loading and only once
+
+ static 
+ {
+  ........
+  ........
+ }
+
+
+ 
+(13) static block and static variables are executed in order they are present in a class
+
+class Test 
+{
+	
+ // static variable
+	
+ static int a = m1();
+	
+	
+ // static block
+	
+ static 
+ {
+		
+  System.out.println("Inside static block");
+	
+ }
+	
+	
+ // static method
+	
+ static int m1() {
+		
+   System.out.println("from m1");
+	
+   return 20;
+	
+ }
+	
+	
+ // static method(main)
+	
+ public static void main(String[] args)
+	{
+	
+   System.out.println("Value of a : "+a);
+	
+   System.out.println("from main");
+	
+ }
+
+
+
+}
+
+
+(14) Class variables (Static member datas) are stored as part of the java.lang.Class object associated with that class. 
+The Class object can only be created by JVM and is stored in non heap area which is called Method Area (data segment or code segment)
+
+Practical example -1
+
+Counter class - to understand the difference between Instance variable and static variable
+
+
+Practical Example-2:
+
+// A java program for Student Registration in a College
+where;
+> admission number should be generated automatically-(auto_increment)
+
+> college name should be common for all students (objects)
+
+
+class Student 
+{
+ int admNo;
+ String name;
+     
+ // static variable
+ static String collegeName;
+   
+ // static counter to set unique admission number - to make it auto increment
+ static int counter = 100;     
+    
+ /*Constructor*/	 
+ public Student(String name) 
+ {
+    this.name = name;         
+    this.admNo = getAdmissionNo();
+ }
+     
+ // getting unique admNo through static variable(counter)
+ static int getAdmissionNo()    
+ {
+   counter=couner+1;
+   return counter;
+ }
+     
+ // static method
+ static void setcollegeName(String name){
+  collegeName = name ;
+ }
+     
+ // instance method
+ void getStudentInfo(){
+  System.out.println("RollNo : " + this.rollNo);
+  System.out.println("Name : " + this.name);
+  // accessing static variable
+ System.out.println("College Name : " + collegeName);
+   }
+}
+ 
+public class College {
+   public static void main(String[] args)    
+{
+ // calling static method without instantiating Student class
+  Student.setCollegeName("Zettamine College Of Eng");
+     
+ Student s1 = new Student("Sunil");
+ Student s2 = new Student("Rahul");
+         
+ s1.getStudentInfo();
+ s2.getStudentInfo();
+        
+ }
+}
+
+(15) An inner class (nested class) can be declared as "static", not for outer class
+
+
+Ques): When to use static variables?
+
+Use the static variable for the property that is common to all objects
+
+Ques): Can you execute a standalone java class without main() method?
+
+Ans) Depends on the Java Version
+Yes, - one of the way is static block in previous version of JDK not in JDK 1.7 or later.
+
+class StaticTest
+{
+ static
+ {
+   System.out.println("Welcome to Zettamine");
+   System.out.println("Ameerpet");   
+   System.exit(0);
+ }
+}
+
+Output:static block is executed (if java version is < JDK1.7)
+
+In Java7 and above, output will be:
+
+Output:Error: Main method not found in class StaticTest, please define the main method as:
+  public static void main(String[] args)
+
+
+Ques:) Why main method is static?
+
+Ans) main() method is called by the JVM with the class name; so that the main method should be static
+c:\>java Welcome
+[we are giving only the class name to JVM; so it should access main method with class name.
+main() method is the driver method..]
+
+-------------------------------------
+
+strictfp Modifier
+=================
+strict floating point
+
+"strictfp" is used to ensure same result on every operating system while performing operations in the floating-point variable.
+
+strictfp is introduced in JDK 1.2 for floating-point calculations.
+
+- the precision in a floating point value may differ from platform to platform that is why java provided the strictfp keyword, so that we get same result on every platform (OS).
+
+"strictfp" keyword can be applied on 	
+1) methods 
+2) classes and 
+3) interfaces
+
+strictfp class A{} //strictfp applied on class  
+
+class MyClass
+{  
+ strictfp void display() //strictfp applied on method 
+ {}
+}  
+
+strictfp keyword cannot be applied on  
+> abstract methods
+> variables   
+> constructors
+
+
+
+    class B{  
+    strictfp abstract void m();//Illegal combination of modifiers  
+    }  
+
+    class B{  
+    strictfp int data=10;//modifier strictfp not allowed here  
+    }  
+
+    class B{  
+    strictfp B(){}//modifier strictfp not allowed here  
+    }  
+
+
+When a class is declared with strictfp modifier, then all methods declared in the class, and all nested types declared in the class, are implicitly strictfp.
+
+strictfp cannot be used with abstract methods, but it can be used with abstract classes/interfaces.
+
+
+Since methods of an interface are implicitly abstract, strictfp cannot be used with any method inside an interface. 

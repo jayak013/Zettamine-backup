@@ -1,0 +1,72 @@
+package acc.code;
+
+
+public class MainClass {
+	
+	public static void main(String[] args) {
+		LinkedList<Integer> l = new LinkedList<>();
+		l.add(1);
+		l.add(2);
+		l.add(3);
+		l.add(4);
+		l.add(5);
+		l.add(6);
+		l.add(7);
+		l.add(8);
+		l.add(9);
+		
+		System.out.println(l);
+	}
+	
+}
+
+
+class Node{
+	
+	Object ele;
+	Node next;
+	
+	public Node(Object e, Node n) {
+		ele = e;
+		next = n;
+	}
+	
+}
+
+class LinkedList<E>{
+	
+	private Node first = null;
+	private int count = 0;
+	
+	public void add(E e) {
+		if(first==null) {
+			first = new Node(e,null);
+			count++;
+			return;
+		}
+		
+		Node curr = first;
+		
+		while(curr.next!=null) {
+			curr = curr.next;
+		}
+		curr = new Node(e,null);
+		count++;
+	}
+	
+	public int size() {
+		return count;
+	}
+	
+	@Override
+	public String toString() {
+		Node curr = first;
+		String output = "";
+		for(int i = 1;i<count;i++) {
+			output+=curr.ele+",";
+			curr = curr.next;
+		}
+		return output;
+	}
+
+}

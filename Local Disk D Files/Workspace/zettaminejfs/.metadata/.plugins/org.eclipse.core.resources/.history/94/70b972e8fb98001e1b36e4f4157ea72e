@@ -1,0 +1,15 @@
+package com.zettamine.java.day05.assignment04;
+
+import java.util.Scanner;
+
+public class SerializeProducts {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		System.out.println("How many products to be saved: ");
+		int numberOfProducts = scn.nextInt();
+		Product[] products = new Product[numberOfProducts];
+	}
+	
+}

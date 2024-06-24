@@ -1,0 +1,5 @@
+package com.zettamine.entity;
+
+public class Employee {
+
+}

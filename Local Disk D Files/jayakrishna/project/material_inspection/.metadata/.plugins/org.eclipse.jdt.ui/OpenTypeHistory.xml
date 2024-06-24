@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=material-insp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.materialInspection.service{PlantService.java[PlantService" modifiers="513" timestamp="1707118834349"/>
+    <typeInfo handle="=material-insp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.materialInspection.service{MaterialService.java[MaterialService" modifiers="513" timestamp="1707208695312"/>
+    <typeInfo handle="=material-insp/C:\/Users\/S Jaya Krishna\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.2.2\/spring-data-jpa-3.2.2.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.archivename=/spring-data-jpa-3.2.2.jar=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.2.2=/=/maven.scope=/compile=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1705054045000"/>
+    <typeInfo handle="=material-insp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.materialInspection.service{MaterialInspLotService.java[MaterialInspLotService" modifiers="513" timestamp="1707793244821"/>
+    <typeInfo handle="=material-insp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.materialInspection.service{MaterialActualsService.java[MaterialActualsService" modifiers="513" timestamp="1707618304932"/>
+</typeInfoHistroy>

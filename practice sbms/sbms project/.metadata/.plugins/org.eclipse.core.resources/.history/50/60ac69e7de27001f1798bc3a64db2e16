@@ -1,0 +1,23 @@
+package com.jayasbms.demo.controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jayasbms.demo.dto.OrderRequest;
+import com.jayasbms.demo.service.OrderService;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping(path = "/api/order")
+@RequiredArgsConstructor
+public class OrderController {
+
+	private final OrderService orderService;
+	
+	public String placeOrder(@RequestBody OrderRequest orderRequest) {
+		return "order successfully placed";
+	}
+	
+}

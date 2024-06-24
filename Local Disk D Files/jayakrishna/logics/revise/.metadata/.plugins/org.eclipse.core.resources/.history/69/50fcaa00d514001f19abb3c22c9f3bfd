@@ -1,0 +1,23 @@
+package logics.revise;
+
+public class LeftRotationOfArray {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public static Integer[] leftRotation(Integer[] array,Integer n,Integer d) {
+		Integer[] result = new Integer[array.length];
+		int count = 0;
+		for(int i = d;i<array.length;i++) {
+			result[count++] = array[i];
+		}
+		
+		for(int j = 0;j<d;j++) {
+			result[count++] = array[j];
+		}
+		
+		return result;
+	}
+	
+}

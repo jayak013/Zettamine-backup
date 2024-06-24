@@ -1,0 +1,9 @@
+package com.zettamine.hibernate;
+
+public class ProcessEmp {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}

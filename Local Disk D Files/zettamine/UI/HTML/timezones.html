@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timezones</title>
+    <style>
+        .timezone-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="timezone-box">
+        <h1>DELHI</h1>
+        <h1 id="delhiTimeZone"></h1>
+    </div>
+    <div class="timezone-box">
+        <h1>CHICAGO</h1>
+        <h1 id="chicagoTimeZone"></h1>
+    </div>
+    <div class="timezone-box">
+        <h1>LONDON</h1>
+        <h1 id="londonTimeZone"></h1>
+    </div>
+    <div class="timezone-box">
+        <h1>SYDNEY</h1>
+        <h1 id="sydneyTimeZone"></h1>
+    </div>
+
+    <script>
+        const updateTimes = () => {
+            const delhiTime = new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata" });
+            document.getElementById("delhiTimeZone").textContent = delhiTime;
+
+            const chicagoTime = new Date().toLocaleTimeString("en-US", { timeZone: "America/Chicago" });
+            document.getElementById("chicagoTimeZone").textContent = chicagoTime;
+
+            const londonTime = new Date().toLocaleTimeString("en-US", { timeZone: "Europe/London" });
+            document.getElementById("londonTimeZone").textContent = londonTime;
+
+            const sydneyTime = new Date().toLocaleTimeString("en-US", { timeZone: "Australia/Sydney" });
+            document.getElementById("sydneyTimeZone").textContent = sydneyTime;
+        };
+
+        setInterval(updateTimes, 1000);
+
+        updateTimes();
+    </script>
+</body>
+</html>

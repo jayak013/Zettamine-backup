@@ -1,0 +1,60 @@
+package com.zettamine.mt;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeMain {
+	public static void main(String[] args) {
+		Employee e1,e2,e3,e4,e5,e6,e7,e8,e9,e10;
+		e1 = new Employee(1, "jaya", 8, 22);
+		e2 = new Employee(2, "krishna", 8, 19);
+		e3 = new Employee(3, "kittu", 9, 18);
+		e4 = new Employee(4, "Hari", 8, 20);
+		e5 = new Employee(5, "Ganesh", 7, 22);
+		
+		List<Employee> empList = new ArrayList<>();
+		empList.add(e1);
+		empList.add(e2);
+		empList.add(e3);
+		empList.add(e4);
+		empList.add(e5);
+		
+		Thread t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
+		t1 = new SalaryCalculation(e1);
+		t2 = new SalaryCalculation(e2);
+		t3 = new SalaryCalculation(e3);
+		t4 = new SalaryCalculation(e4);
+		t5 = new SalaryCalculation(e5);
+		
+		long startTime = System.currentTimeMillis();
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+		t5.start();
+		try {
+			t1.join();
+			t2.join();
+			t3.join();
+			t4.join();
+			t5.join();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("Time taken for 5 threads is "+(endTime-startTime));
+		
+		long startTime1 = System.currentTimeMillis();
+		for(Employee e:empList) {
+			Thread t = new SalaryCalculation(e);
+			t.start();
+			try {
+				t.join();
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		long endTime1 = System.currentTimeMillis();
+		System.out.println("Time taken for single thread is "+(endTime1-startTime1));
+	}
+}

@@ -1,0 +1,101 @@
+spring.io > Projects > Spring Cloud > Spring Cloud Gateway > Learn
+
+
+---------- Building Edge Server using Spring Cloud Gateway --------------
+gatewayserver
+Edge Server for ZettaBank microservices
+com.zettamine.gatewayserver
+
+Dependencies: 
+Reative Gateway, 
+Eureka Discovery Client (to connect to the eureka server and to fetch the service registry details of all the other microservices) , 
+Config Client (to load all the configurations of the gateway server from config server) ,  
+Spring Boot Actuator
+Spring Boot DevTools
+
+-- application.yml ----  (from accounts ms and make corrections)
+
+spring:
+  application:
+    name: "gatewayserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true         
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true	--- to enable gateway related endpoints
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "gatewayserver"
+    description: "ZettaBank Gateway Server Application"
+    version: "1.0.0"
+
+
+
+spring.cloud.gateway.discovery.locator.enabled: true  ----> we are telling to gateway server to connect with the discovery server (eureka) and locate all the details about the microservices - once it locates all the informations about the individual microservices - we want the gateway server to use the same to forward the traffic from external client to the individual microservice 
+
+-- eureka server details will be provided to config server
+
+gatewayserver.yml  in Git Repo
+
+server:
+ port: 8072
+eureka:
+ instance:
+  preferIpAddress: true
+ client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+   defaultZone: "http://localhost:8070/eureka/"
+
+
+
+----> Edge Server with default routing configs
+
+run config server, eureka server, all microservices and then only gateway server
+
+http://localhost:8070/ ---> eureka server
+
+http://localhost:8072/actuator
+
+http://localhost:8072/actuator/gateway/routes
+
+postman
+POST   http://localhost:8072/ACCOUNTS/api/create
+
+ACCOUNTS ---> name of ms in eureka server
+api/create ---> actual path
+
+GET http://localhost:8072/ACCOUNTS/api/fetch?mobileNumber= xxxxx
+
+same way access loans and cards
+
+http://localhost:8072/LOANS/api/create
+
+
+---- make changes inside Gateway server to accept service names with lower case ----
+POST   http://localhost:8072/accounts/api/create
+
+configserver.yml
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true 
+	lowerCaseServiceId: true

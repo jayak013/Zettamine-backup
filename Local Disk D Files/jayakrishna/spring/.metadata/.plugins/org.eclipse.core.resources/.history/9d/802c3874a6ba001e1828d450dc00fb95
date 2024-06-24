@@ -1,0 +1,4 @@
+driver-class = org.postgresql.Driver
+url = jdbc:postgresql://localhost:5432/Hibernate
+user-name = postgres
+password = Jayak@013

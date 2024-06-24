@@ -1,0 +1,13 @@
+package com.zettamine.java.practice;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class ZonedTimeAndDateDemo {
+	
+	public static void main(String[] args) {
+		ZoneId.getAvailableZoneIds().forEach(availableZoneId->System::println);
+	}
+	
+}

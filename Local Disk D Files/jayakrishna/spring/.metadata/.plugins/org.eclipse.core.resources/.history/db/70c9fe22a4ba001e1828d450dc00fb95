@@ -1,0 +1,12 @@
+package com.zettamine.jdbctemplate.service;
+
+import org.springframework.stereotype.Service;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public interface EmpService {
+	
+	int saveEmployee(Employee emp);
+	Employee getEmployeeById(Integer id);
+	
+}

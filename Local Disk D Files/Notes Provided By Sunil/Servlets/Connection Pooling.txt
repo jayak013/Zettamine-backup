@@ -1,0 +1,51 @@
+Connection pooling means that connections are reused rather than created each time a connection is requested. 
+
+To facilitate connection reuse, a memory cache of database connections, called a connection pool, is maintained by a connection pooling module as a layer on top of any standard JDBC driver product.
+
+src/main/webapp/META-INF/context.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<context name="jdbc">
+	<Resource name="jdbc/MySQLDB" 
+		auth="Container"
+		type="javax.sql.DataSource" 
+		username="root" 
+		password="root"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/db_zettamine" 
+		maxActive="20"
+		maxIdle="10" 
+		maxWait="-1" />
+</context>
+
+
+LoginServlet
+
+	public void init(ServletConfig config) throws ServletException {
+ 	 try {			
+	    Context initContext = new InitialContext();
+            Context envContext = (Context)initContext.lookup("java:comp/env");
+
+            DataSource ds = (DataSource)envContext.lookup("jdbc/MySQLDB");
+            Connection con = ds.getConnection();
+			pst = con.prepareStatement("select * from users where username=? and password=?");
+		}catch(Exception ex) {
+			System.out.println(ex.toString());
+			ex.printStackTrace();
+		}
+	}
+
+java:comp/env is the node in the JNDI tree where you can find properties for the current Java EE component (a webapp, or an EJB).
+
+Context envContext = (Context)initContext.lookup("java:comp/env");
+
+It's an in-memory global hashtable where you can store global variables by name.
+
+The "java:" url scheme causes JNDI to look for a javaURLContextFactory class, which is usually provided by your app container
+
+
+java: is just like jdbc: from connection string. Acts as a protocol.
+comp is the root for all JNDI contexts.
+env is the subcontext for all resource related. There is another for user. 
+jdbc is the subcontext for jdbc resources. There are types. Check the link from the previous bullet.
+myDataSource is the name of your jdbc resource.

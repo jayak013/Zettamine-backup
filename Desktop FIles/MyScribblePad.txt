@@ -1,0 +1,41 @@
+FILE HANDLING:
+1. To read the file completely, we can use file.read(byte[]). This method will read the file completely and assign those characters into the byte array.we can create a byte array by using fin.available which gives the total number of characters in the file.
+2. To read line by line we use BufferedReader(file).readLine()--->To read line by line as a String.
+3. Reader sourceFile = new InputStreamReader(file)--->To convert byte stream to char stream.
+4. OutputStream os = new FileOutputStream("file path",true);--->creates a file if not existed,if exists do append my data which is given.
+5. *RandomAccessFile* is the only class which act as both Input and Output Stream.
+6. what is the purpose of Apache POI?
+Ans. Apache POI, a project run by the Apache Software Foundation, and previously a sub-project of the Jakarta Project, provides pure Java libraries for reading and writing files in Microsoft Office formats, such as Word, PowerPoint and Excel. 
+	reference: https://www.javatpoint.com/apache-poi-tutorial
+	*To access any ms docs, create instance of workbook();
+7. iText java pdf library--->to work with pdf's in java.
+8. Object Graph in serialization?(Go through) and externalization & custom serialization?
+   static vs transient
+   serialization wrt inhetitance
+   serialVersionUID
+
+JAVA 8:
+1. String tokenizer---> new StringTokenizer(string,"a",true);
+   here "a" is used as the tokenizer or splitter of the string.True represents use the "a"(delimeter) into the   sequence of data.
+2. JODA API (Date-Time API).(java.time package)
+	->JOdA-Time is an API offers better classes and having efficient methods to handle Date and Time than classes from java.util package like calendar,georgia calendar
+	Reason for introducing JODA Date-Time API
+	->Existing Date-Time API is because 
+		1. Not Thread-Safe, 
+		2. Less Operations
+	
+	->We have classes like LocalDate , LocalTime and LocalDateTime;
+	->We have Date,Month and Year classes and got some functionalities. Use Class.of(for entering 											date);
+	->We have DateTimeFormatter to print date according to our requirement
+		Ex: DateTimeFormatter.ofPattern("y:M:d h:m");
+	-> For zoned time we have ZoneId each country has different zone id's and ZonedDateTime.
+	-> Period class to calculate duration from a to b in days;
+3. Optional Class Go Through
+4. How to get a map as a output in streams?
+Ans. by using Collectors.groupingBy(parama,Collectors.function); and many functionalities are there.
+
+COLLECTIONS:
+1. If we try to add an element into a immutable Collection it throws an UnsupportedOperation exception. Immutable Collection created by new ArrayList((Arrays.of(1,2,3,4,5));
+
+NUMBERS: 
+Note: OCTAL Number is checked at the time of compilation and allows values from 0-7 and from 10 it is normal and some restricted number are there.

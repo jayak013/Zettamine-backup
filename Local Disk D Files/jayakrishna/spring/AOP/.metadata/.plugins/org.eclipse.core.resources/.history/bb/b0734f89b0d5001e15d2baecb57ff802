@@ -1,0 +1,5 @@
+package com.zettamine.aop.services;
+
+public class PasswordValidator {
+
+}

@@ -1,0 +1,5 @@
+package com.zettamine.amc.audit;
+
+public class AuditAwareImpl {
+
+}

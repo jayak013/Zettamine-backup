@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+ application:
+  name: "accounts"
+ profiles:
+  active: "qa"
+  
+ config:
+  import:  "optional:config-server:http://localhost:8071/"
+    
+ datasource:
+  url: jdbc:h2:mem:accountsdb
+  driverClassName: org.h2.Driver
+  username: admin
+  password: 1234
+ h2:
+  console:
+   enabled: true
+   settings:
+    web-allow-others: true
+ jpa:
+  database-platform: org.hibernate.dialect.H2Dialect
+  hibernate:
+   ddl-auto: update
+  show-sql: true  
+  
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/  
+      
+info:
+  app:
+    name: "accounts"
+    description: "Zetta Bank Accounts Application"
+    version: "1.0.0"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+     

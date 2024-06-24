@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="apollo" class="com.zettamine.spring.core.beans.Hospital">
+		<property name="hospitalName" value="Apollo Hospital Limited" />
+		<property name="deptNames" ref="depts" />
+	</bean>
+
+	<util:list id="depts" list-class="java.util.ArrayList" value-type="java.lang.String">
+		<value>Reception</value>
+		<value>Billing</value>
+		<value>H R</value>
+		<value>Admin</value>
+		<value>Pharmacy</value>
+		<value>Marketting</value>
+		<value>Reception</value>
+	</util:list>
+
+</beans>

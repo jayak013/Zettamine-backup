@@ -1,0 +1,4 @@
+spring.application.name=amc-module
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/ams
+spring.datasource.driver-class-name=

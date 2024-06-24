@@ -1,0 +1,232 @@
+user story
+----------
+-> find the largest number from an int array
+package name : com.zettamine.testing.services
+class name: Largest
+  public int findLargest(int[] data)
+
+1) Business Requirements is satisfied - YES
+2) Coding Standarads and Best Practices are followed - YES
+3) Code Developed with respect to TDD - YES
+4) Unit Test cases implemented - YES
+5) Logging is implemented - YES
+6) Code Coverage Report - YES
+
+Logging - recording the activities of your application for better readability, debugging , testing etc
+
+TDD - Test Driven Development 
+   - think about the test cases and develop the code based on that - so that we wont face any issue in production
+   - test cases should be positive test cases and negative test cases
+
+-------------------------------------------------------------------------------
+Software Testing is the process of identifying the correctness and quality of software program.
+
+The purpose is to check whether the software satisfies the specific requirements, needs and expectations of the customer/ client. In other words, testing is a process of executing a system or application in order to find defects
+
+Example: Car manufacturer tests the car for maximum speed, fuel efficiency and safety from crash. These test results later become the part of advertising strategy for car sales.
+
+Common Problems in Software Applications
+1) Incorrect Implementation of the Business Rules	2) Weak Software Performance
+3) Incorrect results of data searches			4) Incorrect matching of data
+5) Inadequate security controls				6) Confusing or misleading data
+7) Incorrect file handling etc	to identify the problems , we perform software testing
+
+When client gives requirement for a company, developers will analyze the requirement, design and enter into development state
+Parallely Testers are also going to understand those requirements and they will prepare the test scenarios, that means - what are the requirements of the client and what requirements we need to test. In high level, testers will develop test scenarios document. From that document, testers are going to create test cases
+Ex-1: Check login functionality with valid username and valid password
+Ex-2: Check login functionality with valid username and invalid password
+
+Testing Stages/ Levels:
+1) Unit Testing
+ - done by the developer on unit functionality of the code
+ - to check whether a method/functionality is working as expected or not
+ - will not check the end-to-end code from front-end to back-end
+
+2) Integration Testing	 - end to end test	 
+ - after this we will give the code to testers as a build
+
+3) Smoke Testing
+ - done by the testers		 
+ - to check the application is in a testable state or not
+ - to check the availability of all screens/ pages  
+ - checking whether all screens and pages are accessible or not
+ - if all pages are accessible then the smoke test is passed
+
+4) Functional Testing
+  - executing the test cases is known as functional testing
+  - in functional testing , testers will execute test cases to check whether the application is executing as expected or not
+  - if any functionality is not working as expected then that bug will be reported to the developer
+
+5) Regression Testing
+  - once the bug reported in functional testing is corrected then the new build will be given to tester and the tester will test again the whole functionalities of the page (not only the modified functionality)
+
+6) Performance Testing
+  - to check the statistics of the application like, how many users can access the application at a time, how much load that application can handle, how application will break down 
+ 
+- Coding (or) Implementation of module/task is done by developer. 
+- After Coding is done it will be submitted to Testing Team (QA=Quality Analysis Team). 
+- QA Team may do different types of testing. 
+- But before submitting code to QA, if DEV performs Individual tasks/modules tested then Error(BUG) rate will be reduced in Application.
+- Programmer cannot test complete project- he can test only his module or task that is called as Unit Testing. 
+Here Unit Indicates a class, method, one layer, one module etc..
+
+The main objective of unit testing is to split code into multiple pieces and test each piece of code separately to ensure that, it works as expected
+
+What is Unit Testing?
+
+> Unit Testing is a type of software testing where individual units or components of a software are tested
+
+> As a programmer, we are going to develop applications -  as part of the application development – we are going to create several classes – in the classes we will develop several methods. Whenever we develop a class with several methods, it is our responsibility to test whether those methods/functionalities are working as expected or not. 
+
+> As a developer, your duty is not only to write the code – once you have written the code- you need to make sure that the code working as expected
+ 
+> The process of checking whether our code is working as expected or not is called as Unit Testing.
+
+- The purpose is to validate that each unit of the software code performs as expected
+
+Ex: Controller Method, Service Layer Method, DAO Method , DAO method will interact with DB etc – we follow a layered architecture to develop our application.  First check DAO methods, then Service method, then controller
+We give this input and are we getting the correct output
+
+  -- Normally Controller method will call Service Layer methods – but in unit testing we will check only the behavior of Controller
+- A Unit may be an individual function, method, procedure, module or object
+
+Who does Unit Testing?
+- Unit Testing will be done during the development (coding phase) of an application by developers
+
+
+- Proper Unit testing done during development stage saves both time and money in the end
+
+Ways of Software Testing:
+Software Testing can be performed in 2 ways:
+
+1) Manual Testing:  Test Cases executed manually. In manual testing the tester will play the role of the end user and try to find bugs or wrong behavior of the software
+
+2) Automation Testing: Testing performed with the help of automation tools like QTP, Load Runner and JMeter etc
+
+JUnit
+
+-> JUnit is a free and open-source Unit Testing framework for java Application. 
+-> The java programmer can create test cases and test his/her own code.
+-> Developers who are following test-driven methodology must write and execute unit test first before any code. 
+-> JUnit is very much easy to use
+-> Unit Testing can be done manually or automatically
+-> JUnit is lightweight testing framework which allowed Java developers to write Unit Test cases in Java language
+-> The current version of JUnit is 5
+
+This JUnit always provides Test -- PASS or FAIL only. 
+
+JUnit Supports two types of Programs for Unit Testing those are:
+
+1. Test Case (one module/part check) : It is a class used to write test methods which confirms the code working functionality. It returns test PASS/FAIL. On running Test case, result will be shown on JUnit Console.
+
+2. Test Suite (One or multiple Test cases) : It is also a class, It is a collection of multiple Test Cases together to run all test cases at a time.
+
+
+To Write JUnit Test case we need to know two important concepts. 
+
+Those are (a) Annotations in JUnit and (b) Assert  API which has all test methods (static), those are also called as assert methods.
+
+1) @Test 			2) @Before 		3) @BeforeClass		4) @After 	5) @AfterClass 
+
+6) @Ignore			@Ignore(String message) - to define the reason for ignoring along with it
+@Ignore("not yet ready , Please ignore.") to ignore all the tests in class, you need to use @Ignore annotation at the class level
+
+7) @Test(timeout=500) - this annotation specifies that method will be failed if it takes longer than 500 milliseconds
+
+8) @Test(expected=IllegalArgumentException.class) - This annotation can be used if you want to handle some exception during test execution. For, e.g., if you want to check whether a particular method is throwing specified exception or not. 
+
+9) @RunWith(__.class) : These are used to add extra capabilities to JUnit Test classes
+
+10) @SuitClasses({ .class,..}) : This annotation is used to create Test Suite.
+
+
+@Test-  tells JUnit that the public void method to which it is attached can be run as a test case
+
+JUnit Assert Class
+
+The org.junit.Assert class provides methods to assert the program logic.
+To validate any application Logic we use Assert API methods, which are also called as Unit Testing methods.
+All these methods are static and void methods. These throws Assertion Error in fail. These methods will tell "Is Test PASS or FAIL?" only.
+
+Every Assert method is overloaded to define user friendly Error Messages. All assert methods are given as,
+
+1) void assertEquals(boolean expected, boolean actual) - checks that two primitives/objects are equal. It is overloaded.
+2) void assertFalse(boolean condition) - checks that a condition is false.
+3) void assertTrue(boolean condition) - checks that a condition is true.
+4) void assertNull(Object object) - checks that object is null.
+5) void assertNotNull(Object obj)- checks that object is not null.
+6) void fail() -If you want to throw any assertion error, you have fail() that always results in a fail verdict. 
+
+Identical
+7) void assertSame([String message]) - "assertSame" functionality is to check that the two objects refer to the same object. 
+8) void assertNotSame([String message])- "assertNotSame" functionality is to check that the two objects do not refer to the same object. 
+
+9) assertArrayEquals(expected, actual) - must be used if arrays have the same length
+
+assertEquals(message, expected, actual) -  string will be appended in the failure message if the assertion fails
+
+Method Execution Order:
+JUnit By Default takes care of executing methods in its own order (DEFAULT) it can be deterministic, but not predictable(no 100% confirmation) JUnit also supports JVM Method Sorting (MethodSorters.JVM) or we can go for method name sorting as (MethodSorters.NAME_ASCENDING)
+Example:-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestSample {
+....// @Test
+}
+
+
+JUnit 5 is most widely used testing framework for java applications.
+
+-> JUnit 5 is the most widely used testing framework for Java Applications
+-> The pre-requisite for JUnit 5 is Java 8
+-> JUnit 5 aims to adapt java 8 style of coding and several other features as well
+
+To test our code (class) , we need to define one class that is called as Test Case (Test Class)
+
+==> To define one Test case we should use	 a) JUnit Annotations	 b) JUnit Assert API
+
+JUnit 5 Architecture
+JUnit 5 Runtime is provided with 3 components and one platform Runtime
+ 
+ JUnit 5 = JUnit Platform + JUnit Jupiter Engine + JUnit Vintage + Integration 
+
+
+> JUnit Platform - For our test cases (class + methods) object creation and test method calling is done by JUnit Platform Runtime – Will provide the environment to run our Test Cases.  Serves as a foundation for launching testing frameworks on the JVM.
+
+> JUnit Jupiter – engine is the test engine implementation that runs the unit test.
+It has all new Junit annotations and TestEngine implementation to run tests written with these annotations.
+
+> JUnit Vintage - It primary purpose is to support running JUnit 3 and JUnit 4 written tests on the JUnit 5 platform. It's for  backward compatibility.
+
+> Integration – To integrate custom Testing Frameworks like TestNG, Cucumber etc
+
+JUnit 5 Annotations
+
+@BeforeEach - The annotated method will be run before each test method in the test class.
+@AfterEach - The annotated method will be run after each test method in the test class.
+@BeforeAll - The annotated method will be run before all test methods in the test class. This method must be static.
+@AfterAll - The annotated method will be run after all test methods in the test class. This method must be static.
+@Test -	It is used to mark a method as junit test
+@DisplayName -	Used to provide any custom display name for a test class or test method
+@Disable - It is used to disable or ignore a test class or method from test suite.
+@Nested	- Used to create nested test classes
+@Tag -	Mark test methods or test classes with tags for test discovering and filtering
+@ParameterizedTest – for testing with multiple parameters
+@ValueSource  - To supply inputs for the Parameterized Test
+@CsvSource
+@CsvFileSource	@MethodSource
+@TestMethodOrder
+@RepeatedTest
+@TestFactory -	Mark a method is a test factory for dynamic tests
+
+JUnit5 Assertions
+
+-> JUnit5 Assertions help us in validating the expected output with the actual output of a test case
+-> In short, assertions are nothing but static methods that we call in our tests to verify expected behaviour
+
+-> All JUnit assertions are present in the org.junit.jupiter.Assertions class
+
+assertEquals and assertNotEquals	assertTrue and assertFalse	assertNull and assertNotNull
+assertSame and assertNotSame		assertThrows
+
+
+

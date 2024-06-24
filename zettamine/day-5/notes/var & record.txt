@@ -1,0 +1,142 @@
+var keyword in Java - Local Variable Type Inference
+===================================================
+The "var" keyword was introduced in Java 10. 
+
+Type inference is used in "var" keyword in which it detects automatically the datatype of a variable based on the surrounding context.
+
+Java compiler will identify the type of the variable based on how it is set
+  var n = 12; // here "n" is set with a value of type int, so java compiler will treat "n" as of type int
+
+-> We can declare any datatype with the "var" keyword.
+
+-> var can be used in a local variable declaration.
+
+-> var cannot be used in an instance and global variable declaration.
+
+-> var cannot be used without explicit initialization.- var variable;  
+
+-> cannot assign a "null" reference to a variable declared with var   - var variable=null;
+
+-> try-with-resources variable:
+try (var input =new FileInputStream("validation.txt")) {...}   // infers FileInputStream
+
+-> Enhanced for-loop indexes:
+ List<String> myList = Arrays.asList("a", "b", "c");
+ for (var element : myList) {...}  // infers String
+
+-> Index variables can be declared in traditional for loops:
+ for (var counter = 0; counter < 10; counter++)  {...}   // infers int
+
+-> var cannot be used for method parameters and return type.
+void method2(var a) { System.out.println(a); }
+var method1() { return ("Inside Method1"); }
+
+-> var cannot be used with Lambda Expression.
+interface myInt {
+  int add(int a, int b);
+}
+
+var obj = (a, b) -> (a + b);
+System.out.println(obj.add(2, 3));
+
+
+package com.wipro.java.var;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ExpressionVar {
+	//var name = "Java"; //'var' is not allowed here
+	//static var name = "Java"; //'var' is not allowed here
+	
+	public static void main(String[] args) {
+		var a = 10;
+		System.out.println(a);
+
+		var b = 12.34f;
+		System.out.println(b);
+		
+		var c = 12L;
+		System.out.println(c);
+		
+		var d = true;
+		System.out.println(d);
+		
+		var e = 'A';
+		System.out.println(e);
+		
+		var name = "Sanjay";
+		System.out.println(name);
+		System.out.println(name.getClass().getName());
+		
+		var names = Arrays.asList("Praveen", "Arun", "Marks");
+		System.out.println(names);
+		
+		var var = 25;
+		System.out.println(var);
+		
+	
+		data.add("Praveen");
+		System.out.println(data);	
+		
+		List<String> myList = Arrays.asList("a", "b", "c");
+		for (var element : myList) {
+			System.out.print(element + "   ");
+		}
+		System.out.println();
+	}
+}
+
+//var<String> data = new ArrayList<String>();
+//var<var> data = new ArrayList<String>();
+//var<var> data = new ArrayList<>();
+
+
+- Java compiler infers the type of the variable at compile time
+- Introduced in Java 10
+- You can add final if you want
+- var can also be used in loops
+
+Remember:
+- You cannot assign null
+- var is NOT a keyword
+- CANNOT be used for member variables, method parameters or return types
+
+
+public class ExploringVar {
+   //ERROR: var Something = new ArrayList<String>();
+   public static void main(String[] args) {
+	var myList = new ArrayList<String>();
+	//var var = new ArrayList<String>();
+	myList.add("someString");
+	for(var element:myList) {
+	  System.out.println(element);
+	}
+	System.out.println(myList.getClass());
+  }
+}
+
+========================================================================================
+
+Java Records
+
+-> In Java, a record is a special type of class declaration aimed at reducing the boilerplate code. 
+-> Record was introduced in Java SE 16
+
+public record Employee(int id, String firstName, String lastName) {}
+
+Employee e1 = new Employee(1001, "Sanjay", "Patil");
+
+// Auto generated getter methods
+System.out.println(e1.id() + " " + e1.firstName() + " " + e1.lastName());
+
+// Auto-generated toString() method
+System.out.println(e1.toString());
+System.out.println(e1);
+
+https://www.geeksforgeeks.org/what-are-java-records-and-how-to-use-them-alongside-constructors-and-methods/
+
+https://www.digitalocean.com/community/tutorials/java-records-class
+
+

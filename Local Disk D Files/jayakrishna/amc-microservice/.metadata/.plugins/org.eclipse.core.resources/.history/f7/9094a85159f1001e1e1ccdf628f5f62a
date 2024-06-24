@@ -1,0 +1,18 @@
+package com.zettamine.amc.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "appraisal_property_types",schema = "mpa")
+public class PropertyType {
+	
+	@Id
+	@Column(name = "prop_type_id")
+	private Integer propertyId;
+	
+	@Column(name = "prop_type_name")
+	private String propertyTypeName;
+}

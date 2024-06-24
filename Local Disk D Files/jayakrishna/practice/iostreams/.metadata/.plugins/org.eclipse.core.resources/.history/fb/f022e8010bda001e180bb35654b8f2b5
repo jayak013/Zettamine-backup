@@ -1,0 +1,52 @@
+package com.zettamine.iostreams.copy;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class TestClassOfStreams {
+	
+	public static void main(String[] args) {
+		
+		List<Map<Integer,Employee>> listOfMaps = new ArrayList();
+		
+		Map<Integer,Employee> map1 = new HashMap();
+		Map<Integer,Employee> map2 = new HashMap();
+		Map<Integer,Employee> map3 = new HashMap();
+		Map<Integer,Employee> map4 = new HashMap();
+		
+		map1.put(1, new Employee("jaya","java",21));
+		map1.put(2, new Employee("krishna","python",22));
+		map2.put(3, new Employee("vema","python",19));
+		map3.put(4, new Employee("hari","java",18));
+		map4.put(5, new Employee("gani","java",26));
+		map4.put(6, new Employee("hetro","python",26));
+		
+		listOfMaps.add(map1);
+		listOfMaps.add(map2);
+		listOfMaps.add(map3);
+		listOfMaps.add(map4);
+		
+		listOfMaps.stream().flatMap(lm->lm.values().stream()).filter(emp->emp.get);
+		
+//		for(Map<Integer,Employee> map:listOfMaps) {
+//			for(map.values())
+//		}
+		
+	}
+	
+}
+class Employee{
+	private String name;
+	private String domain;
+	private Integer age;
+	public Employee(String name, String domain, Integer age) {
+		super();
+		this.name = name;
+		this.domain = domain;
+		this.age = age;
+	}
+	
+	
+}

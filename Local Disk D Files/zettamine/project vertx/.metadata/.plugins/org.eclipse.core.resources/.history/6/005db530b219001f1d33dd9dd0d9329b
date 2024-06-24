@@ -1,0 +1,22 @@
+package com.zettamine.vertex.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "spare_part")
+public class SparesSupplierParts {
+	
+	private SparePart sparePart;
+	
+	private SparesSupplier supplier;
+	
+}

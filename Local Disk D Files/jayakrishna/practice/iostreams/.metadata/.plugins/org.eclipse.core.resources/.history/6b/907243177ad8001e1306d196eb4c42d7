@@ -1,0 +1,12 @@
+package com.zettamine.iostreams.copy;
+
+public class FolderCopierApplication {
+	
+	private CopierFactory copierFactory;
+	private FolderCopier folderCopier;
+	
+	public FolderCopierApplication(CopierFactory copierFactory) {
+		
+	}
+	
+}

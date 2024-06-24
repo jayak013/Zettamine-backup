@@ -1,0 +1,57 @@
+package com.zettamine.vertex.entities;
+
+
+import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "MNTC_LOG_H")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class MaintenanceLogHeader extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "log_id")
+    private Integer logId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "eqpt_id", nullable = false)
+    private Equipment equipment;
+
+    private LocalDate startDt;
+
+    private LocalDate closureDt;
+
+    private String closedBy;
+
+    private LocalDate nextDueDt;
+
+    private String logNotes;
+
+    private String mntcMethod;
+
+    private String mntcInvDoc;
+
+    @OneToOne
+    @JoinColumn(name = "repl_log_id", nullable = false)
+    private ReplacementLogHeader replacementLog;
+
+    private String status;
+}

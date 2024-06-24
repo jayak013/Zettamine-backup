@@ -1,0 +1,547 @@
+  JUnit 4           JUnit 5
+@BeforeClass 	- @BeforeAll
+@Before		- @BeforeEach
+@Test		- @Test
+@After		- @AfterEach
+@AfterClass	- @AfterAll
+
+@Test(expected = Throwable)   assertThrows(Throwable , Executable)
+
+		 @DisplayName
+
+@Ignore		- @Disabled
+
+@FixMethodOrder - @TestMethodOrder   @Order
+		  @TestMethodOrder(OrderAnnotation.class)
+
+		  @TestMethodOrder(Alphanumeric.class)
+----------------------------------------------------------------------------------------
+TestInfo
+
+@Test
+@DisplayName("TEST")
+//@RepeatedTest(value = 3)
+@RepeatedTest(value = 3, name = "{displayName} - repetition {currentRepetition} / {totalRepetitions}")
+
+mvn clean -DskipTests package
+
+@Tag - these are used to filter test methods for execution in different environments (dev, qa , prod)
+   For ex: i want to test export operation in production environment
+   	   I want to test delete operation in development environment
+	Use: @Tag and maven-surefire-plugin in pom.xml
+
+Different environments in project development and deployment
+
+@Tag("dev")    -  for temporary setup in eclipse
+                   Right click on Test program > Run As > Run Configurations
+                    Include and Exclude Tags - click on "Configure"   - enable Include and write tag name(s) separated with comma , try exclude also
+
+configuring include and exclude tags in pom.xml
+
+<build>
+ <finalName>zettamine</finalName>
+ <plugins>
+   <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-surefire-plugin</artifactId>
+     <version>3.2.1</version>
+     <configuration>
+	<!-- include tags-->
+	<groups>dev,qa</groups>
+	<!-- exclude tags-->
+	<excludedGroups>test</excludedGroups>
+     </configuration>
+   </plugin>
+ </plugins>
+</build>
+
+Parameterized Test in JUnit5
+
+@ParameterizedTest   -  dependency --> JUnit Jupiter Params
+
+
+@ParameterizedTest
+@ValueSource(strings = {"eye", "malayalam", "racecar", "Radar", "liril", "madam"})
+void testIsPalindrome(String str) {
+	System.out.println(str);
+	boolean actualResult = strObj.isPalindrome(str);
+	//assumeTrue(actualResult);
+	assertTrue(actualResult);			assumeTrue Vs assertTrue
+}
+
+
+@ParameterizedTest	
+@CsvSource(value = {
+	       "10,EVEN","11, ODD","12,EVEN","13,ODD"
+	       }, delimiter = ',')
+void testCheckEvenOrOdd(String num, String expected) {
+		NumberUtility obj = new NumberUtility();
+		String actual = obj.checkEvenOrOdd(Integer.parseInt(num));
+		assertEquals(expected, actual);
+}
+
+create a new file with name src/test/resource - data.csv  (use excel) and enter the following data in spread sheet
+
+input, expected
+10, EVEN
+20, EVEN
+11, ODD
+17, ODD
+30, EVEN
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
+	void testCheckEvenOrOdd1(String num, String expected) {
+		NumberUtility obj = new NumberUtility();
+		String actual = obj.checkEvenOrOdd(Integer.parseInt(num));
+		assertEquals(expected, actual);
+	}
+
+
+
+Test Suite 
+	- additional dependency - junit-platform-suite-engine 1.10.1 (along with JUNit Jupiter Engine)
+New - JUnit Test Suite
+
+@Suite
+//@SelectClasses( {StringUtilityTest.class, NumberUtilityTest.class})
+@SelectPackages("com.zettamine.utils")
+public class AllTests {
+
+}
+
+Google "ValueSource in JUnit 5"  - Baeldung site
+
+------------------------------------------------------------------
+Code Coverage
+
+1) Ecl Emma  - Eclipse EMMA
+
+2) Jacoco Plugin
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.wipro</groupId>
+	<artifactId>08.code-coverage</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>		
+</project>
+
+
+Run As : Maven test    OR   Run As : Maven build..    Goals: clean test
+
+check for code coverage in ---> target/site/jacoco/index.html
+
+
+------------------------------------------------------------------
+Unit Testing with Mocking
+
+
+Steps to develop application using JUnit and Mockito
+JUnit - Unit Testing Framework
+Mockito/Easy Mock - to perform Mocking
+
+Practicals
+1) Create a new Maven Project -unit-testing-mocking-app
+2) Add the following dependencies in pom.xml
+ a) JUnit	 b) Mockito 
+3) Create DAO interface (only interface no implementation - required method we will declare as abstract)
+4) Create Service Interface & implementation (as part of service method, we will call dao method)
+5) Create Unit test class for Service class using JUnit
+
+<dependencies>
+ <dependency>
+  <groupId>org.junit.jupiter</groupId>     
+  <artifactId>junit-jupiter-engine</artifactId>
+  <version>5.10.1</version>  
+  <scope>test</scope>
+ </dependency>
+
+ <dependency>
+  <groupId>org.mockito</groupId>
+  <artifactId>mockito-core</artifactId>
+  <version>5.8.0</version>
+  <scope>test</scope>
+ </dependency>
+</dependencies>
+<properties>
+  <maven.compiler.source>11</maven.compiler.source>
+  <maven.compiler.target>11</maven.compiler.target>
+</properties>
+
+package com.zettamine.dao
+interface ContactDAO  -  public String findNameById(Integer id);
+
+com.zettamine.service
+interface ContactService-   public String getNameById(Integer id);
+
+com.zettamine.service
+class ContactServiceImpl implements ContactService{
+   private ContactDAO contactDao;
+   public String getNameById(Integer id){
+     String name = contactDao.findNameById(id);
+    //our logic
+   String formattedName = name.toUpperCase();
+     return formattedName;
+ }  }
+
+Unit Test Class
+Src : src/test/java
+Package : com.zettamine.test.service
+Class: ContactServiceTest
+
+public class ContactServiceTest{
+  @Test
+  public void testGetNameById_01(){
+    ContactService service = new ContactServiceImpl();
+     String name = service.getNameById(101);
+    assertNotNull(name);
+  }
+}
+
+NullPointerException
+Debug the code of Test case  (Debug As > JUnit Test)
+
+class ContactServiceTest {
+  @Test
+  void testGetNameById() {	
+	//create a mock object for ContactDAO
+	ContactDAO daoProxy = Mockito.mock(ContactDAO.class);
+	ContactServiceImpl service = new ContactServiceImpl();
+	//injecting proxy object to service object
+	service.setContactDao(daoProxy);
+		
+	//--setting the behaviour for Proxy object 
+	//Mockito.when(daoProxy.findNameById(101)).thenReturn("SUNIL"); //recording
+	//Mockito.when(daoProxy.findNameById(102)).thenReturn("ANIL"); //recording	
+
+	String name = service.getNameById(101);
+	System.out.println(name);
+	assertNotNull(name);
+  }
+}
+
+Mockito when() method
+- It enables stubbing methods.
+    when(mock.someCode ()).thenReturn(5);  
+
+Case #2
+Add one more method in ContactDAO interface
+  List<String> findNames();
+
+Add one more method in ContactService interface
+  List<String> getAllContactNames();
+
+Implementation in ContactServiceImpl class
+  public List<String> getAllContactNames(){
+    List<String> names = dao.findNames();
+    if(!names.isEmpty())      
+	return names;	    
+    return null;  
+}
+
+
+
+In Unit Test class
+@Test
+void testAllContactNames() {
+  ContactDAO dao = Mockito.mock(ContactDAO.class);
+	
+  ContactServiceImpl service = new ContactServiceImpl();
+  service.setContactDao(dao);
+		
+  List<String> expValues = new ArrayList<>();
+  expValues.add("Charles");
+  expValues.add("Chris");
+  expValues.add("Jefferey");
+		
+  Mockito.when(dao.findNames()).thenReturn(expValues);
+	
+  List<String> names = service.getAllContactNames();
+  assertNotNull(names);
+  //System.out.println(names);
+}
+
+Case #3
+
+Create an Entity class 
+ class Contact{
+   private Integer contactId;	   
+   private String contactName;	   
+   private Long contactNumber;
+   //getters & setters
+ }
+
+Add one more method in ContactDAO interface
+  public Contact findContactById(Integer id);
+
+Add one more method in ContactService interface
+  public Contact getContactByContactId(Integer id);
+
+Create a CustomException
+
+  com.zettamine.exceptions;
+  public class NoContactFoundException extends RuntimeException{
+    //constructors;
+  }
+
+Implementation in ContactServiceImpl class
+  public Contact getContactByContactId(Integer id){
+    Contact contact = dao.findContactById(101);
+    if(contact == null){
+      throw new NoContactFoundException("no contact persion with xx id");
+    }
+    return contact;      }
+ 
+Test Method
+	@Test
+	void testGetContactById_01() {
+		ContactDAO daoProxy = Mockito.mock(ContactDAO.class);
+		ContactServiceImpl service = new ContactServiceImpl();
+		service.setContactDao(daoProxy);
+		
+		Contact c= new Contact(101,"Sunil",984858857L);
+		Mockito.when(daoProxy.findContactById(101)).thenReturn(c);
+		Mockito.when(daoProxy.findContactById(102)).thenReturn(null);
+		
+		Contact contact = service.getContactByContactId(102);
+		//assertNotNull(contact);
+		assertNull(contact);
+	}
+	//@Test(expected = NoContactFoundException.class)
+	@Test
+	void testGetContactById_02() {
+		ContactDAO daoProxy = Mockito.mock(ContactDAO.class);
+		ContactServiceImpl service = new ContactServiceImpl();
+		service.setContactDao(daoProxy);
+		/*
+		assertThrows(NoContactFoundException.class,new Executable() {			
+			@Override
+			public void execute() throws Throwable {
+				service.getContactByContactId(102);
+			}
+		});
+		*/
+		assertThrows(NoContactFoundException.class,() -> {			
+			service.getContactByContactId(102);			
+		});		
+	}	 
+
+@Test
+public void testMockB() {
+ Iterator<String> itr = Mockito.mock(Iterator.class);
+ Mockito.when(itr.next()).thenReturn("One").thenReturn("Two");
+ String actual = itr.next() + " " + itr.next();
+ System.out.println(actual);
+ assertEquals("One Two", actual);
+}
+
+
+@Test
+public void testMockC() {
+ Comparable<String> comp=Mockito.mock(Comparable.class);
+ Mockito.when(comp.compareTo("Sunil")).thenReturn(10);
+ Mockito.when(comp.compareTo("Joseph")).thenReturn(20);
+ assertEquals(10, comp.compareTo("Sunil"));	}
+Mockito verify() method
+
+The verify() method is used to check whether some specified methods are called or not. In simple terms, it validates the certain behavior that happened once in a test. It is used at the bottom of the testing code to assure that the defined methods are called.
+
+Mockito spy() method
+
+Mockito provides a method to partially mock an object, which is known as the spy method. When using the spy method, there exists a real object, and spies or stubs are created of that real object. If we don't stub a method using spy, it will call the real method behavior. The main function of the spy() method is that it overrides the specific methods of the real object. 
+
+reset()
+
+
+Using Easy Mock
+===============
+<dependency>
+    <groupId>org.easymock</groupId>
+    <artifactId>easymock</artifactId>
+    <version>4.1</version>
+    <scope>test</scope>
+</dependency>
+
+public class ContactServiceTest{
+  @Test
+  public void testGetNameById_01(){
+    //creating proxy
+    ContactDao daoProxy = EayMock.createMock(ContactDao.class);   
+   
+    contactServiceImpl service = new ContactServiceImpl();
+    service.setContactDao(daoProxy); //setter injection
+
+    String name = service.getNameById(101);
+    assertNotNull(name);
+  }
+}
+
+Debug As > JUnit Test	and check the type of daoProxy
+//setting the behaviour for Proxy object 
+EasyMock.expect(daoProxy.findNameById(101)).andReturn("SUNIL"));   //recording
+EasyMock.expect(daoProxy.findNameById(102)).andReturn("ANIL")); //recording
+EasyMock.replay(daoProxy);
+
+
+@Test(expected=NoDataFoundException.class)
+
+
+
+
+Power Mock Example
+==================
+> Create a New Maven Project
+> Dependencies: Junit 4.13, powermock-module-junit4 (1.6.4), powermock-api-mockito
+
+> DAO Class
+
+ package com.zettamine.dao;
+public interface UserDao{
+ public String findNameById(Integer id);
+ public String findEmailById(Integer id);
+}
+
+package com.zettamine.dao;
+public class UserDaoImpl implements UserDao{
+ public String findNameById(Integer id){
+   //Db logic
+   System.out.println("--- inside actual DAO method");
+   return "John";
+ }
+ public String findEmailById(Integer id){
+   //Db logic
+   return "john.k@gmail.com";
+ }
+}
+
+
+
+> Test class
+public class UserServiceTest{
+ @Test
+ public void testGetNameByUserId(){
+   UserDaoImpl mockDao = PowerMockito.mock(UserDaoImpl.class);
+   
+   PowerMockito.when(mockDao.findNameById(101)).thenReturn("Nick");
+   PowerMockito.when(mockDao.findNameById(102)).thenReturn("Sunil");
+
+   UserService service = new UserService(mockDao);
+   String name = service.getNameByUserId(101);
+   assertEquals("Nick", name);
+ }
+}
+
+-- when the method is returning nothing - then
+@Test
+public void testDoProcess(){
+ UserService mockService = PowerMockito.mock(UserService.class);
+ try{
+   PowerMockito.doNothing().when(mockService, "pushingToKafkaTopic", anyString());
+   mockService.doProcess();
+ }catch(Exceotion ex){}
+}
+In UserService class
+public void doProcess(){
+ System.out.println("doProcess() method started");
+ pushMsgToKafkaTopic("message");
+ System.out.println("doProcess() method ended");
+}
+
+public void  pushMsgToKafkaTopic(String str){
+ System.out.println("message pushing to kafka...");
+}
+
+-- to perform Unit Testing for private methods
+
+@Test
+public void testDoWorkWithPrivateMethodMock() throws Exception{
+ UserService service = new UserService();
+ UserService spy = PowerMockito.spy(service);
+
+ PowerMockito.doreturn("TEST MSG"). when(spy,"format msg","testmsg");
+ String formattedMessage = service.doWork("test msg");
+  
+ assertEquals("TEST MSG", formattedMsg);   
+}
+
+In UserService class
+public String doWork(String msg){
+  String formattedMsg = formatMsg(msg);
+  return formattedMsg;
+}
+
+private String formattedMsg(String msg){
+  return msg.toUpperCase();
+}
+
+-- to call the real method (define the behavior)
+PowerMockito.when(mockDao.findEmailById(101)).thenReturn("john.k@gmail.com");
+PowerMockito.when(mockDao.findEmailById(101)).thenCallRealMethod();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- create a new maven project
+- include junit-jupiter-engine 5.10.1 version in pom.xml
+- implement Palndrome logic (copy previous project class)
+- write test cases for "eye", "java" and null
+- apply @BeforeClass @AfterClass
+
+
+
+

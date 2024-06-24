@@ -1,0 +1,5 @@
+package com.zettamine.junit;
+
+public class CustomAnnotation {
+
+}

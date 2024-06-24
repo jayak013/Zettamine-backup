@@ -1,0 +1,23 @@
+package com.zettamine.practice;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class FactorialSum {
+	
+	public static void main(String[] args) {
+		List<Integer> listOfNums = Arrays.asList(4,3,2,13,11,21,4,4,4,2,2,6);
+		int sum = listOfNums.stream().distinct().
+		filter(e->e%2==0).map(new Function<Integer, Integer>() {
+			@Override
+			public Integer apply(Integer t) {
+				if(t==0) return 1;
+				return t*apply(t-1);
+			}
+		}).mapToInt(Integer::intValue).sum();
+		System.out.println(sum);
+	}
+	
+}

@@ -1,0 +1,62 @@
+BEGIN:VCALENDAR
+PRODID:-//HireVue Inc//NONSGML HV4//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20240529T060000Z
+DTEND:20240529T063000Z
+DTSTAMP:20240528T170411Z
+CREATED:20240528T170411Z
+ORGANIZER;CN="Accenture India CX team"
+ :mailto:interviews.Pdjpyiu-fwdhe3@usprd-ics-gw.hirevue.com
+UID:ba38406b9e78058e1a2899d70c30e79b@hirevue.com
+SEQUENCE:1
+ATTENDEE;
+ CUTYPE=INDIVIDUAL;
+ ROLE=REQ-PARTICIPANT;
+ PARTSTAT=NEEDS-ACTION;
+ RSVP=TRUE;
+ CN="Jaya Krishna 
+ Seethagari"
+ :MAILTO:jayakrishna2k.s@gmail.com
+
+
+SUMMARY:Action Required – Live Interview
+DESCRIPTION:\n\nInterview With Contract Staffing Team\n\nDear 
+ Jaya Krishna,\n\nWe are looking forward to speak t
+ o you during your upcoming digital interview! Plea
+ se read on for more information and tips to ensure
+  a successful experience.\n\n  Position: Spring Bo
+ ot\n  When: Wednesday, May 29 11:30 a.m. - 12 p.m.
+  IST (UTC+0530)\n\n  1. Test your system before in
+ terviewing ( https://accenture.hirevue.com/equipme
+ nttest/Pdjpyiu-fwdhe3/candidate/ )\n  2. Read tips
+  for a successful interview ( https://app.hirevue.
+ com/learn-more/Pdjpyiu-fwdhe3/ )\n  3. Start the i
+ nterview ( https://accenture.hirevue.com/interview
+ s/Pdjpyiu-fwdhe3/candidate/ )\n\n\nBest regards,\n
+ Contract Staffing Team\n\n\nFor technical support,
+  please visit the HireVue Help Center: https://hir
+ evuesupport.zendesk.com\n\n\nUSING A MOBILE DEVICE
+ ?\nAndroid: https://play.google.com/store/apps/det
+ ails?id=com.hirevue.candidate.generic&referrer=int
+ erview_code:Pdjpyiu-fwdhe3\niOS: https://accenture
+ .hirevue.com/interviews/Pdjpyiu-fwdhe3/candidate/?
+ redirect=1\n\n\nPlease do not reply to this messag
+ e. Replies are routed to an unmonitored mailbox.\n
+ \nInterview Code: Pdjpyiu-fwdhe3 ( https://app.hir
+ evue.com/interview-status/#/Pdjpyiu-fwdhe3/ )\n\nP
+ owered by HireVue\n
+LOCATION:
+CLASS:PRIVATE
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+PRIORITY:5
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:REMINDER
+TRIGGER;RELATED=START:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

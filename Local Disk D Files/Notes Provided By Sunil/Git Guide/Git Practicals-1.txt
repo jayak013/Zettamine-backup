@@ -1,0 +1,42 @@
+------ practicals ----
+cmd>git -v
+cmd>git --version
+
+cmd>git help
+cmd>git help init
+
+--- create a new folder -- open GitBash from the newly created folder
+cmd> git init
+
+-- create a new file  Welcome.java in folder
+
+cmd>git status
+cmd>git add Welcome.java
+
+cmd>git status
+cmd>get commit -m "Inital Commit"
+cmd>git status
+
+cmd>git remote add origin <remote_repository_url>
+
+cmd>git config --global user.name "Sunil Joseph"
+cmd>git config --global user.email "sunil.edureka@gmail.com"
+cmd>git config --list
+
+cmd>git push -u origin master
+
+-- refresh git repository in browser
+=================================================================================
+
+add multiple files to repo
+
+$touch Test.java   -- to create a new file
+--create a new file Welocome.java & UserService.java
+
+$git status
+$git add --a
+
+$git commit -m "added Welcome.java & UserService Interface"
+
+$git push
+

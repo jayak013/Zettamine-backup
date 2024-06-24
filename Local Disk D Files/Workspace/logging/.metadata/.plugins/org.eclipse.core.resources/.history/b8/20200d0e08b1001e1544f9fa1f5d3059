@@ -1,0 +1,13 @@
+package com.zettamine.reports;
+
+public class ReportGenerator {
+	
+	public static void main(String[] args) {
+		generateReport();
+	}
+
+	private static void generateReport() {
+		
+	}
+	
+}

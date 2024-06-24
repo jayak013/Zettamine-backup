@@ -1,0 +1,9 @@
+package com.zettamine.mt;
+
+public class Employee {
+	private int empNo;
+	private String empName;
+	private int wagesPerDay;
+	private int noOfDays;
+	private int salary;
+}

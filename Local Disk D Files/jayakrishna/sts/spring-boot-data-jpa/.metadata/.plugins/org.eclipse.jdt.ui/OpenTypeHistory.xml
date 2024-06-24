@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=01.sb-dj-app/C:\/Users\/S Jaya Krishna\/.m2\/repository\/org\/springframework\/data\/spring-data-commons\/3.2.2\/spring-data-commons-3.2.2.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-commons=/=/maven.version=/3.2.2=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.repository(CrudRepository.class[CrudRepository" modifiers="1537" timestamp="1705053893000"/>
+    <typeInfo handle="=02.sb-dj-app/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.bootjpa.service{CustomerService.java[CustomerService" modifiers="513" timestamp="1706684183929"/>
+    <typeInfo handle="=03.sb-dj-app/C:\/Users\/S Jaya Krishna\/.m2\/repository\/org\/hibernate\/orm\/hibernate-core\/6.4.1.Final\/hibernate-core-6.4.1.Final.jar=/maven.pomderived=/true=/=/maven.groupId=/org.hibernate.orm=/=/maven.artifactId=/hibernate-core=/=/maven.version=/6.4.1.Final=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.hibernate.id(IdentifierGenerator.class[IdentifierGenerator" modifiers="1537" timestamp="1702649153000"/>
+</typeInfoHistroy>

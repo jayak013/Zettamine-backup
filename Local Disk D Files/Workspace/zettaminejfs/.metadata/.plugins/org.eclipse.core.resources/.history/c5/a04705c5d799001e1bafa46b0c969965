@@ -1,0 +1,42 @@
+package com.zettamine.java.day06.assignment01;
+
+import java.util.Scanner;
+
+public class LibraryApp {
+	static Scanner scn = new Scanner(System.in);
+	public static void main(String[] args) {
+		while(true) {
+			System.out.print("1. Add Book\n"
+					+ "2. Display all Book Details\n"
+					+ "3. Search Book by Author\n"
+					+ "4. Count Number of Books\n"
+					+ "5. Exit\n");
+			System.out.print("Enter your choice: ");
+			int option = scn.nextInt();
+			scn.nextLine();
+			switch(option) {
+				case 1:
+					System.out.print("Enter the isbn no: ");
+					int isbnNo = scn.nextInt();
+					scn.nextLine();
+					System.out.print("Enter the book name: ");
+					String bookName = scn.nextLine();
+					System.out.print("Enter the Author name: ");
+					String authorName = scn.nextLine();
+					new
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				default:
+					System.err.println("please enter a valid input");
+			}
+		}
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.zettamine.amc.dto;
+
+import com.zettamine.amc.entity.AppraisalCompany;
+
+public class ServiceAreaDto {
+	
+	private Integer area_id;
+	
+	private AppraisalCompany amc;
+	
+	private String county;
+	
+	private String city;
+	
+	private String state;
+	
+	private String zipcode;
+	
+}

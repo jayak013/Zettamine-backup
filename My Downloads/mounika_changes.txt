@@ -1,0 +1,8 @@
+1. added deposit.jsp, withdraw.jsp, transfer.jsp
+
+2. called service layer methods in servlet
+
+3. added deposit(), withdraw(), transferAmount(), saveTransaction()
+
+4. with these methods updated balance in account table
+   and inserted values to bank_tx & tx_flow tables

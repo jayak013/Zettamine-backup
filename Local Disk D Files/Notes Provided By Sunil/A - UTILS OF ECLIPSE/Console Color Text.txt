@@ -1,0 +1,9 @@
+https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
+
+\u001B[34m   - BLUE
+\u001B[35m   - purple
+
+\u001B[40m  - background black
+
+String ANSI_RESET = "\u001B[0m"
+

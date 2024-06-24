@@ -1,0 +1,13 @@
+package com.zettamine.mt;
+
+class MyTask1 implements Runnable{
+	@Override
+	public void run() {
+		System.out.println("inside run() - " + Thread.currentThread().getName());
+	}
+
+}
+
+public class ThreadTest {
+	
+}

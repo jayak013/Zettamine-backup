@@ -1,0 +1,41 @@
+package logics.revise;
+
+import java.util.Arrays;
+
+public class LeftRotationOfArray {
+	
+	public static void main(String[] args) {
+//		Integer a[] = {41,73,89,7,10,1,59,58,84,77,77,97,58,1,86,58,26,10,86,51};
+//		System.out.println(Arrays.toString(leftRotation(a, 20, 10)));
+		
+		triPytha(10);
+	}
+	
+	public static Integer[] leftRotation(Integer[] array,Integer n,Integer d) {
+		Integer[] result = new Integer[array.length];
+		int count = 0;
+		for(int i = d;i<array.length;i++) {
+			result[count++] = array[i];
+		}
+		for(int j = 0;j<d;j++) {
+			result[count++] = array[j];
+		}
+		
+		return result;
+	}
+	
+	public static void triPytha(Integer limit) {
+		for(int i = 1;i<=limit;i++) {
+			for(int j = 1;j<=limit;j++) {
+				for(int k = j;k<=limit;k++) {
+					int a = (int)Math.pow(j, 2);
+					int b = (int)Math.pow(k, 2);
+					int c = (int)Math.pow(i, 2);
+					
+					if((a+b)==c) System.out.println(k+" "+j+" "+i);
+				}
+			}
+		}
+	}
+	
+}

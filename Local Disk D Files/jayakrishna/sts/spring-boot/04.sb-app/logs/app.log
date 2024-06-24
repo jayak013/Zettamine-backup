@@ -1,0 +1,187 @@
+2024-01-29T11:44:54.370+05:30  INFO 17800 --- [main] o.s.boot.SpringApplication               : ▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:44:54.417+05:30  INFO 17800 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 17800 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:44:54.418+05:30  INFO 17800 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:44:54.943+05:30  INFO 17800 --- [main] com.zettamine.boot.Application           : Started Application in 0.941 seconds (process running for 1.611)
+2024-01-29T11:45:20.839+05:30  INFO 8720 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:45:20.886+05:30  INFO 8720 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 8720 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:45:20.887+05:30  INFO 8720 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:45:21.414+05:30  INFO 8720 --- [main] com.zettamine.boot.Application           : Started Application in 0.947 seconds (process running for 1.601)
+2024-01-29T11:50:55.110+05:30  INFO 13556 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:50:55.160+05:30  INFO 13556 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 13556 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:50:55.161+05:30  INFO 13556 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:50:55.565+05:30  INFO 13556 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:50:55.569+05:30  INFO 13556 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:50:55.674+05:30  INFO 13556 --- [main] com.zettamine.boot.Application           : Started Application in 0.942 seconds (process running for 1.636)
+2024-01-29T11:50:55.682+05:30  INFO 13556 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T11:50:55.682+05:30  INFO 13556 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T11:51:09.173+05:30  INFO 18268 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:51:09.218+05:30  INFO 18268 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 18268 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:51:09.219+05:30  INFO 18268 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:51:09.612+05:30  INFO 18268 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:51:09.616+05:30  INFO 18268 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:51:09.724+05:30  INFO 18268 --- [main] com.zettamine.boot.Application           : Started Application in 0.915 seconds (process running for 1.613)
+2024-01-29T11:51:09.733+05:30  INFO 18268 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T11:51:09.733+05:30  INFO 18268 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T11:51:14.324+05:30  INFO 11844 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:51:14.370+05:30  INFO 11844 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 11844 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:51:14.371+05:30  INFO 11844 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:51:14.790+05:30  INFO 11844 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:51:14.794+05:30  INFO 11844 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:51:14.900+05:30  INFO 11844 --- [main] com.zettamine.boot.Application           : Started Application in 0.941 seconds (process running for 1.582)
+2024-01-29T11:51:14.903+05:30  WARN 11844 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is not started,So Journey Not Possible---@@@
+2024-01-29T11:52:17.142+05:30  INFO 8984 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:52:17.192+05:30  INFO 8984 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 8984 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:52:17.193+05:30  INFO 8984 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:52:17.613+05:30  INFO 8984 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:52:17.617+05:30  INFO 8984 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:52:17.719+05:30  INFO 8984 --- [main] com.zettamine.boot.Application           : Started Application in 0.957 seconds (process running for 1.657)
+2024-01-29T11:52:17.726+05:30  INFO 8984 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T11:52:17.727+05:30  INFO 8984 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T11:52:22.686+05:30  INFO 7424 --- [main] o.s.boot.SpringApplication               : 
+
+▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓██████████████▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░ 
+       ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+     ░▒▓██▓▒░░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+   ░▒▓██▓▒░  ░▒▓██████▓▒░    ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░   
+ ░▒▓██▓▒░    ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+░▒▓████████▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░ 
+                                                                                                                      
+
+2024-01-29T11:52:22.737+05:30  INFO 7424 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 7424 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:52:22.739+05:30  INFO 7424 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:52:23.134+05:30  INFO 7424 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:52:23.138+05:30  INFO 7424 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:52:23.232+05:30  INFO 7424 --- [main] com.zettamine.boot.Application           : Started Application in 0.926 seconds (process running for 1.626)
+2024-01-29T11:52:23.242+05:30 ERROR 7424 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is not started,So Journey Not Possible---@@@
+2024-01-29T11:53:41.992+05:30  INFO 8692 --- [main] o.s.boot.SpringApplication               : 
+
+ _______  _______ __________________ _______  _______ _________ _        _______ 
+/ ___   )(  ____ \\__   __/\__   __/(  ___  )(       )\__   __/( (    /|(  ____ \
+\/   )  || (    \/   ) (      ) (   | (   ) || () () |   ) (   |  \  ( || (    \/
+    /   )| (__       | |      | |   | (___) || || || |   | |   |   \ | || (__    
+   /   / |  __)      | |      | |   |  ___  || |(_)| |   | |   | (\ \) ||  __)   
+  /   /  | (         | |      | |   | (   ) || |   | |   | |   | | \   || (      
+ /   (_/\| (____/\   | |      | |   | )   ( || )   ( |___) (___| )  \  || (____/\
+(_______/(_______/   )_(      )_(   |/     \||/     \|\_______/|/    )_)(_______/
+                                                                                 
+
+2024-01-29T11:53:42.039+05:30  INFO 8692 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 8692 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:53:42.040+05:30  INFO 8692 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:53:42.456+05:30  INFO 8692 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:53:42.459+05:30  INFO 8692 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:53:42.564+05:30  INFO 8692 --- [main] com.zettamine.boot.Application           : Started Application in 0.947 seconds (process running for 1.612)
+2024-01-29T11:53:42.567+05:30  INFO 8692 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T11:53:42.568+05:30  INFO 8692 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T11:56:17.270+05:30  INFO 13908 --- [main] o.s.boot.SpringApplication               : 
+
+ _______  _______ __________________ _______  _______ _________ _        _______ 
+/ ___   )(  ____ \\__   __/\__   __/(  ___  )(       )\__   __/( (    /|(  ____ \
+\/   )  || (    \/   ) (      ) (   | (   ) || () () |   ) (   |  \  ( || (    \/
+    /   )| (__       | |      | |   | (___) || || || |   | |   |   \ | || (__    
+   /   / |  __)      | |      | |   |  ___  || |(_)| |   | |   | (\ \) ||  __)   
+  /   /  | (         | |      | |   | (   ) || |   | |   | |   | | \   || (      
+ /   (_/\| (____/\   | |      | |   | )   ( || )   ( |___) (___| )  \  || (____/\
+(_______/(_______/   )_(      )_(   |/     \||/     \|\_______/|/    )_)(_______/
+                                                                                 
+
+2024-01-29T11:56:17.315+05:30  INFO 13908 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 13908 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:56:17.317+05:30  INFO 13908 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:56:17.708+05:30  INFO 13908 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:56:17.709+05:30  INFO 13908 --- [main] com.zettamine.boot.beans.Car             : Car :: one-parameter Constructor
+2024-01-29T11:56:17.809+05:30  INFO 13908 --- [main] com.zettamine.boot.Application           : Started Application in 0.917 seconds (process running for 1.621)
+2024-01-29T11:56:43.830+05:30  INFO 16060 --- [main] o.s.boot.SpringApplication               : 
+
+ _______  _______ __________________ _______  _______ _________ _        _______ 
+/ ___   )(  ____ \\__   __/\__   __/(  ___  )(       )\__   __/( (    /|(  ____ \
+\/   )  || (    \/   ) (      ) (   | (   ) || () () |   ) (   |  \  ( || (    \/
+    /   )| (__       | |      | |   | (___) || || || |   | |   |   \ | || (__    
+   /   / |  __)      | |      | |   |  ___  || |(_)| |   | |   | (\ \) ||  __)   
+  /   /  | (         | |      | |   | (   ) || |   | |   | |   | | \   || (      
+ /   (_/\| (____/\   | |      | |   | )   ( || )   ( |___) (___| )  \  || (____/\
+(_______/(_______/   )_(      )_(   |/     \||/     \|\_______/|/    )_)(_______/
+                                                                                 
+
+2024-01-29T11:56:43.880+05:30  INFO 16060 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 16060 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:56:43.881+05:30  INFO 16060 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:56:44.306+05:30  INFO 16060 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:56:44.307+05:30  INFO 16060 --- [main] com.zettamine.boot.beans.Car             : Car :: one-parameter Constructor
+2024-01-29T11:56:44.408+05:30  INFO 16060 --- [main] com.zettamine.boot.Application           : Started Application in 0.969 seconds (process running for 1.641)
+2024-01-29T11:56:44.411+05:30 ERROR 16060 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is not started,So Journey Not Possible---@@@
+2024-01-29T11:57:46.409+05:30  INFO 460 --- [main] o.s.boot.SpringApplication               : 
+
+ _______  _______ __________________ _______  _______ _________ _        _______ 
+/ ___   )(  ____ \\__   __/\__   __/(  ___  )(       )\__   __/( (    /|(  ____ \
+\/   )  || (    \/   ) (      ) (   | (   ) || () () |   ) (   |  \  ( || (    \/
+    /   )| (__       | |      | |   | (___) || || || |   | |   |   \ | || (__    
+   /   / |  __)      | |      | |   |  ___  || |(_)| |   | |   | (\ \) ||  __)   
+  /   /  | (         | |      | |   | (   ) || |   | |   | |   | | \   || (      
+ /   (_/\| (____/\   | |      | |   | )   ( || )   ( |___) (___| )  \  || (____/\
+(_______/(_______/   )_(      )_(   |/     \||/     \|\_______/|/    )_)(_______/
+                                                                                 
+
+2024-01-29T11:57:46.455+05:30  INFO 460 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 460 (D:\jayakrishna\sts\spring-boot\04.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\04.sb-app)
+2024-01-29T11:57:46.456+05:30  INFO 460 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T11:57:46.862+05:30  INFO 460 --- [main] com.zettamine.boot.beans.Car             : Car :: Constructor
+2024-01-29T11:57:46.866+05:30  INFO 460 --- [main] com.zettamine.boot.beans.Engine          : Engine :: Constructor
+2024-01-29T11:57:46.971+05:30  INFO 460 --- [main] com.zettamine.boot.Application           : Started Application in 0.925 seconds (process running for 1.611)
+2024-01-29T11:57:46.978+05:30  INFO 460 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T11:57:46.978+05:30  INFO 460 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###

@@ -1,0 +1,6 @@
+package com.zettamine.amc.serviceImpl;
+
+
+public class ApprasierServiceImpl implements appraise {
+
+}

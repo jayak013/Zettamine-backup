@@ -1,0 +1,30 @@
+package com.zettamine.test;
+
+import java.util.Optional;
+
+public class Palindrome {
+	String s;
+	public boolean isPalindrome(String s) {
+		if(s==null) throw new NullPointerException();
+		return new StringBuilder(s).reverse().toString().equalsIgnoreCase(s);
+	}
+	
+	
+	public String removeSpaces(String s) {
+		return s.replaceAll(" ", "");
+	}
+	
+	public static void m1() {
+		throw new ArithmeticException();
+	}
+	
+	public static void main(String[] args) {
+		try {
+			m1(); 
+		}catch(Exception e) {
+			System.out.println("handled");
+		}
+	}
+	
+
+}

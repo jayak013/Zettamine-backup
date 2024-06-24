@@ -1,0 +1,66 @@
+2024-01-29T12:24:17.151+05:30  INFO 10352 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m              [2m (v3.2.2)[0;39m
+
+
+2024-01-29T12:24:17.199+05:30  INFO 10352 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 10352 (D:\jayakrishna\sts\spring-boot\05.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\05.sb-app)
+2024-01-29T12:24:17.200+05:30  INFO 10352 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T12:24:17.621+05:30  INFO 10352 --- [main] com.zettamine.boot.beans.Car             : Car Constructor
+2024-01-29T12:24:17.733+05:30  INFO 10352 --- [main] com.zettamine.boot.Application           : Started Application in 0.948 seconds (process running for 1.609)
+2024-01-29T12:24:17.737+05:30  INFO 10352 --- [main] com.zettamine.boot.beans.Car             : Diesel Engine instance being used
+2024-01-29T12:24:17.737+05:30  INFO 10352 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T12:24:17.737+05:30  INFO 10352 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T12:24:36.472+05:30  INFO 21444 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m              [2m (v3.2.2)[0;39m
+
+
+2024-01-29T12:24:36.519+05:30  INFO 21444 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 21444 (D:\jayakrishna\sts\spring-boot\05.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\05.sb-app)
+2024-01-29T12:24:36.520+05:30  INFO 21444 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T12:24:36.935+05:30  INFO 21444 --- [main] com.zettamine.boot.beans.Car             : Car Constructor
+2024-01-29T12:24:37.054+05:30  INFO 21444 --- [main] com.zettamine.boot.Application           : Started Application in 0.963 seconds (process running for 1.645)
+2024-01-29T12:24:37.057+05:30  INFO 21444 --- [main] com.zettamine.boot.beans.Car             : Diesel Engine instance being used
+2024-01-29T12:24:37.058+05:30  INFO 21444 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is started---@@@
+2024-01-29T12:24:37.058+05:30  INFO 21444 --- [main] com.zettamine.boot.beans.Car             : ###Happy Journey###
+2024-01-29T12:25:01.416+05:30  INFO 20856 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m              [2m (v3.2.2)[0;39m
+
+
+2024-01-29T12:25:01.462+05:30  INFO 20856 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 20856 (D:\jayakrishna\sts\spring-boot\05.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\05.sb-app)
+2024-01-29T12:25:01.463+05:30  INFO 20856 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T12:25:01.887+05:30  INFO 20856 --- [main] com.zettamine.boot.beans.Car             : Car :: One-param Constructor
+2024-01-29T12:25:01.989+05:30  INFO 20856 --- [main] com.zettamine.boot.Application           : Started Application in 0.935 seconds (process running for 1.607)
+2024-01-29T12:25:01.992+05:30  INFO 20856 --- [main] com.zettamine.boot.beans.Car             : Petrol Engine instance being used
+2024-01-29T12:25:01.993+05:30  WARN 20856 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is not started,So Journey Not Possible---@@@
+2024-01-29T12:26:53.879+05:30  INFO 13256 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m              [2m (v3.2.2)[0;39m
+
+
+2024-01-29T12:26:53.927+05:30  INFO 13256 --- [main] com.zettamine.boot.Application           : Starting Application using Java 17.0.9 with PID 13256 (D:\jayakrishna\sts\spring-boot\05.sb-app\target\classes started by S Jaya Krishna in D:\jayakrishna\sts\spring-boot\05.sb-app)
+2024-01-29T12:26:53.928+05:30  INFO 13256 --- [main] com.zettamine.boot.Application           : No active profile set, falling back to 1 default profile: "default"
+2024-01-29T12:26:54.346+05:30  INFO 13256 --- [main] com.zettamine.boot.beans.Car             : Car :: One-param Constructor
+2024-01-29T12:26:54.442+05:30  INFO 13256 --- [main] com.zettamine.boot.Application           : Started Application in 0.93 seconds (process running for 1.603)
+2024-01-29T12:26:54.447+05:30  INFO 13256 --- [main] com.zettamine.boot.beans.Car             : Diesel Engine instance being used
+2024-01-29T12:26:54.447+05:30  WARN 13256 --- [main] com.zettamine.boot.beans.Car             : @@@---Engine is not started,So Journey Not Possible---@@@

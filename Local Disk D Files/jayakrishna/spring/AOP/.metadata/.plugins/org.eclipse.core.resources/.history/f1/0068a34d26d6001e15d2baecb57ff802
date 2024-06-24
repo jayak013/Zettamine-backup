@@ -1,0 +1,9 @@
+package com.zettamine.aop.aspects;
+
+import org.aspectj.lang.JoinPoint;
+
+public class LoggingAspect {
+	
+	
+	
+}

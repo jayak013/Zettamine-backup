@@ -1,0 +1,342 @@
+-------- Update docker compose files to adapt config server changes ------
+
+we need to containerize our microservices with configserver application - post that we should start all our microservices along with config server with the help of docker-compose
+
+we are trying to make the configuration related changes to work even inside docker environment - because with the help of docker containers only we are going to deploy our microservices to the production environment like Kubernetes Cluster.
+
+Inorder to get started with the containerization of our application - we can straight away generate the docker images of our microservices and the config server - but before that we write docker-compose file with some additional configurations
+
+we have 3 different profile configurations like default, prod and qa
+we need to create 3 different docker-compose configurations - it helps to make specific configuration changes to a specific environment - this helps to make specific changes to a specific environment
+
+1) create a new directory in workspace with name - "docker-compose"
+2) docker-compose\default
+   docker-compose\prod
+   docker-compose\qa
+
+    cut "docker-compose.yml" from accounts ms and place it in docker-compose\default
+    check the image names
+
+services:
+ configserver:
+  image: "150478/configserver:v2"    
+  container_name: configserver-ms
+  ports: 
+   - "8071:8071"
+  deploy:
+   resources:
+    limits:
+     memory: 700m
+  networks:
+   - zettabank
+
+now we have 3 microservices along with configserver service inside our docker compose file
+
+check application.yml inside accounts ms - spring.config.import
+
+Now, as a next step - we need to let our individual microservices and how to connect to the configserver inside a docker environment - spring.config.import= "optional:configserver:http://localhost:8071" - it many not work
+
+in docker-compose.yml
+accounts:
+ environment:
+  SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071"  //second configserver is the servicename; prefix value should always be"configserver" - remove "optional" as we need our accounts ms to be failed incase if it is not able to connect to the config server 
+
+  SPRING_PROFILES_ACTIVE: default   - folder name
+  SPRING_APPLICATION_NAME: "accounts"
+
+provide the same for each microservice
+
+first docker-compose should start config server - before any microservice start configserver should start or it should be ready
+
+
+----------- Liveness & Readiness ------- (page 83)
+liveness and readiness has been introduced in spring-boot:2.3.0
+
+Liveness  -- Is this container alive?
+Readiness -- Is this container ready to receive network traffic?
+
+dependency - Actuator in configserver
+
+application.yml of configserver
+
+management.endpoints.web.exposure.include: "*"
+management.heath.readinessstate.enabled: true
+management.heath.livenessstate.enabled: true
+management.endpoint.heath.probes.enabled: true   -- to read the readiness and liveness using endpoint
+
+Run only config server
+
+http://localhost:8071/actuator/health
+http://localhost:8071/actuator/health/liveness
+http://localhost:8071/actuator/health/readiness
+
+
+-------- Update docker compose files to adapt config server changes part-2------
+
+with above step our configserver is exposing the readiness and liveness with the help of actuators
+
+-as the next step we need make some changes in docker-compose.yml file - to check whether the confiserver is in healthy state
+
+in docker-compose.yml
+after ports:
+
+services.configserver.healthcheck.test: "curl --fall --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+--grep searches for text and strings defined by users in a given file
+
+services.configserver.healthcheck.intervals: 10s
+services.configserver.healthcheck.timeout: 5s    -- wait for 5 seconds for each retry
+services.configserver.healthcheck.retries: 10    -- 10 times
+services.configserver.healthcheck.start_period: 10s    -- check the healthcheck test after 10 seconds
+
+
+services.accounts.depends_on: configserver   -- it may not be correct approach as the accounts ms will start as soon as the config server starts before ready   --- not recommended
+
+to overcome that
+services.accounts.depends_on.configserver.condition: service_healthy  (or) service_completed_successfully
+
+same for cards and loans ms in docker-compose.yml
+
+
+--adding rabbitmq service also in docker-compose.yml
+
+services.rabbit.image: rabbitmq:3.13-management
+services.rabbit.hostname: rabbitmq    -- specific to rabbitmq
+services.rabbit.ports:
+		 - "5672:5672"
+		 - "15672:15672"
+services.rabbit.healthcheck.test: rabbitmq-diagnostics check_port_connectivity    -- from official document
+services.rabbit.healthcheck.interval: 10s
+services.rabbit.healthcheck.timeout: 5s
+services.rabbit.healthcheck.retries: 10
+services.rabbit.healthcheck.start_period: 5s
+
+services.rabbit.networks:zettabank
+
+configserver is dependent on rabbitmq
+
+services.configserver.depends_on.rabbit.condition: service_healthy
+
+---> docker-compose for default configuration is ready now
+
+-- we have got many boiler plate/repetative code settings in docker-compose.yml
+
+
+docker-compose default cmd>docker compose up -d
+
+
+------------ optimize Docker compose file -----------------
+
+-- to remove repetative content in docker-compose.yml
+
+create a new file
+docker-compose/default/common-config.yml
+
+services:
+  network-deploy-service:
+    networks:
+      - zettabank
+
+services.microservice-base-config:
+	  extends:
+	   service: network-deploy-service
+	  deploy:
+	   resources:
+            limits:
+             memory: 700m
+
+create one more service
+
+services:
+ microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+
+in docker-compose.yml
+under rabbit service - replace networks with
+
+service:
+ rabbit:
+  image:
+  hostname:
+  ports:
+  healthcheck:
+  extends:
+   file: common-config.yml
+   service: network-deploy-service
+
+service:
+ configserver:
+   extends:
+    file: common-config.yml
+    service: microservice-base-config
+
+accounts , loans, cards same extends
+
+service:
+ accounts:
+     extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+------------------------- common-config.yml --------------
+services:
+  network-deploy-service:
+    networks:
+      - zettabank
+  microservice-base-config:
+   extends:
+    service: network-deploy-service
+   deploy:
+    resources:
+     limits:
+      memory: 700m
+   environment:
+    SPRING_RABBITMQ_HOST: "rabbit"
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+
+--------------------- docker-compose.yml -------------------------
+services:
+  rabbit:
+   image: rabbitmq:3.13-management
+   hostname: rabbitmq
+   ports:
+    - "5672:5672"
+    - "15672:15672"
+   healthcheck:
+    test: rabbitmq-diagnostics check_port_connectivity
+    interval: 10s
+    timeout: 5s
+    retries: 10
+    start_period: 5s
+   
+   extends:
+    file: common-config.yml
+    service: network-deploy-service
+
+  configserver:
+   image: "150478/configserver:v2"    
+   container_name: configserver-ms
+   ports: 
+    - "8071:8071"
+   healthcheck:
+    test: "curl --fall --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+    timeout: 5s
+    retries: 10
+    start_period: 10s
+   depends_on:
+    rabbit:
+     condition: service_healthy
+   deploy:
+    resources:
+     limits:
+      memory: 700m
+   extends:
+    file: common-config.yml
+    service: microservice-base-config
+
+  accounts:
+    image: "150478/accounts:v2"
+    container_name: accounts-ms
+    environment:
+     SPRING_CONFIG_IMPORT: "configserver:http://configserver:8071"
+     SPRING_PROFILES_ACTIVE: default
+     SPRING_APPLICATION_NAME: "accounts"
+     
+    ports:
+      - "8080:8080"
+    depends_on: 
+     configserver:
+      condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+      
+     
+networks:
+  zettabank:
+    driver: "bridge"
+
+-------------------------------------------------------------------
+
+
+---- Generating Docker images and pushing them into Docker Hub -----
+
+create docker images for accounts, loans and cards
+accounts cmd>mvn compile jib:dockerBuild
+loans cmd>mvn compile jib:dockerBuild
+cards cmd>mvn compile jib:dockerBuild
+
+add plugin google-jib to configserver 
+configserver cmd>mvn compile jib:dockerBuild
+
+cmd> docker images
+
+cmd>docker image push docker.io/150478/accounts:v6
+-- same for rest docker images
+
+
+------ Testing Config Server changes and end to end using Docker Compose & default profile -----------
+
+remove all containers from docker console
+
+docker-compose default cmd>docker compose up -d
+
+cmd> docker ps
+
+GET http://locahost:8080/api/build-info
+GET http://locahost:8080/api/contact-info    ---- getting the default profile
+
+check with webhook in GitHub Repo
+change some properties under accounts and check the endpoint
+
+check the logs of configserver from desktop
+
+http://localhost:8071/actuator/health
+http://localhost:8071/actuator/health/readiness
+
+cmd>hookdeck logout
+
+
+any error?
+in common-config.yml
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_RABBITMQ_HOST: "rabbit"
+
+
+cmd>docker compose down
+delete all containers
+
+cmd>docker compose up -d
+check the logs - Logs Explorer  extension  - configserver-ms
+
+http://localhost:8071/actuator/health
+http://localhost:8071/actuator/health/readiness
+
+GET http://locahost:8080/api/contact-info
+
+make sure webhook terminal is up & running
+
+
+----------- Prepare Docker compose files for QA & PROD profiles ---------------

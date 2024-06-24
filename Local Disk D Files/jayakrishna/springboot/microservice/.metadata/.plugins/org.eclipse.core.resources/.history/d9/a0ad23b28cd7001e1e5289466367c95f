@@ -1,0 +1,33 @@
+package com.zettamine.accounts.services;
+
+import org.springframework.stereotype.Service;
+
+import com.zettamine.accounts.dto.CustomerDto;
+import com.zettamine.accounts.entities.Customer;
+import com.zettamine.accounts.exception.CustomerAlreadyExistsException;
+import com.zettamine.accounts.mapper.CustomerMapper;
+import com.zettamine.accounts.repositories.AccountsRepository;
+import com.zettamine.accounts.repositories.CustomerRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AccountsServiceImpl implements IAccountsService {
+
+	private CustomerRepository customerRepo;
+	
+	private AccountsRepository accountsRepo;
+	
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+		boolean existsByMobileNumber = customerRepo.existsByMobileNumber(customerDto.getMobileNumber());
+		if(existsByMobileNumber) {
+			throw new CustomerAlreadyExistsException("Customer is existed with the given mobile number");
+		}
+		
+		Customer customer = CustomerMapper.mapToCustomer(customerDto);
+		customerRepo.save(customer);
+	}
+
+}

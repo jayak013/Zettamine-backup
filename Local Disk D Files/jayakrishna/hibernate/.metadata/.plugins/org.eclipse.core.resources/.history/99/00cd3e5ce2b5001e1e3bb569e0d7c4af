@@ -1,0 +1,5 @@
+package com.zettamine.hibernate.entity;
+
+public class ProductDetails {
+
+}

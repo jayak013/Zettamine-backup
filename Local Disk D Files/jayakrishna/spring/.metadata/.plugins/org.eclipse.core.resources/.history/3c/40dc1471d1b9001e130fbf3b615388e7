@@ -1,0 +1,5 @@
+package com.zettamine.models;
+
+public class Product {
+
+}

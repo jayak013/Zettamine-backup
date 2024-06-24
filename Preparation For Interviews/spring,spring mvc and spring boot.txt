@@ -1,0 +1,53 @@
+Q. What is Spring Boot and what are its Benefits?
+Ans. Spring Boot is an open-source Java-based framework used for creating stand-alone, production-grade Spring-based applications quickly and with minimal configuration. It simplifies the process of setting up and deploying Spring applications by providing a convention-over-configuration approach.
+
+(OR)
+
+Spring Boot is an open-source resource that developers can use to create microservices, called spring applications, that make businesses more efficient. An interviewer may want the definition in your own words to assess your understanding of why Spring Boot is important.
+
+Example: "Spring Boot is a Java-based framework for creating digital services that are testable, easily maintainable and manageable by a small team, fill business needs and can be independently deployed without a larger application."
+
+Here are some of the benefits of using Spring Boot:
+
+a. Rapid Application Development: Spring Boot facilitates rapid development by providing default configurations and eliminating the need for setting up boilerplate code. Developers can focus more on writing business logic rather than configuring the application.
+b. Microservices Architecture Support: Spring Boot is well-suited for building microservices-based applications. It allows developers to create multiple independent services that can be easily deployed and scaled individually.
+c. Embedded Server: Spring Boot comes with an embedded servlet container (like Tomcat, Jetty, or Undertow), which eliminates the need for deploying applications on external servers. It simplifies deployment and makes it easy to run applications as standalone JAR files.
+d. Auto-configuration: Spring Boot automatically configures various components based on the dependencies present in the classpath. It reduces the need for explicit configuration and makes it easier to start projects without much setup.
+e. Dependency Management: Spring Boot manages dependencies through its built-in dependency management system. It ensures that all dependencies are compatible with each other and eliminates version conflicts.
+f. Actuator: Spring Boot Actuator provides built-in monitoring and management capabilities for applications. It exposes endpoints that allow developers to monitor application health, gather metrics, and perform various management tasks.
+g. Spring Ecosystem Integration: Spring Boot seamlessly integrates with other Spring projects such as Spring Data, Spring Security, and Spring Cloud. This allows developers to leverage the capabilities of these projects easily.
+h. Community and Support: Spring Boot has a large and active community of developers and contributors. It offers extensive documentation, tutorials, and community support, making it easier for developers to learn and adopt.
+Overall, Spring Boot simplifies the development and deployment of Spring applications, improves productivity, and enhances maintainability by providing a streamlined development experience.
+
+Q. What makes Spring Boot superior to JAX-RS?
+Ans. By leveraging Spring Boot features, users can experience significant advantages over JAX-RS, including:
+a. Fast deployment
+b. High scalability
+c. Container compatibility
+d. Minimal configuration
+e. Lower production time
+f. Increased productivity 
+g. Reduced development time
+h. Easy monitoring and management of applications
+
+Q. JAX-RS stands for Java API for RESTful Web Services. It is a Java-based API that provides support for building RESTful web services. REST (Representational State Transfer) is an architectural style for designing networked applications, particularly web services, that emphasizes simplicity, scalability, and loose coupling between components.
+
+JAX-RS defines annotations and APIs that allow developers to create RESTful web services in Java. Some key components of JAX-RS include:
+
+a. Annotations: JAX-RS provides a set of annotations that developers can use to define the behavior of RESTful web services. These annotations include @Path, @GET, @POST, @PUT, @DELETE, etc., which are used to specify the resource paths and HTTP methods for handling requests.
+b. Resource Classes: In JAX-RS, resource classes are Java classes that are annotated with JAX-RS annotations to define RESTful resources. These classes contain methods that handle incoming HTTP requests and produce HTTP responses.
+c. Jersey and other Implementations: Jersey is the reference implementation of JAX-RS provided by Oracle. There are also other implementations like Apache CXF, RESTEasy, etc., which provide similar functionality but may have different features and performance characteristics.
+d. Client API: JAX-RS also includes a client API that allows Java applications to consume RESTful web services. It provides a convenient way to make HTTP requests and handle responses from RESTful endpoints.
+Overall, JAX-RS simplifies the development of RESTful web services in Java by providing a standardized set of annotations and APIs. It promotes the use of HTTP as the underlying protocol and follows REST principles to design scalable and interoperable web services.
+
+Q. What Spring Boot features help develop Microservices Applications?
+Ans. Primarily used for developing microservices-based applications, Spring Boot offers the following key features for configuring, developing, and deploying microservices architecture.
+a. Integrates a tool called the Actuator, which enables users to manage and monitor applications
+b. Provides support for embedded servers, such as Jetty and Tomcat
+c. Users can simply run war files, without deploying it
+d. Includes an Auto-Configuration functionality, allowing users to configure Spring applications automatically
+e. Supports HTTP client Feign
+
+Q. What is Spring vs Spring Boot?
+Ans. Being able to explain the differences between these two terms can demonstrate to the interviewer that you are well-versed in this resource. Consider explaining one term first and then the other to keep your answer organised.
+Example: "Spring is a framework for web applications. The framework has tools and libraries that you can use to create custom applications. Spring Boot is a module of Spring that you can use to create a Spring application or project that can only run."

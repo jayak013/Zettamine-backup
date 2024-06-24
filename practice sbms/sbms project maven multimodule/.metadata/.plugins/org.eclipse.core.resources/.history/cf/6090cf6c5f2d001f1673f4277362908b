@@ -1,0 +1,78 @@
+package com.jayasbms.demo.service.impl;
+
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.slf4j.Logger;
+
+import com.jayasbms.demo.dto.ProductRequest;
+import com.jayasbms.demo.model.Product;
+import com.jayasbms.demo.repository.ProductRepository;
+
+class ProductServiceImplTest {
+	
+	@Mock
+	private ProductRepository prodRepo;
+	
+	@Mock
+	private Logger log;
+	
+	@InjectMocks
+	private ProductServiceImpl prodService;
+
+	private Product product;
+	private ProductRequest productRequest;
+	
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		
+	}
+
+	@BeforeEach
+	void setUp() throws Exception {
+		
+		productRequest = new ProductRequest();
+        productRequest.setName("Test Product");
+        productRequest.setDescription("Test Description");
+        productRequest.setPrice(new BigDecimal(12000));
+		
+		product = Product.builder()
+				.name(productRequest.getName())
+				.description(productRequest.getDescription())
+				.price(new BigDecimal(productRequest.getName()))
+				.build();
+		
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		product = null;
+	}
+
+	@Test
+	void testCreateProduct() {
+		
+		Mockito.when(prodRepo.save(product)).thenReturn(product);
+		
+	}
+
+	@Test
+	void testGetAllProducts() {
+		fail("Not yet implemented");
+	}
+
+}

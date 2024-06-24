@@ -1,0 +1,9 @@
+package com.zettamine.java.day05.assignment02;
+
+import org.apache.poi.sl.draw.geom.XYAdjustHandle;
+
+public class ApachePoiTest {
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+	}
+}

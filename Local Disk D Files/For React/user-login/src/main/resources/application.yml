@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: user-login
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/user-login-react
+    username: postgres
+    password: Jayak@013
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    username: shannonclare773@gmail.com
+    password: fdny lhjo raaf domk
+    port: 587
+    properties:
+      mail:
+       smtp:
+        auth: true
+        starttls:
+         enable: true
+         
+      
+logging:
+ file:
+  name: D:\\logs\\user-login.log
+ pattern:
+  console: "%d %-5level %logger : %msg%n" 
+  file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"  
+ level:
+  ROOT: INFO

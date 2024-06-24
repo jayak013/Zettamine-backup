@@ -1,0 +1,21 @@
+package com.zettamine.hibernate.entity;
+
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "BATCH")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Batch {
+	private Integer batchId;
+	private String course;
+	private Faculty faculty;
+	
+}

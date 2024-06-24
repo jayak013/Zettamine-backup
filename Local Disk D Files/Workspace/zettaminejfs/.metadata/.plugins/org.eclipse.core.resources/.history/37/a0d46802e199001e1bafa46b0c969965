@@ -1,0 +1,49 @@
+package com.zettamine.java.day06.assignment02;
+
+import java.util.Scanner;
+
+public class PhoneBookApp {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		PhoneBook phoneBook = new PhoneBook();
+		while(true) {
+			System.out.println("Choose an option from the Menu\n\n"
+					+ "1. Add Contact\n"
+					+ "2. Display all Contacts\n"
+					+ "3. Search Contact by phone\n"
+					+ "4. Remove\n"
+					+ "5. Exit\n\n");
+			System.out.print("Enter your choice: ");
+			int choice = scn.nextInt();
+			scn.nextLine();
+			System.out.println();
+			switch(choice) {
+				case 1:
+					System.out.print("Enter the First Name: ");
+					String firstName = scn.nextLine();
+					System.out.print("Enter the Last Name: ");
+					String lastName = scn.nextLine();
+					System.out.print("Enter the Phone Number: ");
+					long phoneNumber = scn.nextLong();
+					System.out.println("Enter the Email: ");
+					phoneBook.addContact(new Contact(firstName, lastName, phoneNumber, lastName));
+					System.out.println("Successfully added a contact");
+					break;
+				case 2:
+					phoneBook.viewAllContacts();
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					System.exit(0);
+				default:
+					System.err.println("Please enter a valid input");
+			}
+		}
+	}
+	
+}

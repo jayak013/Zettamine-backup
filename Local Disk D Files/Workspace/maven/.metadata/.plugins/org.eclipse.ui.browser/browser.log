@@ -1,0 +1,17 @@
+
+Dec 29, 2023 22:28:20.29 NEW SESSION
+Dec 29, 2023 22:28:20.32 [8012:8004:1229/222820.287:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+Jan 02, 2024 13:10:17.62 NEW SESSION
+Jan 02, 2024 13:10:17.63 [21400:2120:0102/131017.625:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 13:11:48.14 [21400:2120:0102/131148.146:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 13:14:22.24 [3080:7496:0102/131422.247:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 13:15:39.79 [3080:7496:0102/131539.799:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 13:21:43.57 [3080:13800:0102/132143.572:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Jan 02, 2024 13:57:28.20 [3080:13800:0102/135728.203:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Jan 02, 2024 14:01:19.54 [3080:7496:0102/140119.543:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 14:11:08.19 [3080:7496:0102/141108.195:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 14:16:12.07 [3080:7496:0102/141612.073:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 14:36:10.91 [3080:7496:0102/143610.917:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+Jan 02, 2024 14:36:34.28 [3080:7496:0102/143634.281:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+Jan 02, 2024 14:45:43.90 [3080:7496:0102/144543.906:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)

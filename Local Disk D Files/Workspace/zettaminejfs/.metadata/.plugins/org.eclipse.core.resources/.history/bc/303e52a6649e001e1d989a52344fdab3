@@ -1,0 +1,16 @@
+package com.zettamine.java.validations;
+
+import lombok.Data;
+import lombok.NonNull;
+import lombok.Setter;
+
+public class PojoDemo {
+	
+	private int id;
+	@NonNull@Setter
+	private String name;
+	
+	public static void main(String[] args) {
+		PojoDemo pojoDemo = new PojoDemo();
+	}
+}

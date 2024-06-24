@@ -1,0 +1,11 @@
+package com.zettamine.accounts.mapper;
+
+import com.zettamine.accounts.entities.Accounts;
+
+public class AccountsMapper {
+
+	public static AccountsDto mapToAccountsDto(Accounts accounts) {
+		
+	}
+
+}

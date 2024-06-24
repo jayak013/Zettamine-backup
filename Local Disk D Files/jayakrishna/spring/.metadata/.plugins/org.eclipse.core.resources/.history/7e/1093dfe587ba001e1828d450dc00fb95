@@ -1,0 +1,19 @@
+package com.zettamine.jdbctemplate.dao;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public class EmpDAOImpl implements EmpDAO{
+
+	@Override
+	public int saveEmployee(Employee emp) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Employee findEmployeeById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

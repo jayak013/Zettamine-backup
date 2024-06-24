@@ -1,0 +1,8 @@
+package com.zettamine.iostreams.copy;
+
+public interface FolderCopier {
+	
+	void replicate(String sourceFolder,String destinationFolder);
+	
+	
+}

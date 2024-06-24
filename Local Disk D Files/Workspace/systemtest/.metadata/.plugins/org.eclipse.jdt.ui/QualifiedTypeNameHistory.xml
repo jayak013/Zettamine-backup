@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Runtime"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.zettamine.utils.SumOfDigits"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="com.zettamine.utils.NoElementsFound"/>
+    <fullyQualifiedTypeName name="com.zettamine.utils.EmptyStringFound"/>
+    <fullyQualifiedTypeName name="org.junit.jupiter.api.DisplayName"/>
+</qualifiedTypeNameHistroy>

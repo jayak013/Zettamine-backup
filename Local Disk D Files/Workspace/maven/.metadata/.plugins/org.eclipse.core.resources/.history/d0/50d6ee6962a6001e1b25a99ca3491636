@@ -1,0 +1,8 @@
+package com.zettamine.web;
+
+public class Account {
+	int accountNo;
+	String name;
+	String mobile;
+	
+}

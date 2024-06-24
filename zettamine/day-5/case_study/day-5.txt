@@ -1,0 +1,29 @@
+1) Write a java program to create a sub-directory with the name "java" in "C:/CJava" directory and create file with name "java.txt" in the newly created directory
+
+
+2) Write a java program to implement the "ren" DOS command
+
+3) Implement DOS copy command
+
+4) Program to enter "n" number of products with their productId & productName and save all the entered Product details in a file with the name of "stocks.ser". 
+
+how many products to be saved: n
+enter product id & product name of Product-1:
+ 101   Mobile
+
+enter product id & product name of Product-2:
+ 102   Computer
+
+enter product id & product name of Product-n:
+ 101   xxxxx
+
+
+5) Program to fecth a product based in Product ID from the file "stocks.ser"
+note: if the file is not present - show error message - "Please enter Stock Details";
+note: if no products are available in stock - show error message - "Please enter Stock Details"
+
+enter product ID: xxx
+show the Product Name and if not available show the error message
+
+
+

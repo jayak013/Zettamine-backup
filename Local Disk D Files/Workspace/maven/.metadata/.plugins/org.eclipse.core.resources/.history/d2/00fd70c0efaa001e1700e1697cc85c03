@@ -1,0 +1,11 @@
+package com.zettamine.mt;
+
+public class MyTask1 implements Runnable {
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.zettamine.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zettamine.hibernate.entity.Student;
+import com.zettamine.hibernate.utils.SessionFactoryUtils;
+
+public class StudentDMLDemo {
+	
+	public static void main(String[] args) {
+		search(20);
+	}
+	
+	public static void search(Integer id) {
+		SessionFactory sF = SessionFactoryUtils.getseSessionFactory();
+		Session session = sF.openSession();
+		Student st = session.load(Student.class, id);
+		System.out.println(st);
+	}
+}

@@ -1,0 +1,32 @@
+package com.zettamine.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zettamine.hibernate.entity.Address;
+import com.zettamine.hibernate.entity.Employee;
+import com.zettamine.hibernate.utils.SessionFactoryUtil;
+
+public class ProcessEmp {
+	
+	public static void main(String[] args) {
+		SessionFactory sF = SessionFactoryUtil.getseSessionFactory();
+		Session session = sF.openSession();
+		session.beginTransaction();
+		
+		Employee emp = new Employee();
+		emp.setEmployeeName("Jaya Krishna Seethagari");
+		
+		Address addr = new Address();
+		addr.setStreet("Kundhan Bagh");
+		addr.setCity("Ameerpet");
+		addr.setState("Telangana");
+		
+		session.persist(emp);
+		
+		session.getTransaction().commit();
+		session.close();
+		sF.close();
+	}
+	
+}

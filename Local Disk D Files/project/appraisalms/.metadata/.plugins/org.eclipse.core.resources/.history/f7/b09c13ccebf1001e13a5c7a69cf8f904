@@ -1,0 +1,13 @@
+package com.zettamine.amc.service;
+
+import com.zettamine.amc.dto.ServiceAreaDto;
+
+public interface ServiceAreaService {
+	
+	void createServiceArea(ServiceAreaDto serviceAreaDto);
+	
+	boolean updateServiceArea(ServiceAreaDto serviceAreaDto);
+	
+	List<ServiceAreaDto> getAllServiceAreaOfAppraisalCompany(Integer amcId);
+	
+}

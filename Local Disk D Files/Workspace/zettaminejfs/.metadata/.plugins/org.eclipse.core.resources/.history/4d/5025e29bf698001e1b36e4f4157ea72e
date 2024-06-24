@@ -1,0 +1,14 @@
+package com.zettamine.java.day05.assignment03;
+
+import java.io.File;
+
+public class CopyFile {
+	
+	public static void main(String[] args) {
+		File f = new File("C:/CJava/java/renamedjava.txt");
+		if(f.exists()) {
+			
+		}
+	}
+	
+}

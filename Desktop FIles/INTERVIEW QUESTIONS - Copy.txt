@@ -1,0 +1,26 @@
+{Hibernate Reverse Engineering in Eclipse IDE}
+***Rolling file in log4j2?***
+
+****************************************************************
+$Topics to be practiced
+a. Logging
+b. version control system using git client or git or eclipse IDE(merge type)
+c. Unit Testing(Jupiter 5)
+d. JDBC - ResultSets and Types of RowSets and types of drivers, JDBC steps involved
+e. Servlets & JSP
+f. Database queries,sub-queries and joins(Important and lagging a bit)
+g. HTML, CSS, BootStrap & JAVASCRIPT---->use VS Code
+h. Maven and gradle automation build tools
+i. Project recap
+j. Multi-threading(thread pools and inter-thread communication)
+k. FileHandling along with Apache POI
+****************************************************************
+Q. What is Normalization? Why is Normalization?
+A. Normalization is used for reducing the data redundancy. Due to this, we will have data inconsistency issue. 
+
+Q.load vs get(org.hibernate.session)
+A. get() loads the data as soon as it's called whereas load() returns a proxy object and loads data only when it's actually required, so load() is better because it supports lazy loading.
+
+Q. what is org.hibernate.StaleStateExcepiton?
+
+Q. HQL vs SQL?

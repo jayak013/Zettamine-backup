@@ -1,0 +1,33 @@
+package com.zettamine.hibernate.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zettamine.hibernate.utils.SessionFactoryUtil;
+
+public class FacultyCertificationsMain {
+	
+	public static void main(String[] args) {
+		Faculty faculty = new Faculty();
+		faculty.setFacultyName("Chari");
+		
+		List<Batch> list = new ArrayList<>();
+		list.add(new Batch("java"));
+		list.add(new Batch("python"));
+		list.add(new Batch("react"));
+		
+		faculty.setBatches(list);
+		
+		SessionFactory sF = SessionFactoryUtil.getseSessionFactory();
+		Session session = sF.openSession();
+		session.beginTransaction();
+		session.persist(faculty);
+		session.getTransaction().commit();
+		session.close();
+		sF.close();
+	}
+	
+}

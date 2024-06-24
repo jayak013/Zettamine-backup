@@ -1,0 +1,5 @@
+package com.zettamine.amc.service;
+
+public class PropertyTypeService {
+
+}

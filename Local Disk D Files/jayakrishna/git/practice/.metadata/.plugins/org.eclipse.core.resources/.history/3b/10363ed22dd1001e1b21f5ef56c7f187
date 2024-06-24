@@ -1,0 +1,16 @@
+package test;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Test {
+
+	
+	public static void main(String[] args) {
+		List<String> list = List.of("jaya", "krishna", "hari", "prasad", "vishnu", "gani", "Zai");
+		Map<String, List<String>> collect = list.stream().collect(Collectors.groupingBy(String::toString));
+		System.out.println(collect);
+	}
+	
+}

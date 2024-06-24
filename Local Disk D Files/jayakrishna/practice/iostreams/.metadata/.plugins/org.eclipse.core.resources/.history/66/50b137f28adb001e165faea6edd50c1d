@@ -1,0 +1,13 @@
+package com.zettamine.iostreams.factory;
+
+import com.zettamine.iostreams.copy.CharStreamFolderCopier;
+import com.zettamine.iostreams.copy.FolderCopier;
+
+public class CharStreamFolderCopierFactory implements CopierFactory {
+
+	@Override
+	public FolderCopier createFileCopier() {
+		return new CharStreamFolderCopier();
+	}
+
+}

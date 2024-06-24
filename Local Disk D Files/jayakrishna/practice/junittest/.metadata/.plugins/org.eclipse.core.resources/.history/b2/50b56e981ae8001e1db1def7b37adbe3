@@ -1,0 +1,14 @@
+package com.zettamine.junit;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class EvenOrOddTest {
+
+	@Test
+	void testEvenOrOdd() {
+		fail("Not yet implemented");
+	}
+
+}

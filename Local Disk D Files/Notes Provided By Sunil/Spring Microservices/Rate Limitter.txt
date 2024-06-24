@@ -1,0 +1,133 @@
+--------- Rate Limitter Pattern -------------
+
+response code 429
+
+
+--------- Redis Rate Limitter in Gateway Server -------------
+
+https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-requestratelimiter-gatewayfilter-factory
+
+
+--------- Implementing RateLimitter pattern in Gateway Server -------------
+
+pom.xml - dependency - Spring Data Reactive Redis (spring-boot-starter-data-redis-reactive)
+
+bootstrap application of gateway server
+
+@Bean
+public RedisRateLimiter redisRateLimiter() {
+ return new RedisRateLimiter(1, 1, 1); //we are going to add 1 token in each second and burst capacity also going to be 1 and the cost of each request also going to be 1 - meaning - for each second my end user can only make one request 
+}
+
+@Bean
+KeyResolver userKeyResolver() {
+ return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
+		.defaultIfEmpty("anonymous");
+}
+
+
+implementing rateLimitter for cards inside gateway server
+
+ .route(p -> p
+ 	.path("/zettabank/cards/**")
+	.filters( f -> f.rewritePath("/zettabank/cards/(?<segment>.*)","/${segment}")
+		.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+		.requestRateLimiter(config -> config.setRateLimiter(redisRateLimiter())
+						.setKeyResolver(userKeyResolver())))
+	.uri("lb://CARDS")).build();
+
+
+-- next step
+we need to start the Redis Database or Redis container -so that it can maintain creating the buckets with the user names ("user") and to maintain all the configurations like "new RedisRateLimiter(1,1,1,)"
+
+we need to start the Redis container with the help of docker
+-- Docker Desktop should be running
+
+cmd> docker run -p 6379:6379 --name zettaredis -d redis
+
+provide the connection details of redis container inside the application.yml of gateway server
+
+spring:
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
+
+run configserver, eureka, cards, gateway server -- no need to have accounts and cards - we implemented RateLimitter only for cards microservice
+
+we need to fire muiltiple requests in a second
+
+Download and install Apache Bench  https://httpd.apache.org  
+https://www.apachelounge.com/download/
+
+Google -- How to use Apache Bench for Load Testing 	- ubiq
+
+cmd>ab -n 10 -c 2 -v 3 http://localhost:8072/zettabank/cards/api/contact-info
+
+-n ---> 10 requests
+-c ---> concurrent as 2 , send 2 concurrent requests every time
+-v ---> verbose to see the detailed report in the output
+
+
+
+ 
+
+--------- Implementing RateLimitter pattern in accounts -------------
+
+inside AccountsController     
+/java-version API   
+getJavaVersion() method to be invoked based on the rateLimitation that we have defined in application.yml
+for that
+   
+    @RateLimiter(name= "getJavaVersion")
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+
+we need to define the rate-limitter property in application.yml file
+
+resilience4j.ratelimiter:
+  configs:
+    default:
+      timeoutDuration: 1000
+      limitRefreshPeriod: 5000
+      limitForPeriod: 1
+
+
+limitRefreshPeriod: 5000 ---> for every 5 seconds , we want to renew the quota , we set the quota for each refresh period as 1 -- limitForPeriod: 1	----> for every 5 seconds only 1 request is allowed
+
+timeoutDuration: 1000 ---> what is the maximum time that a particular thread can wait for the new refresh period to arrive with the new quota -- based on the configuration our thread is waiting for a maximum of 1s; within 1sec my RateLimitter is not allowing the request then simply it is not going to wait further and return back with the error  
+
+
+Run the applications  -- no need to have redis container
+
+POSTMAN GET  http://localhost:8072/zettabank/accounts/api/java-version  --- send the multiple request and we should be seeing the error saying that INTERNAL_SERVER_ERROR (error is fired because of RateLimitter)
+
+in browser - http://localhost:8072/zettabank/accounts/api/java-version     refresh
+
+
+-- define the fallback mechanism
+
+    @RateLimiter(name= "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+
+
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Java 17");
+    }
+
+Run the application - accounts, gateway
+
+in browser - http://localhost:8072/zettabank/accounts/api/java-version     refresh multiple times

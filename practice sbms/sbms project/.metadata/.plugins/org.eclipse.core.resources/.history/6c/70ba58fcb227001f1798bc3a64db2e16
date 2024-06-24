@@ -1,0 +1,22 @@
+package com.jayasbms.demo.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.jayasbms.demo.model.Product;
+import com.jayasbms.demo.service.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService{
+
+	@Override
+	public void createProduct() {
+		
+		Product product =  Product.builder()
+							.name(null)
+							.description(null)
+							.price(null)
+							.build();
+		
+	}
+
+}

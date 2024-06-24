@@ -1,0 +1,5 @@
+package com.zettamine.accounts.controllers;
+
+public class AccountsController {
+
+}

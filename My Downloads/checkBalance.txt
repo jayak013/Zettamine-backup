@@ -1,0 +1,43 @@
+--------------------------------------------------------------------------------------------------
+Controller layer:
+		
+if(action.equalsIgnoreCase("checkBalance")) {
+			Integer accountNo = Integer.valueOf(request.getParameter("accountNumber"));
+			
+			double AvailableBalance = service.getBalanceByAccountNo(accountNo);
+			response.setContentType("text/html");
+			out.println("Available Balance in the Account is "+AvailableBalance);
+			 RequestDispatcher rd = request.getRequestDispatcher("check-balance.jsp");
+			 rd.include(request, response);
+			
+					}
+
+------------------------------------------------------------------------------------------
+service layer impl
+
+@Override
+	public double getBalanceByAccountNo(Integer accountNo) {
+		return dao.getBalanceByAccountNo(accountNo);
+	}
+-------------------------------------------------------------------------------------------
+dao layer impl
+
+public double getBalanceByAccountNo(Integer accountNo) {
+		String query = "select balance from bank_app.account where account_no = ?";
+		double checkBalance = 0;
+		try {
+			pst = con.prepareStatement(query);
+			pst.setInt(1, accountNo);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				checkBalance= rs.getDouble(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return checkBalance;
+		
+	}
+
+

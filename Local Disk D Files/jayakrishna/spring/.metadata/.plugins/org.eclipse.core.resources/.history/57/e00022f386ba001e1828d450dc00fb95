@@ -1,0 +1,5 @@
+package com.zettamine.jdbctemplate.service;
+
+public interface EmpService {
+	
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.OutputStream"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.ByteStreamFolderCopier"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.CharStreamFolderCopier"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.CopierFactory"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.FolderCopier"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.FolderCopierApplication"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.copy.ByteStreamFolderCopierFactory"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.Main"/>
+    <fullyQualifiedTypeName name="com.zettamine.iostreams.factories.ByteStreamFolderCopierFactory"/>
+</qualifiedTypeNameHistroy>

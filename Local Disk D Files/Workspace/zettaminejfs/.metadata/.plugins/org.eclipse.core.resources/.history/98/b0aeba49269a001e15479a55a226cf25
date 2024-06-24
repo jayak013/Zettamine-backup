@@ -1,0 +1,13 @@
+package com.zettamine.java.day06.assignment08;
+
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+	
+	public static void main(String[] args) {
+		TreeSet<StringBuffer> treeSet = new TreeSet<StringBuffer>((e1,e2)->{
+												if((StringBuffer)e1.le)
+											});
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.zettamine.iostreams.copy;
+
+public class FolderCopierApplication {
+
+}

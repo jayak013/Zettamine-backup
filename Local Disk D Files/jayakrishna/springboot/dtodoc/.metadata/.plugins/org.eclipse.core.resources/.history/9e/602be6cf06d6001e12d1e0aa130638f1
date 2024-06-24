@@ -1,0 +1,5 @@
+package com.zettamine.mat.audits;
+
+public class AuditAwareImpl {
+
+}

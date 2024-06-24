@@ -1,0 +1,52 @@
+package org.jfs.practice;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class Test {
+	String ns = "jay";
+	public static void main(String[] args) {
+		
+		int a = 100;
+		Function<String, Integer> function = new Function<String, Integer>() {
+			int a = 10;
+
+			@Override
+			public Integer apply(String t) {
+				this.a = 43;
+				int a = 4;
+				return t.length();
+			}
+			
+		};
+		System.out.println(function.apply("jaya krishna"));
+		
+		Function<String,Integer> f = e->{
+			String ns = "jd";
+			System.out.println("ns length "+ns.length());
+			return a*e.length();
+		};
+		System.out.println(f.apply("jaya krishna"));
+		
+		   Predicate<String> p = new Predicate<>() {
+
+			@Override
+			public boolean test(String t) {
+				
+				return t.length()%2 == 0;
+				
+				
+			}
+			   
+			   
+		};
+		System.out.println(p.test("mallesh"));
+		
+		Predicate<String> p1 = n-> n.length()%2 == 0;
+		System.out.println(p1.test("mallesh"));
+	}
+	
+	
+
+	
+}

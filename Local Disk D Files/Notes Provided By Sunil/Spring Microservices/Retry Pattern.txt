@@ -1,0 +1,166 @@
+--------- Working with Retry Pattern -------------
+118
+Retry Pattern is a Resilience pattern
+Idempotent - operations which will not result in any side effects regardless of how many times we invoke them, for ex: /fetch API operation
+
+
+
+--------- Implementing Retry Pattern in Gateway -------------
+
+Page : 119
+
+implementing Retry pattern in Cloud Gateway
+inside bootstrap class of gatewayserver - we have implemented circuit breaker pattern for accounts microservices
+
+retry pattern for loans microservices
+
+.route(p -> p
+	    .path("/zettabank/loans/**")
+	.filters( f -> f.rewritePath("/zettabank/loans/(?<segment>.*)","/${segment}")
+			.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+			.retry(retryConfig -> retryConfig.setRetries(3)
+			.setMethods(HttpMethod.GET) 	//Idempotent methods		
+			.setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true)))
+  	.uri("lb://LOANS"))
+
+firstBackOff - spring cloud gateway will wait for 100ms whenever it is trying to initiate the very first retry operation 
+
+second parameter - maxBackOff -- think that we configured the number of retries as 10 - max time to wait between 2 retry operations
+
+factor - what factor spring cloud gateway to apply based on the previous backoff value
+
+basedOnPreviousValue - true -- to tell the spring cloud gateway whether to apply the factor value of the previous backoff number or the inital backoff number
+
+The wait time between a request and its subsequent retry is called the backoff.
+
+
+inside LoansController /contact-info  applying logger - to identify how many times my microservice api is invoked
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+        logger.debug("Invoked Loans contact-info API");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
+    }
+
+breakpoint on logger
+debug all applications
+
+POSTMAN GET  http://localhost:8072/loans/api/contact-info	1 + 3 retry times it requested so the Timeout shows as 8.x seconds in postman
+
+release the breakpoint -- check in logs -- we could see logger message 4 times
+
+change in code 
+
+   @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+        logger.debug("Invoked Loans contact-info API");
+        throw new RuntimeException();
+    }
+
+119
+
+
+--------- Implementing Retry Pattern in Accounts -------------
+
+implementing Retry pattern in individual microservices
+
+using /build-info API
+inside AccountsController
+
+    @Retry(name = "getBuildInfo",fallbackMethod = "getBuildInfoFallback")
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo() {
+        logger.debug("getBuildInfo() method Invoked");
+        return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(buildVersion);
+    }
+
+//fallback method signature should match with the exactly the original method - here the original method is getBuildInfo() 
+//second rule that we need to follow is - fallback method should accept a method input parameter of type Throwable
+ 
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+        logger.debug("getBuildInfoFallback() method Invoked");
+	throw new NullPointerException();
+        //return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("0.9");   //returing a static value
+    }
+
+the above method will gets executed after multiple retry attempts
+
+resilience4j/readme.io/docs/getting-started-3   --- Configuration
+
+
+in application.yml of Accounts Microservice
+
+resilience4j.retry:
+  configs:
+    default:
+      max-attempts: 3
+      waitDuration: 100
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+
+debug app
+
+GET   http://localhost:8072/zettabank/accounts/api/build-info   --- check in logs- here 3 times only shows as the first one also considered as a retry
+
+
+for circuit breaker
+      waitDuration: 500    -- fallback of circuit breaker comes into picture
+
+
+to change the default configuration of circuit breaker - provide a inside GatewayServer bootstrap class - create a new bean
+
+@Bean
+public Customizer<ReactiveResilience4JCircuitBreakerFactory> defaultCustomizer() {
+  return factory -> factory.configureDefault(id -> new Resilience4JConfigBuilder(id)
+				.circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
+				.timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(4)).build()).build());
+}
+
+debug the applications
+
+GET   http://localhost:8072/zettabank/accounts/api/build-info 
+
+
+
+
+what if there is a business requirement saying that please don't retry whenever there is  a NullPointerException - because if there is a NullPointerException for the given input data regardless of how many times you retry - you will always get a NullPointerException - in such scenarios we dont want our Retry to happen - how to achieve this
+
+application.yml of accounts microservice
+
+resilience4j.retry:
+  configs:
+    default:
+      maxRetryAttempts: 3
+      waitDuration: 100
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+
+
+debug the applications
+/build-info   -- in postman  -- check in logs -- no retry attempts
+
+to retry for a specific type of exceptions
+resilience4j.retry:
+  configs:
+    default:
+      maxRetryAttempts: 3
+      waitDuration: 100
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      retryExceptions:
+        - java.util.concurrent.TimeoutException
+
+in Accounts Controller -- inside /build-info -- change NullPointerException to
+ throw new TimeOutException();
+
+POSTMAN   /build-info   -- check in logs of Accounts

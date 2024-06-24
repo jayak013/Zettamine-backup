@@ -1,0 +1,19 @@
+package com.zettamine.hibernate.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "PROD_DETAILS")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductDetails {
+	private int prod_id;
+	private String prod_name;
+	private double prod_price;
+}

@@ -1,0 +1,186 @@
+Externalizing Configuration:
+
+a) How to exteranlize configurations using commandline argument
+cmd> java -jar taget/accounts.jar --build.version="9.1"
+     java -jar target/accounts.jar --build.version=9.1
+
+b) how to exteranlize configuration using JVM System Properties
+
+cmd>java -Dbuild.version="1.2" -jar accounts.jar
+
+c) how to externalize configurations using environment variables - 73
+widely used as they are universally supported
+no lower case value only uppercase "build.version" to "BUILD_VERSION"
+
+cmd>env:BUILD_VERSION="1.3";java -jar accounts.jar
+OR
+cmd>set BUILD_VERSION=1.3  --to declare an environment variable temporarily
+cmd>java -jar accounts.jar
+
+
+------Activating the profile using commandline, JVM & environment opitons externally-----------
+
+a) using command line 
+Run As --> Run Configurations
+       --spring.profiles.active = prod
+
+b) using JVM system variables
+Run Configurations - VM Arguments
+	-Dspring.profiles.active = prod
+	-Dbuild.version=1.3
+
+c) environment variables
+Run Configurations -- Evnironment(tab)
+SPRING_PROFILES_ACTIVE = prod; BUILD_VERSION = 1.3
+
+
+Spring Cloud Config:
+
+Spring Cloud Config provides server side and client side support for externalized configurations in a distributed system like microservcies.
+Spring Cloud Config is a component of spring ecosystem to maintain the configurations inside any cloud native system like microservices.
+
+
+-------------Building config server using spring cloud:-----------
+
+New Spring Boot Starter Project - configserver
+Config Server for ZettaBank microservices
+
+Dependencies : Config Server, Actuator, config server dependency (spring-cloud-config-server) - Central management for configuration via Git, SVN or HashiCorp Vault etc.
+
+pom.xml
+
+  https://spring.io/projects/spring-cloud
+
+on bootstrap class - EnableConfigServer
+
+application.yml
+
+server:
+  port: 8071
+
+---------Reading configurations from the classpath location of Config Server-------
+
+application.yml
+
+spring:
+ application:
+  name: "configserver"
+
+src/main/resources/config
+ place properties.yml, properties_prod.yml, properties_qa.yml from accounts microservice and rename to accounts.yml, accounts-prod.yml, accounts-qa.yml etc
+ 
+ ---> in all the files we maintain only the "build" and "accounts" elements
+
+same for loans and cards in configserver
+
+--add an additional property in application.yml
+spring:
+ profiles:
+  active: native -- telling to spring cloud config server that we want to activate a native profile of spring cloud    config server(mainly for classpath)
+
+spring.cloud.config.server.native.search-locations="classpath:/config"
+
+Run as Spring Boot Application in browser - 
+http://localhost:8071/accounts/prod
+http://localhost:8071/accounts/qa
+
+to display json data in a proper manner in browser - JSONView 
+delete spring.config.import
+
+-------updating accounts microservices to read properties from Config Server-----------
+
+task-> connect our accounts microservice to cofig server
+in accounts ms - delete _prod and _qa yml files
+
+--add a new dependency in pom.xml of accounts ms  --->Config Client
+spring-cloud-starter-config - Client that connects to a Spring Cloud Config Server to fetch the application's configuration
+
+in application.yml
+keep only
+ server.port
+
+ spring.datasource
+ spring.h2
+ spring.jpa   delete - spring.config.import
+
+add the following properties
+spring.application.name = "accounts"  --should match with accounts-prod, accounts-qa etc
+
+spring.config.import = "opitonal:configserver:http://localhost:8071/"
+
+--run accounts ms - this will go and connect to config server
+--check the logs
+
+http://localhost:8080/api/build-info
+http://localhost:8080/api/contact-info
+
+----------------------------------------------------------
+
+------Reading configurations form a file system location---------
+
+advantage -  the details can be placed in the server where the microservice is deployed
+
+place all the files of src/main/reosurces/config to a folder location like C:\zettmaine\config in application.yml of configserver
+
+spring.cloud.config.server.native.search-locations="file:///zettamine/config"
+
+
+---------Reading configurations from a GitHub repo--------
+
+-->most recommended approach
+advantages --> we can properly secure the GitHub Repo - so that no one can access it
+	   --> it supports versioning, auditing
+           -->in future we can check what property we have used last year (we can see the GitHub History)
+
+1) move all the properties to a GitHub repo
+create a new repo -> zetta-config
+push all accounts, loans and cards yml files
+
+2) application.yml of config server
+
+spring.profiles.active=git
+
+spring:
+ cloud:
+  config:
+   server:
+    git:
+     uri:"my git link" 
+     default-label:main -to specify the branch
+
+-------Encryption and Decryption of properties inside Config Server---------
+
+in application.yml of configserver
+
+encrypt:
+  key:"45D81EC1EF61DF9AD8D3E5BB397F9"  -- secret key
+
+run config server
+in postman
+POST - 
+Body -- Raw --Text
+
+in accounts-prod.yml
+email: "{cipher}XXXX"
+
+restart the application
+
+-------------create MySQL DB Containers for Microservices----------
+
+cmd> docker run -p 3306:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=accountsdb -d mysql:latest
+
+SQLECTRON - a lightweight application to connect to any DB
+
+Download & Install
+
+Add - 
+LocalAccountsDB
+Database Type: MYSQL
+Server Address: localhost 3306
+user: root
+password: root
+Test
+
+cmd>docker run -p 3307:3306 --name loansdb - e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
+OR
+cmd>

@@ -1,0 +1,24 @@
+package com.zettamine.java.day06.assignment02;
+
+import java.util.Scanner;
+
+public class PhoneBookApp {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		while(true) {
+			System.out.println("Choose an option from the Menu\n\n"
+					+ "1. Add Contact\n"
+					+ "2. Display all Contacts\n"
+					+ "3. Search Contact by phone\n"
+					+ "4. Remove\n"
+					+ "5. Exit\n\n");
+			System.out.print("Enter your choice: ");
+			int choice = scn.nextInt();
+			scn.nextLine();
+			switch()
+		}
+	}
+	
+}

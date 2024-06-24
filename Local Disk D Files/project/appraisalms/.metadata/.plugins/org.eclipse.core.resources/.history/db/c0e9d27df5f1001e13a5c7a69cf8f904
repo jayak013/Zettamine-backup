@@ -1,0 +1,17 @@
+package com.zettamine.amc.constants;
+
+public final class AMCConstants {
+	
+	private AMCConstants() {}
+	
+	private static final String STATUS_201 = "201";
+	private static final String MESSAGE_201 = "Service Area Added Successfully";
+	private static final String STATUS_200 = "200";
+	private static final String MESSAGE_200_UPDATE = "Service Area Updated Successfully";
+	private static final String STATUS_404 = "404";
+	private static final String MESSAGE_404_UPDATE = "Service Area Not Found To Update";
+	private static final String MESSAGE_404_FETCH = "Service Area Not Found To Fetch";
+	private static final String STATUS_409 = "409";
+	private static final String MESSAGE_409 = "Service Area Already Exists";
+	
+}

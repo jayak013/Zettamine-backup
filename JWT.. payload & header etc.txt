@@ -1,0 +1,8 @@
+JWT..? payload & header etc
+spring schedular drawbacks
+caching develop in spring boot or spring (reddis)
+event-driven-development
+GraphQL vs REST API
+Distributed transactions
+spring data jpa questions
+work with jpa projs

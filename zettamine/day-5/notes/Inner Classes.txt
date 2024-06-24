@@ -1,0 +1,315 @@
+Nested Class
+============
+JDK 1.1 introduced a new type of classes known as inner classes. 
+
+A class written inside another class is known as "inner class" or "nested class". 
+
+4 types:
+--------
+1) Static member classes
+2) Member classes
+3) Local classes
+4) Anonymous classes
+
+
+1) Static Nested Class
+----------------------
+- the inner class is declared as "static".
+
+- it cannot refer to non-static members of its outer class directly. 
+
+- static inner class will allow only the outer class static data directly.
+
+Example-1:
+----------
+public class Outer
+{
+  static class Inner
+  {
+    public static void area(int x)  
+    {
+      System.out.println("Area is " + (Math.round(3.14*x*x)));
+    }
+  }
+
+  public static void main(String args[] )  
+  {
+    Outer.Inner.area(10);
+  }
+}
+
+When we compile the above program we get two .class files as follows.
+
+> Outer.class
+> Outer$Inner.class
+
+Example-2: InnerClassTest1.java
+----------
+class Outer
+{
+  static int x=10;
+  void display()
+  {
+   System.out.println("Inside Outer Class");
+   Inner in = new Inner();
+   in.display();
+  }
+
+  static class Inner{
+    void display(){
+      System.out.println("Inside static inner class - "+x);
+    }
+ }//Inner
+}//Outer
+
+class InnerClassTest1 
+{
+public static void main(String[] args) 
+{
+ Outer oObj= new Outer();
+ oObj.display();
+
+ Outer.Inner obj = new Outer.Inner();
+ obj.display();
+}
+}
+
+
+2) Member Inner Class
+---------------------
+Declaring  a non static class inside an outer class is called as Member Inner class
+
+-the outer class members (variables) can be accessed by inner class.
+
+- The inner class members cannot be accessed by outer class.
+
+class Outer
+{
+ public void display()
+ {
+  Inner in=new Inner();
+  in.show();
+ }
+
+ class Inner
+ {
+  public void show()
+  {
+   System.out.println("Inside inner");
+  } 
+ }
+}
+
+class InnerClassTest2
+{
+ public static void main(String[] args)
+ {
+  Outer ot=new Outer();
+  ot.display();
+ }
+}
+Output:
+Inside inner
+
+
+Example of Inner class instantiated outside Outer class
+----------------------
+class Outer
+{
+ int count;
+ class Inner
+ {
+  public void show()
+  {
+   System.out.println("Inside inner "+(++count));
+  } 
+ }
+}
+
+class InnerClassTest2
+{
+ public static void main(String[] args)
+ {
+  Outer ot=new Outer();//enclosing class object
+  Outer.Inner in= ot.new Inner();
+  in.show();
+ }
+}
+Output
+Inside inner 1
+
+
+3) Method Inner Class (Local Classes)
+-------------------
+- declaring a class inside a method is called as method local inner class.
+
+- local inner class will have scope only inside that method
+
+-local inner class will not be available outside of that method.
+
+Program:-
+
+class Outer
+{
+ int count;
+ public void display()
+ {
+  for(int i=0;i<5;i++)
+  {
+   class Inner     
+   {        
+    public void show()  
+    {
+     System.out.println("Inside inner "+(count++));
+    } 
+   }
+   Inner in=new Inner();
+   in.show();
+  }
+ }
+}
+
+class InnerClassTest3
+{
+ public static void main(String[] args)
+ {
+  Outer ot=new Outer();
+  ot.display();
+ }
+}
+Output:
+Inside inner 0
+Inside inner 1
+Inside inner 2
+Inside inner 3
+Inside inner 4
+
+
+When we compile the above program, we get the following classes.
+
+> InnerClassTest3.class
+> Outer.class
+> Outer$1Inner.class
+
+Observe, it is $1 and not $.
+
+
+4) Annonymous Inner class
+-------------------------
+A class without any name is called Annonymous class. 
+
+As it does not contain a name, it must be instantiated at the time of defining it. 
+
+It is an nameless  inner class.
+
+It can be used to provide  the implementation for Abstract classes (or) for the interfaces.
+
+It is not possible to create direct object for the abstaract classes & interfaces
+if we want to create object for the interfaces & Abstract classes. i.e.  an object with the identity of an interface (or) an abstract class we should use Anonymous Inner class.
+
+
+example:
+interface Account{
+  void deposit(int amt);
+  void withdraw(int amt);
+}
+
+class InnerClassTest4 
+{
+ public static void main(String[] args) 
+ {
+   Account acc = new Account(){
+  public void deposit(int amt){
+    System.out.println("depositing amout of Rs."+amt);
+  }
+  public void withdraw(int amt){
+    System.out.println("withdrawing amout of Rs."+amt);
+  }
+};
+   
+
+   acc.deposit(2500);
+   acc.withdraw(1500);
+ }
+}
+
+compiler creates
+> Account.class
+> InnerClassTest4.class
+> InnerClassTest4$1.class
+
+Advantages of Inner Classes 
+--------------------------
+
+1) Better accessibility restrictions. The inner classes are controlled through outer class instances.
+2) The life of inner class is controlled by outer class. Inner classes can use composition but through outer class.
+
+3) We can make a logical group of classes. If a class is useful particularly to only one another class, the class can be declared as inner class.
+
+4) Encapsulation is better implemented. The inner class members are hidden from other classes.
+
+5) The maintainability is easier as the code is closer to other class.
+----------------------------------
+Is it possible to provide an interface inside a class?
+yes, it is possible to provide an interface inside a class,
+but to take the respective implementation class in the same class.
+
+
+Q) Is it possible to provide a class inside an interface?
+Yes
+The use of inner class in interface is, we can write default implementation for interface methods. In other words we can use interface as abstract class.
+
+Another use of creating a class inside an interface is the nested class can be binded with the interface. That is, the class is tied to the interface. Programmers who use the interface only can use the class   its methods and functionality.
+
+interface Account{
+  void deposit(int amt);
+  class Bank
+  {
+    void display(){
+     System.out.println("Inside Bank");
+	}
+  }   
+}
+
+class Test extends Account.Bank 
+{
+ public static void main(String[] args) 
+ {
+   Test obj = new Test();
+   obj.display();
+ }
+}
+
+
+
+interface Outer1              
+{
+  public abstract void show();
+  class Inner1      
+  {                                
+    public void display()
+    {
+      System.out.println("Hello 1");
+    }
+  }
+}
+ 
+public class Test extends Outer1.Inner1 implements Outer1
+{
+  public void show()
+  {
+    System.out.println("Hello 2");
+  }
+  public static void main(String args[])
+  {
+    Test t1 = new Test();
+    t1.display();                
+    t1.show();      
+  }
+
+
+This type of tieing an interface with a class is of rare usage; the intention of organizers is mainly to organize the code and to closely associate a class functionality with an interface.
+
+
+
+

@@ -1,0 +1,49 @@
+Copy Constructor vs Object clone:
+1. Copy Constructor is easy to develop where as in clone() we have to handle clone not Supported Exception and clone() override requires.
+2. Type Casting is required in clone().
+3. Copy Constructor uses its own constructor to create a copy but clone() does not invoke any constructor.
+4. We don't have control over the object creation in clone().
+5. It is easy to create a deep copy of Arrays using Object clone().
+6. Note:***In copy constructor we are allowed to modify final fields whereas in clone method we are restricted to do it.***
+
+Shallow Cloning vs Deep Cloning:
+1. Shallow is faster as there are no new contained objects created.
+2. we can achieve deep cloning by making our contained object class as Immutable.
+3. Other ways to achieve deep cloning is to provide our customized implementation in clone() and copy constructor.
+4. Any change made to the contained Object of an shallow copied Object will affect the original Object.
+
+Anonymous Class vs Lambda:
+1. Anonymous Class is a class without a name and Lambda is a method without a name.
+2. Anonymous Class is used to provide implementation for concrete & Abstract classes, Interfaces but Lambda is only used to provide implementation for Functional Interfaces Abstract Method.
+3. Anonymous Class creates a new Scope for local variables where as in Lamba, it does not create any new scope for local variables.
+4. Declaration of static,non-static variables is not possible in Lambda but it is possible in Anonymous Class.
+5. Inside Anonymous inner class, “this” always refers to current anonymous inner class object but not to outer object. And Inside Lambda Expression, “this” always refers to current outer class object that is, enclosing class object.
+6. At the time of compilation, a separate .class file will be generated. (Lambda)At the time of compilation, no separate .class file will be generated. It simply convert it into private method outer class.
+
+Stream(API used to process Collection Objects through pipeline) vs Collection:
+1. Streams does not hold any data,but collection object does.
+2. Once a stream Object is used it can't be reused, if used illegal state excepiton, but Collection objects can be used multiple times.
+3. Streams are not modifiable we cant add or remove, but it is possible in collection.
+4. Streams are iterated internally by mentioning operations whereas collection Objects by iterators.
+5. Streams support both sequential and parallel processing but Collection supports only parallel. Parallel are good for achieving high performance.
+6. Streams use funcitonal interfaces.
+
+Inheritance vs Composition:
+0. Inheritance(is a relationship) & Composition(Is a relationship).
+1. Composition supports multiple Inheritance whereas By using Inheritance we can extend one class only.
+2. In inheritance, child class is dependent on parent class, but in Composition No.
+3. Composition is loosely coupled and provides more flexibility compared to inheritance.
+4. final class can't be inherited but Composition can access the properites of the final class.
+
+Fail-Fast(All collection) vs Fail-Safe(CopyOnWriteArrayList):
+1. Modification of the Objects is possible while iterating by fail-safe.
+2. Classes which throws concurrent modification exception are fail-fast.
+3. All collections are fail-fast.
+4. The classes which are concurrent package provides modification functionality while iterating over them.
+5. Fail-Safe iterators use more memory resources.
+
+Map vs FlatMap:
+1. Map(one-to-one mapping) and FlatMap(one-to-many mapping).
+2. Map(performs only mapping) and FlatMap(Performs mapping as well as flattening).
+3. Map(produces a stream of value) and FlatMap(Produces a stream of stream of value).
+4. Map(Used for transformation) and FlatMap(used for both transformation and mapping).

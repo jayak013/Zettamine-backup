@@ -1,0 +1,19 @@
+package com.zettamine.jdbctemplate.service;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public class EmpServiceImpl implements EmpService {
+
+	@Override
+	public int saveEmployee(Employee emp) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Employee getEmployeeById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

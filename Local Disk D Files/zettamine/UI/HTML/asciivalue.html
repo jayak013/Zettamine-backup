@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restrict Input to Alphabets and Spaces</title>
+</head>
+<body>
+    <div>
+        Enter Name: <input type="text" id="inputValue">
+        <span id="text"></span>
+    </div>
+    <script>
+        let input = document.getElementById("inputValue");
+        input.addEventListener('keypress', function(event) {
+            let keyCode = event.keyCode;
+            if (!((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || keyCode == 32)) {
+                event.preventDefault();
+            }
+        });
+
+        input.addEventListener('focus',(event)=>{
+            let text = 
+            document.getElementById("text").innerText = "(Enter only alphabets and spaces)"
+            document.getElementById("inputValue").style.backgroundColor = 'limegreen'
+        })
+
+        input.addEventListener('blur',(event)=>{
+            document.getElementById("text").innerText = ""
+            document.getElementById("inputValue").style.backgroundColor = ""
+        })
+    </script>
+</body>
+</html>

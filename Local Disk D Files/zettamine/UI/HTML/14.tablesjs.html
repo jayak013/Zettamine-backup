@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        h1{
+            background-color: orangered;
+            margin: 0px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript | Multiplication Table</h1>
+    <p>
+        Enter a Number:
+        <input type="text" size="5" id="inputField">
+        <button onclick="tables()">Show</button>
+    </p>
+    <div id="mTableRegion" style="margin-left: 30px;"></div>
+    <script>
+       let tables = ()=>{
+        let result = '';
+            let num = document.getElementById("inputField").value;
+            if(!isNaN(num)){
+                num = parseInt(num)
+                for(let i=1;i<=10;i++){
+                    let prod = num*i;
+                    result = result+`${num} x ${i} = ${prod}<br>`
+                }
+            }else{
+                result = 'please enter a valid number';
+            }
+            document.querySelector('#mTableRegion').innerHTML = result;
+       }
+    </script>
+</body>
+</html>

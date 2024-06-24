@@ -1,0 +1,77 @@
+1.abstract
+2.presentation layer
+  ----main page...1)admin login 2) user login
+  -----1)admin login page..
+           ------ Dashboard
+                  -----  create account
+                  -----  Deposit
+                  -----  Withdrawal
+                  -----  update
+                  -----  Transfer from one account to another 
+                  -----  check balance 
+                  -----  View all customers
+                  -----  find by accountId
+                  -----  Get transaction history by acno 
+
+  ------2) user login page
+         ------ Dashboard
+                 ------ Check Balance
+                 ------ Show transaction history  
+    
+
+-----------1)admin login page..
+           ------ Dashboard
+                  -----  create account
+                             ---------- Name
+                             ---------- mobile no 
+                             ---------- Email id
+                             ---------- Address
+                             ---------- Aadhar number
+                             ---------- Gender
+                             ---------- Image upload
+                             ---------- Submit ----> account created successfully
+                              
+                  -----  Deposit
+                             ---------- Enter Account no
+                             ---------- Enter deposit amount
+                             ---------- Submit ----> Amount deposited Successfully
+                                               ----> Available Balance : Display the Balance 
+                 -----  Withdrawal
+                            ----------- Balance Available 
+                             ---------- Enter Account no
+                             ---------- Enter  Withdrawal amount--
+                             ---------- Submit ----> if Withdrawal amount > balance ----> display insufficient funds 
+                                               ----> Amount Withdrawn Successfully
+                                               ----> Available Balance : Display the Balance 
+                 -----  update Account details 
+                              ---------- Enter Account no
+                              ---------- update name 
+                              ---------- update mobile no
+                              ---------- update email id
+                              ---------- Submit -----> Account details updated successfully
+                -----  Transfer from one account to another 
+                              ---------- Enter source Account no
+                              ---------- Enter Destination Account no
+                              ---------- Enter  amount to Transfer 
+                              ---------- Submit
+                -----  check balance 
+                             ---------- Enter Account no
+                             ---------- Submit ----->Display Available balance             
+                -----  View all customers(Should display in tablular format)
+                             ---------- Display Account no,Name,Date of Creation
+                -----  find by accountNo
+                             ----------- Display Account no,Name,Balance,image ,personal details (mobileNo,email,Addhar,address)
+                -----  Get transaction history by acno 
+                             -----------  Enter Account no
+                             -----------  Start date 
+                             -----------  End date
+                             -----------  Submit ----> Display transaction Details(Transaction id(5-Digits AI),Transaction Date,Ac info,Debited Amount,Withdrawn Amount,closing Balance)
+ --------------------  ------2) user login page
+                                  ------ Dashboard(Always Display Details in every page)
+                                              ------ Check Balance
+                                                           -------- Display Available Balance
+                                         
+                                              ------ Show transaction history  
+                                                           -----------  Start date 
+                                                           -----------  End date
+                                                           -----------  Display transaction Details(Transaction id(5-Digits AI),Transaction Date,Ac info,Debited Amount,Withdrawn Amount,closing Balance)                                                                                   

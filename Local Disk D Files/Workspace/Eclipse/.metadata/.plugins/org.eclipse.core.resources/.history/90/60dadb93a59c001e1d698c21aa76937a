@@ -1,0 +1,15 @@
+package org.jfs.practice;
+
+import java.util.Date;
+
+public class JodaTimeAPIDemo {
+	
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		Date date = new Date();
+		System.out.println(date);
+		long parse = Date.parse("12/03/2021");
+		System.out.println(parse);
+	}
+	
+}

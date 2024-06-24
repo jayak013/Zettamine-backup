@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>zettamine | login</title>
+<link rel="icon" href="images/logo.jpg"/>
+<style>
+	table{
+		font-size:18px;
+		width:45%;
+		margin:auto;
+	}
+	tr{
+		height:45px;
+	}
+	input{
+		font-size:18px;
+	}
+</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Emp No</td>
+			<td><input type="text" size=20 autofocus onblur="getEmployeeDetails(this.value)"></td>
+		</tr>
+		
+		<tr>
+			<td>Name</td>
+			<td><span id="empname"></span></td>
+		</tr>	
+
+		<tr>
+			<td>Salary</td>
+			<td><span id="empsal"></span></td>
+		</tr>			
+	</table>
+	<script src="js/empdetails.js"></script>
+</body>
+</html>

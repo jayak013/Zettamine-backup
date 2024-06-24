@@ -1,0 +1,16 @@
+package com.zettamine.web.dto;
+
+public class Employee {
+	public int empno;
+	public String ename;
+	public double sal;
+	
+	public Employee(int empno, String ename, double sal) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.sal = sal;
+	}
+	
+	public Employee() {}
+}

@@ -1,0 +1,17 @@
+package com.zettamine.accounts.mapper;
+
+import com.zettamine.accounts.dto.CustomerDto;
+import com.zettamine.accounts.entities.Customer;
+
+public class CustomerMapper {
+
+	public static Customer mapToCustomer(Customer customer, CustomerDto customerDto) {
+		Customer mapToCustomer = new Customer();
+		mapToCustomer.setName(customerDto.getName());
+		mapToCustomer.setEmail(customerDto.getEmail());
+	}
+
+	public static CustomerDto mapToCustomerDto(Customer customer, CustomerDto customerDto) {
+
+	}
+}

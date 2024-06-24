@@ -1,0 +1,10 @@
+package com.zettamine.hibernate.entity;
+
+import javax.persistence.Entity;
+
+@Entity
+public class ProductDetails {
+	private int prod_id;
+	private String prod_name;
+	private double prod_price;
+}

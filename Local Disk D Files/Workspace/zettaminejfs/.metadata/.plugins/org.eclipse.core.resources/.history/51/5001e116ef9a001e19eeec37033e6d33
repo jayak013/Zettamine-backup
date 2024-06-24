@@ -1,0 +1,66 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class StudentReportApp {
+	
+	static Scanner scn = new Scanner(System.in);
+	static Student student = new Student();
+	static Student[] s = null;
+	static int numOfStudents = 0;
+	public static void main(String[] args) {
+		System.out.print("Enter the number Students: ");
+		numOfStudents = scn.nextInt();
+		scn.nextLine();
+		System.out.println();
+		s = new Student[numOfStudents];
+		for(int i = 0;i<s.length;i++) {
+			System.out.print("Enter name of the student: ");
+			String studName = scn.nextLine();
+			System.out.print("Enter the roll number: ");
+			int rollNo = scn.nextInt();
+			scn.nextLine();
+			s[i] = student.accept(studName, studName);
+		}
+		System.out.println("Displaying "+numOfStudents+" students details: ");
+		for(int i = 0;i<s.length;i++) {
+			System.out.println("Student Name: "+s[i].getStdName());
+			System.out.println("Roll Number: "+s[i].getRollNo());
+			s[i].displayData();
+		}
+		studentDataSave();
+	}
+	
+	public static void studentDataSave() {
+		File file = new File("D:\\Text Data Save\\Students\\StudentData.txt");
+		try(FileWriter fw= new FileWriter(file)){
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(file.exists()) {
+				for(int i = 0;i<s.length;i++) {
+					try {
+						fw.write(s[i].getRollNo()+" "+s[i].getStdName()+" Marks ");
+						for(Integer n:s[i].getSubjectMarksHS()) {
+							fw.write(n+" ");
+						}
+						fw.write("Sorted Marks ");
+						for(Integer n:s[i].getSubjectMarksTS()) {
+							fw.write(n+" ");
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+	}
+}

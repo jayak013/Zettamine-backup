@@ -1,0 +1,10 @@
+package com.zettamine.iostreams.copy;
+
+public class ByteStreamFolderCopier implements FolderCopier {
+
+	@Override
+	public void replicate(String sourceFolder, String destinationFolder) {
+		System.out.println("ByteStreamFolderCopier");
+	}
+
+}

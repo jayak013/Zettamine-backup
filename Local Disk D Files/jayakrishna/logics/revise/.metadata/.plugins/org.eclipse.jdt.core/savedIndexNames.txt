@@ -1,0 +1,7 @@
+INDEX VERSION 1.134+D:\jayakrishna\logics\revise\.metadata\.plugins\org.eclipse.jdt.core
+3426740398.index
+2636821358.index
+1865797976.index
+3116667523.index
+4268846917.index
+2920376220.index

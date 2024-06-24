@@ -1,0 +1,49 @@
+package com.zettamine.web.app;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import org.json.JSONObject;
+
+import com.zettamine.web.configs.DBHandler;
+
+
+public class AccountController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String custId = request.getParameter("custid"); 
+		try {
+			Connection con = DBHandler.establishConnection();
+			PreparedStatement pst = con.prepareStatement("select account_no,balance from bank_app.account where cust_id = ?");
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				int accNo = rs.getInt(1);
+				BigDecimal sal = rs.getBigDecimal(2);
+				
+				response.setContentType("application/json");
+				
+				JSONObject jObj = new JSONObject();
+				jObj.put("accountno",accNo);
+				jObj.put("accountno",accNo);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.zettamine.jdbctemplate.dao;
+
+public class EmpDAOImpl implements EmpDAO{
+
+}

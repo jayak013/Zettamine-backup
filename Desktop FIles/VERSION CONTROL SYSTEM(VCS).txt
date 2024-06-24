@@ -1,0 +1,45 @@
+VERSION CONTROL SYSTEM(VCS):
+
+VERSION CONTROL TOOLS(VCT):
+
+1. ALL THE DEVELOPERS CODE SHOULD BE STORED IN ONE PLACE. WE NEED TO TRACK WHO CREATED FILES, WHO MODIFIED AND WHO DELETED FILES.
+
+Q. GIT VS GITHUB....?
+
+GITHUB.COM----> CREATE A NEW ACCOUNT AND LOG-IN
+		CREATE A NEW REPOSITORY
+
+READ.MD---->MD MEANS (MESSAGE DIGEST)
+
+*****cmd> git -h or git --help*****(for git documetation)
+
+cmd>git help init---> to open the documentation in the browser
+
+----> How to use .gitignore of maven.gitignore and java.gitignore
+
+****to clone from dev branch****
+----> git clone -b dev <url>
+after adding some files...
+----> git checkout -b suraj (to make the specified brach as default)
+to push the code to suraj branch in remote repository
+----> git push -u origin suraj
+
+
+GIT STASH COMMAND:
+***It is used to record current changes and making working tree clean.($git stash & $git stash apply)
+
+
+		(working tree 9AM)---[zetta-145{prior task @ 2:15PM}]--->(fixed - commit and push)
+			|							|
+			|2:15PM		temp storage				$git stash apply
+			|			|
+		(15 files modified)-------------/
+
+
+---->$git stash list - to display the stashes
+---->$git stash clear (WP-work in progress)
+****GIT PULL VS GIT FETCH
+1. GIT PULL command will get latest changes from central repository to local repository(file transferring will happen here)
+2. GIT FETCH command will tell your local git to retrieve the latest meta-data information from the original(yes does not do any file transferring. It's more like just checking to see if there are any changes available
+
+git fetch + git merge = git pull

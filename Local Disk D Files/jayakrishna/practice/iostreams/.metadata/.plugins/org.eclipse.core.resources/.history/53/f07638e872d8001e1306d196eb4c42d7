@@ -1,0 +1,11 @@
+package com.zettamine.iostreams.copy;
+
+public class CharStreamFolderCopier implements FolderCopier {
+
+	@Override
+	public void replicate(String sourceFolder, String destinationFolder) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

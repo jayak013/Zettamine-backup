@@ -1,0 +1,87 @@
+-------- Refresh Configurations at runtime using Spring Cloud Bus & Spring Cloud Config Monitor------
+
+using GitHub Web Hooks - build on top of Spring Cloud Bus Approach
+Webhooks provide a way for notifications to be delivered to an external web server whenever certain events occur on GitHub.
+
+new dependency - "spring-cloud-config-monitor"  in configserver   from mvnrepository.com
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-monitor</artifactId>
+		</dependency>
+
+we can create a new web hook which should work whenever a change happens in GitHub Repo 
+- to invoke /monitor api path
+
+management.endpoints.web.exposure.include: "*"
+
+include rabbitmq configuration in confiserver application.yml (optional)
+
+  spring.rabbitmq:
+    	  host: "localhost"
+     	  port: 5672
+          username: "guest"
+	  password: "guest"
+
+
+in GitHub Repo - settings (tab) -  WebHooks (sidebar) -- Add WebHooks
+ 
+Payload URL: http://localhost:8071/monitor  
+-- URL to where the webhook request has to be sent by the GitHub Repo
+--- localhost may not work - we need to provide a real host name/ public IP
+
+--to have an alternative -- hookdeck.com   > Developers > Hookdeck Console   --- Add Destination 
+
+used for testing webhooks even with localhost system
+
+Scoop is a command-line installer for Windows. With Scoop, you can install programs and plugins for your terminal. Scoop is a great tool if you're a Linux user who has switched to Windows, as it lets you install programs using the terminal.
+
+open power shell
+
+cmd> Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+cmd> iwr -useb get.scoop.sh | iex
+
+
+
+https://hookdeck.com/ >  Developers >  Hookdeck console   --- Add Destination
+
+
+cmd> scoop bucket add hookdeck https://github.com/hookdeck/scoop-hookdeck-cli.git
+cmd> scoop install hookdeck
+
+cmd> hookdeck login --cli-key 39mngw8y7qvec8iyfq95cidnpuy6fjeotf1sblc4yop5qg48px
+
+cmd> hookdeck listen 8071 Source     port -- 8071 (config server port)
+
+what path should the webkooks be forwarded to ? /monitor
+What's your connection label ? localhost
+
+copy source Webhook URL and place it in GitHub Payload URL
+Content Type: application/json
+
+Just Push event
+ > Add Webhook
+
+Start ConfigServer, accounts, ... ms
+
+http://localhost:8071/accounts/qa
+http://localhost:8080/api/contact-info
+
+make some change in application-qa.yml in GitHub
+
+http://localhost:8080/api/contact-info
+http://localhost:8090/api/contact-info
+
+settings > webhooks> click on webhook that we created > Recent Deliveries
+
+check on command prompt 
+cmd> hookdeck listen 8071 Source
+
+http://localhost:9000/api/contact-info
+
+page - 81 & 82
+
+cmd>scoop uninstall scoop
+
+

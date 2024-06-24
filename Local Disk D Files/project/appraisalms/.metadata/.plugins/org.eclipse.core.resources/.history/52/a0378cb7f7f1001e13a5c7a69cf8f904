@@ -1,0 +1,34 @@
+package com.zettamine.amc.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.zettamine.amc.dto.AppraisalCompanyDto;
+import com.zettamine.amc.service.AppraisalCompanyService;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AppraisalCompanyServiceImpl implements AppraisalCompanyService {
+	
+	
+
+	@Override
+	public void addAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto) {
+		
+		
+	}
+
+	@Override
+	public boolean updateAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public AppraisalCompanyDto fetchAppraisalCompany(String amcRegId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=accounts/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.accounts.entities{BaseEntity.java[BaseEntity" modifiers="1" timestamp="1709191360901"/>
+    <typeInfo handle="=accounts/C:\/Users\/S Jaya Krishna\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.2.3\/spring-data-jpa-3.2.3.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.2.3=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1708089150000"/>
+    <typeInfo handle="=accounts/D:\/Installed softs\/sts-4.21.0.RELEASE\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\/jre\/lib\/jrt-fs.jar`java.base=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/=/maven.pomderived=/true=/&lt;java.lang(RuntimeException.class[RuntimeException" modifiers="33" timestamp="1698508890000"/>
+</typeInfoHistroy>

@@ -1,0 +1,28 @@
+package com.zettamine.reports;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+public class ReportGenerator {
+	private static final Logger LOGGER = Logger.getLogger(ReportGenerator.class);
+	
+	public static void main(String[] args) {
+		generateReport();
+	}
+
+	private static void generateReport() {
+		BasicConfigurator.configure();
+		LOGGER.setLevel(Level.ALL);
+		LOGGER.setLevel(Level.DEBUG);
+		LOGGER.setLevel(Level.INFO);
+		LOGGER.setLevel(Level.WARN);
+		LOGGER.debug("DEBUG Message");
+		LOGGER.info("INFO Message");
+		LOGGER.warn("WARN Message");
+		LOGGER.error("ERROR Message");
+		LOGGER.fatal("FATAL Message");
+		LOGGER.trace("TRACE Message");
+	}
+	
+}

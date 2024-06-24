@@ -1,0 +1,18 @@
+package com.zettamine.mat.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.zettamine.mat.entity.Material;
+import com.zettamine.mat.repositories.MaterialRepository;
+
+public class MaterialServiceImpl implements MaterialService {
+	
+	@Autowired
+	private MaterialRepository matRepo;
+
+	@Override
+	public Material addMaterial(Material material) {
+		return matRepo.save(material);
+	}
+
+}

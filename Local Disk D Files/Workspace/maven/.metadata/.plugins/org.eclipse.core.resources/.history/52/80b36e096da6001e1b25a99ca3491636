@@ -1,0 +1,14 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="com.zettamine.web.Account" %>
+<%
+
+	String id = request.getParameter("id");
+	String name = request.getParameter("name");
+	String mobile = request.getParameter("mobile");
+	
+	
+%>
+
+<h2>account no:<c:out value="${id}"/></h2>
+<h2>name:<c:out value= "${name}"/></h2>
+<h2>mobile: <c:out value="${mobile}"/></h2>

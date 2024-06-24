@@ -1,0 +1,18 @@
+package com.zettamine.hibernate.entity;
+
+public class Student {
+	private Integer studentId;
+	private String studentName;
+	private String studentEmail;
+	
+	public Student() {}
+	
+	public Student(Integer studentId, String studentName, String studentEmail) {
+		super();
+		this.studentId = studentId;
+		this.studentName = studentName;
+		this.studentEmail = studentEmail;
+	}
+	
+	
+}

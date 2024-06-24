@@ -1,0 +1,102 @@
+Problem Statement -- if our Internet is Up - then we want to show our customized health matrix and if Internet is down - then we want to pass a different message
+
+New Class name : InternetHealthMetrics
+Package:  com.zettamine.spring.boot.rest.metrics;
+@Component
+public class InternetHealthMetrics implements HealthIndicator {
+
+	@Override
+	public Health health() {
+		Health healthObj = checkInternetConnection()?Health.up().withDetail("Internet Connection", "Active").build()
+													:Health.down().withDetail("Internet Connection", "Not Active").build();
+		return healthObj;
+	}
+	
+	private boolean checkInternetConnection() {
+		try {
+			URL url = new URL("https://www.google.com");
+			URLConnection uCon = url.openConnection();
+			uCon.connect();			
+			return true;
+		}catch(Exception ex) {
+			System.out.println(ex);
+			return false;
+		}
+	}
+
+}
+
+--> To enable the custom health metrics indicator  (in application.properties)
+management.endpoint.health.show-details=always
+
+--> Run Application
+--> In Postman - http://localhost:8080/actuator/health
+---------------------------------------------------------------------------------------------------
+
+In Spring Boot Version 2 or later- we can achieve own custom endpoint (health metrics) using Annotation
+
+package com.zettamine.boot.rest.endpoints;
+@Component
+@Endpoint(id = "zetta", enableByDefault = true)
+public class ZettaActuator {
+	@ReadOperation
+	public Company generateActuatorDetails() {
+		Company company = new Company();
+		company.setCompanyId(968574);
+		company.setCompanyName("Zettamine Labs Pvt Ltd");
+		company.setCompanyAddress("Begumpet, Hyderabad");
+		return company;
+	}
+}
+
+
+
+package com.zettamine.boot.rest.models;
+import lombok.Data;
+@Data
+public class Company {
+	private Integer companyId;
+	private String companyName;
+	private String companyAddress;
+}
+
+--> Run Application	--> In Postman -> http://localhost:8080/actuator/zetta
+
+----------------------------------------------------------------------------------------------
+
+> check for mappings (http://localhost:8080/actuator/info  --> by default no informations)
+--- to add some static data for info in application.yml
+
+info:
+  application:
+    author: team@zettamine
+    description: Spring Boot 3.2.2 Actuator
+    name: 14.sb-rest-actuator
+    version: 1.2.1
+  teckstack:
+    database: MySQL
+    frontend: React JS
+    platform: Java 17
+    springboot: 3.2.2
+management: 
+  info:
+    env:
+      enabled: true
+
+--> http://localhost:9191/actuator/info
+
+	OR 
+in application.properties
+
+management.info.env.enabled=true
+
+--> To add some dynamic information for /info  [like to show all active and in-actve users]
+
+@Component
+public class UserStatusCountContributor implements InfoContributor {
+    @Autowired
+    private UserDatabase database;
+    @Override
+    public void contribute(Info.Builder builder) {
+        Map<String, Long> userStatusMap=new HashMap<>();
+        userStatusMap.put("active",database.getUserStatusCountByStatus("active"));

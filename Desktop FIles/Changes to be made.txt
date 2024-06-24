@@ -1,0 +1,28 @@
+Changes to be made
+1) Loan Product name has to be UNIQUE
+2) loan_prod_status_history use >=instead of > in CHECK (end_dt >= start_dt)
+3) In mpa.pre_pay_penalty_master remove penalty_id column and make prod_id column as PK.
+
+
+common vendors
+different vendors
+Hybrid vendors
+
+HMO ---> HOA
+
+license id has to be unique and remove licenses number column
+
+------------------------------------------------------------
+lockin period introduced in loan products --- means till a specific time one should not be able claim their property by prepaying the full amount
+add a default value if the data is already existed
+
+
+****END POINTS AND FUNCTIONALITIES****
+ROLES ----->
+SUPER ADMIN---all
+USER ADMIN---all about users
+loan origination department -- search facility and view data and no permission to edit or delete the data
+data entry operators
+
+
+Pennymac and caliber company's example for mortgage 

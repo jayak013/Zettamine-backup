@@ -1,0 +1,31 @@
+package com.zettamine.iostreams.copy;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class TestClassOfStreams {
+	
+	public static void main(String[] args) {
+		
+		List<Map<Integer,Employee>> listOfMaps = new ArrayList();
+		
+		Map<Integer,Employee> map = new HashMap());
+		
+	}
+	
+}
+class Employee{
+	private String name;
+	private String job;
+	private Integer age;
+	public Employee(String name, String job, Integer age) {
+		super();
+		this.name = name;
+		this.job = job;
+		this.age = age;
+	}
+	
+	
+}

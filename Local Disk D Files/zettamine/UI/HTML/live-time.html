@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        h1{
+            padding: 40px;
+            background-color: red;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="divBody"><h1 id="timer">START</h1></div>
+    <script>
+        let i = 0;
+        let countDownTimer = ()=>{
+            i++;
+            if(i>=15){
+                document.querySelector('#divBody').innerHTML = `<h1>DONE</h1>`
+                clearInterval(timer);
+            }
+        }
+        let timer = setInterval(() => {
+                    countDownTimer()
+                    document.querySelector('#timer').innerText = i;
+                }, 1000);
+        timer();
+    </script>
+</body>
+</html>

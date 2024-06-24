@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>create emp</title>
+</head>
+<body>
+	<form>
+		EMPNO: <input type="number" name="empno">
+		ENAME: <input type="text" name="ename">
+		SAL: <input type="number" name="sal">
+	</form>
+</body>
+</html>

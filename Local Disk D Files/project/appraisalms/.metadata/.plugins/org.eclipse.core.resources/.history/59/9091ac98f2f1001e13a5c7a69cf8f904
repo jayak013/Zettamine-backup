@@ -1,0 +1,39 @@
+package com.zettamine.amc.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zettamine.amc.dto.AppraisalCompanyDto;
+import com.zettamine.amc.dto.ResponseDto;
+import com.zettamine.amc.service.AppraisalCompanyService;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping(path = "/api/v1/amc")
+@AllArgsConstructor
+public class AppraisalCompanyController {
+	
+	private AppraisalCompanyService appraisalCompanyService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createAppraisalCompany(@RequestBody AppraisalCompanyDto appraisalCompanyDto){
+		return null;
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<ResponseDto> updateAppraisalCompany(@RequestBody AppraisalCompanyDto appraisalCompanyDto){
+		return null;
+	}
+	
+	@GetMapping("/fetch/{amcRegId}")
+	public ResponseEntity<AppraisalCompanyDto> fetchAppraisalCompany(){
+		return null;
+	}
+	
+}

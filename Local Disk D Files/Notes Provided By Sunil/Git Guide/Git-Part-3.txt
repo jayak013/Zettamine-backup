@@ -1,0 +1,215 @@
+Working with BRANCHES in GIT HUB
+================================
+
+1. What is branch in GIT HUB?
+2. Why we need Branches in Git Repository?
+3. How to create branches in Git Repository?
+4. How to merge branches in Git Repository?
+5. What is Pull Request?
+6. How to resolve conflicts in code?
+
+When we create GIT Repository by default it will provide master branch 
+
+Branches are nothing but code bases
+
+We can create several branches in Git Repository
+
+Generally in Git repository we will create branches like below
+
+ - master (default),	 - develop	 - feature	 - QA	 - UAT	 - release etc
+
+ Project Dev Team contains sub-teams like  ON-GOING DEV TEAM , BUG FIXING DEV TEAM , PROD SUPPORT TEAM
+
+
+Create a "develop" branch from "master" branch
+
+Workflow== Login to Git Repository , Create develop branch from master branch 
+Create a New Branch – GitHub -> Repository			
+		Branch > main > develop
+
+
+Branch Commands
+
+$git branch    - lists the branches, * prefixes the current branch -  it indicates the branch that you currently have checked out (i.e., the branch that HEAD points to)
+
+$git branch  -v   -> to see the last commit on each branch
+
+$git branch --all  / $git branch -a
+
+$git branch <new-branch-name>  -> to create a new branch and will not switch to that branch  
+$git checkout <new-branch-name> -> to switch to the new branch
+
+$git checkout -b ＜new-branch＞  -> creates the branch and switches straight to it, -b option is a convenience flag that tells Git to run git branch before running git checkout ＜new-branch＞; By default git checkout -b will base the new-branch off the current HEAD
+Ex: $ git checkout -b feature  -> creating a new branch and you are switching to this new branch automatically.
+
+$git checkout  - to check the status of the current branch name
+$git checkout <branch_name> - to move to a different branch
+
+$ git push --set-upstream origin new-branch-name
+$ git push -u origin new-branch-name
+
+git checkout -b ＜new-branch＞ ＜existing-branch＞
+
+Create a New Folder > Sunil  - open gitbash		
+$git clone <repo_url>  - it clones master branch by default
+
+-> If you want to clone specific branch code then we should execute below command
+$git clone –b <branch-name>  <repo_url>		
+$git clone –b develop <repourl>       - to clone "develop" branch
+
+$cd  <project_name>					
+$git branch
+
+Another Dev Team member is working on the same project
+Create a New Folder > Sanjay  - open gitbash and cloning from "dev" branch
+
+Let "Sunil" developer add a variable int n=20 in the starter method and push it to develop branch
+
+When we create Git Repository in GitHub we will get "master" branch by default
+To support parallel development we need to have branches in Git Repository
+
+Create a branch "feature-121" for R&D [requirement from manager to study a API like VertX] from “develop” branch – for trial and error
+
+$git clone -b feature-121-Vertx <repo_url>
+
+- cloned from feature branch
+$git branch
+
+modify the code of Boot Start class - add a new method
+ //COG-112 story related changes
+ public void doProcess(){
+   //logic goes here }
+commit to feature branch		doProcess() method is not available with develop branch
+
+
+Branch Merging
+--------------
+Pull Request is used to merge the code of one branch to another branch
+
+- Once your development and Unit Testing is complete then merge your changes to master branch
+
+- To merge changes from one branch to another branch we will create "Pull Request"
+
+In GitHub - Select feature Branch
+- Click on "Compare&Pull" Button
+
+Compare/Source Branch – base/Destination (Master)
+(compare)        (Destination)				> Create Pull Request
+
+> Merge Pull Request			> Confirm Merge             Comment : Merging feature branch to master		
+>Delete Branch				Check in master branch           
+This situation is a POSITIVE/ HAPPY SCENARIO
+
+When we execute Pull Requests GitHub compares Source Branch and Target Branch and will confirm whether it can merge the branches or not
+If status is "Able to Merge" then execute Pull Request and merge changes
+After Pull Request execution got completed, we can delete new branch that we created for our story
+
+One Developer code should not disturb another developer code
+
+Real-Time Scenario::
+Two developers are working on Sprint 7.3 [Jeffery and Charles are the developers – Both from Development Team so the Branch is Develop]. 
+
+Each developer working on different stories. Jeffery – COG-234 & Charles – COG-234
+
+
+Create a New Branch in GitHub from "Develop" Branch – feature-234
+Clone the Branch for Jeffery (a new folder)  - Open GitBash  $git clone –b feature-234  <github_repo_url>
+$cd <directory_name>
+$git branch
+
+Create a New Branch in GitHub from "Develop" Branch – feature-235
+Clone the Branch for Charles (a new folder)  - Open GitBash  $git clone –b feature-235  <github_repo_url>
+$git branch
+
+Jeffery added some lines for code in Starter Program (class variable – status for a REST URL  - made the change in 7th line
+
+Now Jeffery have to commit, push & merge code to Develop (feature-234 branch to develop branch)
+$git add - -a 
+$git commit –m "COG-234: related changes"
+$git push
+
+Check in feature-234 branch and can see the modifications, check in Charles Brach [it wont be there]
+
+Compare & Pull Request    base: develop   compare: feature-234
+
+Comment: COG-234: related changes from feature-234 to develop Branch
+> Create a Pull Request   > Confirm Merge    >Delete Branch
+
+Now Charles is working on his code (changes will not be there)
+Make some changes in Starter Program (add a Map<String,Object> and add a new method public void addDataFromBase(){}
+
+Now Charles have to commit, push & merge code to Develop (feature-235 branch to develop branch)
+Compare & Pull request -- base: develop   compare :feature-235  [cannot automatically merge – conflict – same line number a REST API variable is there where Charles Map is coming]
+
+Comment: Merging feature-235 branch to develop branch  - Create Pull Request  [This branch has conflicts that must be resolved]	Click on > “RESOLVE CONFLICTS”
+
+Remove the "Junk Characters – called as conflicts" - Resolve the conflicts in the lines  "MARK AS RESOLVED"
+>COMMIT MERGE	>MERGE PULL REQUEST	> CONFIRM MERGE      > DELETE BRANCH
+
+Commands
+
+$git branch –merged  -> to see which branches are already merged into the branch you're on
+
+$git branch --no-merged  -> to see all the branches that contain work you haven’t yet merged in
+
+$git branch -d testing  -> to delete a branch, if the branch contains work that isn't merged in yet will fail
+$git branch -D testing  -> to force delete a branch 
+
+$ git branch --move old-branch-name new-branch-name  -> to rename a branch locally
+
+To let others see the corrected branch on the remote, push it:
+$ git push --set-upstream origin new-branch-name
+
+Notice that you're on the branch new-branch-name and it's available on the remote. However, the branch with the old name is also still present there but you can delete it by executing the following command:
+$ git push origin --delete bad-branch-name
+
+To rename your local master branch into main with the following command:
+$ git branch --move master main
+
+There's no local "master" branch anymore, because it's renamed to the "main" branch.
+
+To let others see the new "main" branch, you need to push it to the remote. This makes the renamed branch available on the remote.
+$ git push --set-upstream origin main
+$ git push origin --delete master
+
+
+GIT STASH COMMAND
+-----------------
+-	It is used to record current changes and making working tree clean
+-	Scenario
+Your Team Lead assigned a task (COG-121) to you in the morning @ 09.00AM and you started working on that task . Few changes made in different files but you did not committed because task is not completed.
+In the afternoon , you received a mail from TL to work on task (COG-145) with high priority (to be completed by EOD) and so you are compelled to Park COG-121 , complete COG-145 and then continue with COG-121
+
+In the previous project add a New class – Book , Product and some comments
+COG-145 is to modify Application.java
+
+$git stash
+$git stash apply
+
+ 
+
+$git stash list   - to display the stashes
+$git stash clear
+
+===================================================================================================
+
+git pull Vs git fetch
+----------------------
+git pull command will get latest changes from central repository to local repository (file transferring will happen here)
+
+git fetch command will tell your local git to retrieve the latest meta-data information from the original (yes does not do any file transferring. It's more like just checking to see if there are any changes available
+
+get fetch + git merge = git pull
+
+
+
+Practicals 
+- create a repository 
+- push a maven project to repo - main branch
+- clone the project to a new folder
+- cd <project_folder>
+-  In GitHub (central repository) make some changes to pom.xml - remove <stage> of junit & commit it
+- $git fetch		- check pom.xml
+- $git merge		- check pom.xml
+- try with git pull
+

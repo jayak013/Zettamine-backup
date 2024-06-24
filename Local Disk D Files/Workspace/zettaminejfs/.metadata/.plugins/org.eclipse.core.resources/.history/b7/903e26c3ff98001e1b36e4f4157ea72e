@@ -1,0 +1,20 @@
+package com.zettamine.java.day05.assignment04;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class DeserializeProducts {
+	
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		Product[] products = deSerializeProducts();
+	}
+
+	private static Product[] deSerializeProducts() throws IOException, ClassNotFoundException {
+		FileInputStream fis = new FileInputStream("C:/CJava/java/products/stocks.ser");
+		if(!fis.available()) System.out.println();
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		return (Product[])ois.readObject();
+	}
+	
+}

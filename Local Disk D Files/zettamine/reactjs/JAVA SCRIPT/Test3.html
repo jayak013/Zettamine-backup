@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="divBody">
+        <form action="">
+            <h3 id="headerId">Enter Your name : </h3>
+            <input type="text" id="inputField" onfocus="defaultText()" onblur="onBlurFunc()">
+        </form>
+   </div> 
+
+   <script>
+        function defaultText(){
+            var text = document.getElementById('inputField');
+            text.value = 'Enter your name'
+        }
+
+        function onBlurFunc(){
+            var head = document.querySelector('.divBody')
+            head.innerHTML = `<div></div>`
+
+            var input = document.getElementById('inputField');
+          
+        } //function declaration
+
+
+       function callBack(zai){ //callback function
+            zai();
+        } 
+        (event,fn)
+        //function expression
+        function called(){
+            console.log("call back function")
+        }
+        callBack(called)
+
+
+        let arrowFn = (name) =>{
+            console.log("Zaiba Khan")
+            return new String(name).length
+        }
+
+        alert(arrowFn("pervez"));
+   </script>
+
+</body>
+</html>

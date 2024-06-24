@@ -1,0 +1,15 @@
+package com.zettamine.hibernate.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class FacultyCertificationsMain {
+	
+	public static void main(String[] args) {
+		Faculty faculty = new Faculty();
+		faculty.setFacultyName("Chari");
+		
+		Set<Batch> hashSet = new HashSet<>();
+	}
+	
+}

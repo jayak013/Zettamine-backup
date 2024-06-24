@@ -1,0 +1,18 @@
+package com.zettamine.mat.dto;
+
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Schema(name = "Material",description = "schema to hold the material info")
+public class MaterialModel {
+	@Schema(description = "Unique ID of the material",example = "M-00")
+	private String materialId;
+	private String name;
+	private String type;
+}

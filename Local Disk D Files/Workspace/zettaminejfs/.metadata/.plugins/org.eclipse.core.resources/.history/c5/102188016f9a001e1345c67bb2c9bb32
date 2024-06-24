@@ -1,0 +1,9 @@
+package com.zettamine.java.practice;
+
+public class MainClassTes {
+	public static void main(String[] args) {
+		String s1 = new String("jaya");
+		String s2 = "jaya";
+		System.out.println(s1.hashCode()+", "+s2.hashCode());
+	}
+}

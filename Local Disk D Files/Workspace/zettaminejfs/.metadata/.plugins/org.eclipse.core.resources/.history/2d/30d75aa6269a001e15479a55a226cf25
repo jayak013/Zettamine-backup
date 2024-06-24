@@ -1,0 +1,15 @@
+package com.zettamine.java.day06.assignment08;
+
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+	
+	public static void main(String[] args) {
+		TreeSet<StringBuffer> treeSet = new TreeSet<StringBuffer>((StringBuffer s1,StringBuffer s2)->{
+												if(s1.length()>s2.length()) return 1;
+												else if(s1.length()<s2.length()) return -1;
+												else return s1.compareTo(s2);
+											});
+	}
+	
+}

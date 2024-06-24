@@ -1,0 +1,43 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class StudentReportApp {
+	
+	static Scanner scn = new Scanner(System.in);
+	static Student student = new Student();
+	static Student[] s = null;
+	public static void main(String[] args) {
+		System.out.print("Enter the number Students: ");
+		int numOfStudents = scn.nextInt();
+		scn.nextLine();
+		s = new Student[numOfStudents];
+		for(int i = 0;i<s.length;i++) {
+			System.out.print("Enter name of the student: ");
+			String studName = scn.nextLine();
+			System.out.println("Enter the roll number: ");
+			int rollNo = scn.nextInt();
+			scn.nextLine();
+			s[i] = student.accept(studName, studName);
+			System.out.println();
+		}
+		student.displayData();
+		studentDataSave();
+	}
+	
+	public static void studentDataSave() {
+		File file = new File("D:\\Text Data Save\\Students\\StudentData.txt");
+		FileWriter fw = new FileWriter(file);
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(file.exists()) {
+			for()
+		}
+	}
+}

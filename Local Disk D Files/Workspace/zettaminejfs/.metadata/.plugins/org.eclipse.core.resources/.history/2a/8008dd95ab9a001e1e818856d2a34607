@@ -1,0 +1,25 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.util.Scanner;
+
+public class StudentReportApp {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		System.out.print("Enter the number Students: ");
+		int numOfStudents = scn.nextInt();
+		scn.nextLine();
+		Student[] s = new Student[numOfStudents];
+		for(int i = 0;i<s.length;i++) {
+			System.out.print("Enter name of the student: ");
+			String studName = scn.nextLine();
+			System.out.println("Enter the roll number: ");
+			int rollNo = scn.nextInt();
+		}
+	}
+	
+	public static void studentDataSave() {
+		
+	}
+}

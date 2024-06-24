@@ -1,0 +1,30 @@
+package com.zettamine.java.day06.assignment05;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.regex.Pattern;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Policies {
+	static Map<Integer, String> treeMap = new TreeMap<>();
+	public static void addPolicyDetails(int policyId,String policyName) {
+		treeMap.put(policyId, policyName);
+	}
+	public static List<String> searchBasedOnPolicyType(String policyName){
+		List<String> listOfPolicies = new ArrayList<String>();
+		Set<Entry<Integer, String>> entrySet = treeMap.entrySet();
+		for(Entry<Integer,String> e:entrySet) {
+			if(Pattern.matches(policyName, e.getValue()))
+				listOfPolicies.add(e.getValue());
+		}
+		return listOfPolicies;
+	}
+	public static void main(String[] args) {
+		addPolicyDetails(1, "Max Bupa Health Insurance");
+		addPolicyDetails(1, "Max Bupa Health Insurance");
+		System.out.println(searchBasedOnPolicyType("Health"));
+	}
+}

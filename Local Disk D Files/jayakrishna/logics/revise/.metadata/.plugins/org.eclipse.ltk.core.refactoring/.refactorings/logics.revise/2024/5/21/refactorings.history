@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;logics.revise.FixedPointNumFinder&apos; to &apos;FirstAndSecondLargestNumFinder&apos;&#x0D;&#x0A;- Original project: &apos;logics.revise&apos;&#x0D;&#x0A;- Original element: &apos;logics.revise.FixedPointNumFinder&apos;&#x0D;&#x0A;- Renamed element: &apos;logics.revise.FirstAndSecondLargestNumFinder&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;FixedPointNumFinder&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;logics.revise{FixedPointNumFinder.java[FixedPointNumFinder" matchStrategy="1" name="FirstAndSecondLargestNumFinder" qualified="false" references="true" similarDeclarations="false" stamp="1716199877486" textual="false" version="1.0"/>
+</session>

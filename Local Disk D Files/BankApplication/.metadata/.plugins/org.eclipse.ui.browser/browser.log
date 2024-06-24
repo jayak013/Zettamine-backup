@@ -1,0 +1,20 @@
+
+Jan 02, 2024 22:24:57.44 NEW SESSION
+Jan 02, 2024 22:24:57.46 [6756:18312:0102/222457.442:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+Jan 03, 2024 06:31:21.67 NEW SESSION
+Jan 03, 2024 06:31:21.68 [12084:12840:0103/063121.671:ERROR:policy_logger.cc(156)] :components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc(161) Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+Jan 03, 2024 06:31:22.08 [12084:12840:0103/063122.083:ERROR:edge_auth_errors.cc(514)] EDGE_IDENTITY: Get Default OS Account failed: Error: Primary Error: kImplicitSignInFailure, Secondary Error: kAccountProviderFetchError, Platform error: 0, Error string: 
+Jan 03, 2024 06:31:22.08 
+Jan 03, 2024 07:01:01.56 [12084:12840:0103/070101.567:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+Jan 03, 2024 07:48:33.85 [12084:12840:0103/074833.856:ERROR:chrome_web_ui_controller_factory.cc(1691)] Requested load of chrome://newtab/ for incorrect profile type.
+Jan 03, 2024 07:48:51.32 [12084:12840:0103/074851.320:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+Jan 03, 2024 07:49:12.57 [12084:12840:0103/074912.578:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+Jan 03, 2024 07:52:40.78 [12084:12840:0103/075240.781:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+Jan 03, 2024 07:53:13.26 [12084:12840:0103/075313.264:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+
+Jan 03, 2024 13:12:53.58 NEW SESSION
+Jan 03, 2024 13:12:53.60 [21544:15188:0103/131253.584:ERROR:policy_logger.cc(156)] :components\enterprise\browser\controller\chrome_browser_cloud_management_controller.cc(161) Cloud management controller initialization aborted as CBCM is not enabled. Please use the `--enable-chrome-browser-cloud-management` command line flag to enable it if you are not using the official Google Chrome build.
+Jan 03, 2024 13:12:53.99 [21544:15188:0103/131253.996:ERROR:edge_auth_errors.cc(514)] EDGE_IDENTITY: Get Default OS Account failed: Error: Primary Error: kImplicitSignInFailure, Secondary Error: kAccountProviderFetchError, Platform error: 0, Error string: 
+Jan 03, 2024 13:12:53.99 
+Jan 03, 2024 13:13:00.30 [21544:15188:0103/131300.302:ERROR:fallback_task_provider.cc(124)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.

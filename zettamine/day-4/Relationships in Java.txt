@@ -1,0 +1,208 @@
+Relationships in Java
+---------------------
+Relationships is used to tell how to use the members of one class in another class. 
+
+03 type of relationships:
+
+1) IS-A Relationship
+--------------------
+- based on Inheritance 
+By default, java got IS-A relationship - because every java class IS A child class of java.lang.Object
+
+Car is a Vehicle, SavingsAccount is a Account, a Programmer is an Employee etc. 
+
+Inheritance is uni-directional. 
+
+For example, House is a Building. But Building may not be a House.
+
+class A{
+}
+class B extends A
+{
+}
+
+The relationship between B and A is "IS_A" relationship. class B IS-A child class of class A
+
+
+
+
+2) HAS-A Relationship: 
+----------------------
+Aggregation or Composition (HAS-A) means the use of instance variables that are references to other objects. 
+
+For example: Car has Engine, or House has Diningroom, Employee has Address etc.
+
+If a class have an object reference as a member data , it is known as Aggregation. 
+Aggregation represents HAS-A relationship.
+
+Example: Employee object contains many informations such as id, name, sal etc. It contains one more object named address, which contains its own informations such as city, state, country, zipcode etc.
+
+class Employee
+{  
+ int id;  
+ String name;  
+ Address addr;//Address is a class  
+ ...  
+}  
+
+class Address{
+  String city, state;
+  long zipcode;
+  .....
+}
+
+
+
+class Car {
+	// Methods implementation and class/Instance members
+	private String color;
+	private int maxSpeed; 
+	public void carInfo(){
+		System.out.println("Car Color= "+color + " Max Speed= " + maxSpeed);
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+}
+
+
+public class Engine {
+	public void start(){
+		System.out.println("Engine Started:");
+	}
+	public void stop(){
+		System.out.println("Engine Stopped:");
+	}
+}
+
+class Maruti extends Car{
+	//Maruti extends Car and thus inherits all methods from Car (except final and static)
+	//Maruti can also define all its specific functionality
+	public void MarutiStartDemo(){
+		Engine MarutiEngine = new Engine();
+		MarutiEngine.start();
+		}
+	}
+
+
+public class RelationsDemo {
+	public static void main(String[] args) {		
+		Maruti myMaruti = new Maruti();
+		myMaruti.setColor("RED");
+		myMaruti.setMaxSpeed(180);
+		myMaruti.carInfo();
+		myMaruti.MarutiStartDemo();
+	}
+}
+
+
+
+
+
+3) USES-A Relationship
+----------------------
+An object of a class is created inside a method of another class.
+
+class A{ }
+
+class B
+{
+ void method()
+ {
+   A obj=new A();
+   ....
+ }
+}
+
+When the control is in method(), then the instance of class A is created and available and when the control goes out from the method() then the object gets destroyed.
+
+
+Notes:
+1) The default relationship in Java is "IS-A" relationship, because for each and every class in Java there exists an implicit predefined superclass - java.lang.Object
+
+Every java class is a child class of java.lang.Object
+
+2) System.out is an example for HAS-A relationship because "out" is a static member data of java.lang.System class and is of java.io.PrintStream class type. 
+The relationship between System class and PrintStream class in java.lang.System class is known as HAS-A relationship
+
+ D:\CJava>javap java.lang.System
+
+
+3) The business logic class instances are created inside public static void main method and is an example of USES-A relationship
+
+class ObjectTest1
+{
+ public static void main(String[] args)
+ {
+    Employee emp=new Employee(101,"Sunil");
+    emp.getData(); //business logic method
+ }
+}
+
+
+
+
+------------------------------------
+Covariant Return Type
+=====================
+- a new feature of Java 5
+
+Before JDK 1.5 (Java 5), it was not possible to override a method by changing the return type -invariant types. 
+
+Java 5 onwards it is possible to override a method by changing its return type. 
+
+If a child class override any method of super class, then the return type of overriden method in child class must be same type or a sub-type of return type declared in original method in the super class.
+
+class A {}
+class B extends A {}
+class C extends A {} 
+
+class Base
+{
+  A method(){
+    System.out.println("Base class");
+    return new A();
+  }
+}
+ 
+class Derived extends Base
+{
+    @Override	
+   //A method()
+   //B method()//covariant return
+    C method()//covariant return
+   //void method() //CE
+   //Object method() //CE
+    {
+      System.out.println("Derived");
+      //return new C() //new A() //new B();
+       return null;
+    }
+}
+ 
+public class Main
+{
+ public static void main(String[] rgs)
+ {
+  Derived derived = new Derived();
+  A obj=derived.method();
+ }
+}
+
+
+
+----------------------------
+Static methods can not be overridden(Method Overriding vs Method Hiding) : When you defines a static method with same signature as a static method in base class, it is known as method hiding.
+
+The following table summarizes what happens when you define a method with the same signature as a method in a super-class.
+---------------------------
+Overriding and constructor : We can not override constructor as parent and child class can never have constructor with same name(Constructor name must always be same as Class name).
+
+---------------------------
+Overriding and Exception-Handling : 
+1) Rule#1 : If the super-class overridden method does not throws an exception, subclass overriding method can only throws the unchecked exception, throwing checked exception will lead to compile-time error. 
+
+2) Rule#2 : If the super-class overridden method does throws an exception, subclass overriding method can only throw same, subclass exception. Throwing parent exception in Exception hierarchy will lead to compile time error.Also there is no issue if subclass overridden method is not throwing any exception. 

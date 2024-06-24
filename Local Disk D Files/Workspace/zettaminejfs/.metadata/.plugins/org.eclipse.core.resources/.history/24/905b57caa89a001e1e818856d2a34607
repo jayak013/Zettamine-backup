@@ -1,0 +1,24 @@
+package com.zettamine.java.day06.assignment07;
+
+import java.util.Set;
+
+public class Student {
+	private String rollNo;
+	private String stdName;
+	private Set<Integer> subjectMarksHS;
+	private Set<Integer> subjectMarksTS;
+	
+	public Student() {}
+	
+	public Student(String rollNo, String stdName, Set<Integer> subjectMarksHS, Set<Integer> subjectMarksTS) {
+		super();
+		this.rollNo = rollNo;
+		this.stdName = stdName;
+		this.subjectMarksHS = subjectMarksHS;
+		this.subjectMarksTS = subjectMarksTS;
+	}
+
+	public void accept() {
+		
+	}
+}

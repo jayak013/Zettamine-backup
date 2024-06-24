@@ -1,0 +1,18 @@
+package newassignments;
+
+import java.util.Scanner;
+
+public class AverageAge {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		System.out.println();
+		int noOfEmployees=0;
+		calculteAverage(new int[noOfEmployees]);
+	}
+
+	private static void calculteAverage(int[] age) {
+		
+	}
+	
+}

@@ -1,0 +1,8 @@
+package com.zettamine.amc.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AppraisalCompanyController {
+
+}

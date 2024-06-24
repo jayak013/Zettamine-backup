@@ -1,0 +1,13 @@
+package com.zettamine.utils;
+
+public class EmptyStringFound extends RuntimeException {
+
+	public EmptyStringFound() {
+		super();
+	}
+
+	public EmptyStringFound(String message) {
+		super(message);
+	}
+
+}

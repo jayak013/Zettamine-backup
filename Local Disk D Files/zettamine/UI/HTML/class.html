@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Function</title>
+</head>
+<body>
+    <script>
+        class Customer{
+            constructor(firstName, lastName, nickName){
+                this.firstName = firstName
+                this.lastName = lastName
+                this.nickName = nickName 
+            }
+
+            details(){
+                return `first name: ${this.firstName} | last name: ${this.lastName} | nick name: ${this.nickName}`
+            }
+        }
+        let customer = new Customer("jaya krishna","seethagari","kittu");
+            console.log(customer.details())
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Test Servlet</title>
+	</head>
+	<body>
+		<h1><a href="create-employee?id=1" >CREATE ACCOUNT</a></h1>
+		<h1><a href="check?id=2" >WITHDRAW</a></h1>
+		<h1><a href="check?id=3" target="_blank">DEPOSIT</a></h1>
+		<h1><a href="check?id=4" target="_blank">TRANSFER</a></h1>
+		<h1><a href="check?id=5" target="_blank">GET DETAILS</a></h1>
+		<h1><a href="check?id=6" target="_blank">LOGOUT</a></h1>
+	</body>
+</html>

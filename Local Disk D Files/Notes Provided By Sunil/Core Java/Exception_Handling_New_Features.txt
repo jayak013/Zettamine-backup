@@ -1,0 +1,343 @@
+Method Overriding with Exception Handling
+----------------------------------
+1) If a super class method does not throws any exception, then child class overriden method cannot throw checked exception but it can declare unchecked exceptions using throws.
+
+Case -1:
+class A{
+  void method()
+  {}
+}
+
+class B extends A{
+ void method() throws Exception //Compilation Error
+  {}
+}
+
+Case 2:
+
+class B extends A{
+  @Override
+  void method() throws ArithmeticException //correct
+  {}
+}
+
+
+2) If a Super class method throws an exception, then child-class overriden method can throw the same exception or no exception or child class of the super class method exception, but must not throw parent exception of the exception thrown by super class method. 
+
+Example:  if Super class method throws object of InterruptedException class, then Subclass method can either throws InterruptedException, or can throws no exception, or can throw child of InterruptedException, but it can never throws Exception class
+
+Case -1
+
+super class
+ public void show() throws Exception
+
+child  class
+ public void show() throws Exception 
+
+case -2
+
+super class
+ public void show() throws Exception
+
+child  class
+ public void show() 
+
+
+case -3
+
+super class
+ public void show() throws Exception
+
+child  class
+ public void show() throws IOException 
+
+case -4
+
+super class
+ public void show() throws IOException
+
+child  class
+ public void show() throws Exception //CE
+
+-----------------------------------
+
+Chained Exceptions
+------------------
+It is introduced in JDK 1.4 
+
+This feature allows us to relate one exception with another exception, i.e one exception describes cause of another exception. 
+
+For example, consider a situation in which a method throws an ArithmeticException because of an attempt to divide by zero but the actual cause of exception was an I/O error which caused the divisor to be zero. The method will throw only ArithmeticException to the caller. So the caller would not come to know about the actual cause of exception. Chained Exception is used in such type of situations.
+
+To allow chained exceptions, two additional constructors and two additional methods are added to java.lang.Throwable class 
+
+a) Throwable(Throwable causeException)
+- argument specifies the actual cause of exception.
+
+b) Throwable(String msg, Throwable causeException)
+- first parameter is the message and second parameter is the actual cause of exception.
+
+Additional Methods:
+a) Throwable getCause()
+-returns the actual cause associated with current exception
+
+b) Throwable initCause(Throwable causeException)
+-used to set a cause exception with actual exception.
+
+Note: The cause exception can be set only once.
+
+Example-1
+
+public class ChainedException1
+{
+public static void main(String[] args)
+{
+try
+{
+// Creating an exception
+NumberFormatException ex =new NumberFormatException("Exception");
+ 
+// Setting a cause of the exception
+ex.initCause(new NullPointerException("This is actual cause of the exception"));
+ 
+// Throwing an exception with cause.
+throw ex;
+}
+catch(NumberFormatException ex)
+{
+// displaying the exception
+System.out.println(ex);
+ 
+// Getting the actual cause of the exception
+System.out.println(ex.getCause());
+}
+}
+}
+--------------
+
+Example-2
+ChainedException2.java
+---------------------
+import java.io.IOException;
+
+public class ChainedException2 
+{
+ static void divide(int a, int b)
+ {
+  if(b==0)
+  {
+   ArithmeticException ae=new ArithmeticException("/ by 0");
+   ae.initCause(new IOException("root cause"));
+   throw ae;
+ }
+ else
+ {
+  System.out.println("Result = "+(a/b));
+ }
+}//method
+
+public static void main(String[] args)
+{
+ try 
+ {
+   divide(5, 0);
+ } 
+ catch(ArithmeticException ae) 
+ {
+  System.out.println("Caught : " +ae);
+  Throwable t = ae.getCause();
+  System.out.println("Actual Cause: "+t);
+  }
+ }
+}
+
+
+-----------------------------------
+Java 7 Exception Handling Features
+---------------------------------
+
+1) multi-catch
+--------------
+The multi-catch feature allows two or more exceptions to be caught by the same catch block. 
+
+Using multi-catch we can use a single catch block to handle all of the exceptions without code duplication.
+
+In multi-catch, separate each exception type in the catch block with the OR ( | ) operator. 
+
+Each multi-catch parameter is implicitly final.
+
+Multi-catch can reduce code duplication.
+
+Example:
+
+The following code contains the same code in each of the catch blocks:
+
+catch(IOException ex) 
+{
+ System.out.println(ex.toString()); 
+}
+catch(SQLException ex) 
+{
+ System.out.println(ex.toString()); 
+}
+
+multi-catch
+------------
+catch(IOException | SQLException ex) 
+{
+ System.out.println(ex.toString()); 
+}
+
+Example:
+
+class MultiCatch
+{
+public static void main(String[] args)
+{
+ int a=10,b=0;
+ int[] n={1,2,3};
+
+ try
+ {
+  int result=a/b;
+  n[10]=100;
+ }
+ catch(ArithmeticException | ArrayIndexOutOfBoundsException e)
+ {
+  System.out.println(e.toString());
+ }
+}
+}
+
+
+2) try with Resource Statement
+------------------------------
+A resource is an object that must be closed after the program finished using it. 
+
+Any object of a class that implements java.lang.AutoCloseable, or java.io.Closeable, can be used as a resource.
+
+java.lang.AutoCloseable and java.io.Closeable interfaces contains the method declaration as 
+ public abstract void close();
+
+In earlier versions of Java before JDK 1.7, the closing of resources was done using the "finally" block.
+
+From java 1.7 , it is done by using Automatic Resource Management(ARM) using try-with-resources.
+
+We can make a try statement to declare one or more resources; so that each resource is closed in all situations of the program execution. (close() method will be implicitly called)
+
+try(resource-specification)
+{
+   //use the resource
+}
+catch(<Exception Type>)
+{...}
+
+
+resource-specification is an object of a class that implements java.lang.AutoCloseable or java.io.Closeable interfaces
+
+
+Example without using try with Resource Statement
+
+import java.io.*;
+class Test
+{
+public static void main(String[] args)
+{
+try
+{
+BufferedReader br=new BufferedReader(new FileReader("d:/naresh.txt"));  
+
+String str=br.readLine(); 
+
+while(str !=null)
+{
+ System.out.println(str);
+ str=br.readLine();
+}      
+br.close();	//closing BufferedReader stream
+}
+catch(IOException ie)
+{  
+System.out.println("exception");  
+}
+}//main
+}//class
+
+Example using try with Resource Statement
+
+import java.io.*;
+class Test
+{
+public static void main(String[] args)
+{
+try(BufferedReader br=new BufferedReader(new FileReader("d:/naresh.txt")))
+{
+String str=br.readLine();
+while(str !=null)
+{
+ System.out.println(str);
+ str=br.readLine();
+}
+}//try
+catch(IOException ie)
+{  
+  System.out.println("exception");  
+}
+}
+}
+
+In the above example, we do not need to explicitly call close() method to close BufferedReader stream.
+
+
+Automatic Resource Management in multiple resources
+------------------------------
+Multiple resources can be used inside a try-with-resources block. 
+
+In this case, the resources will be closed in the reverse order in which they were created inside of try.
+
+
+class Resource
+{
+public static void main(String s[])
+{
+ //note the order of opening the resources
+try(Demo d = new Demo(); Demo1 d1 = new Demo1()) 
+{
+ int x = 10/0;
+ d.show();
+ d1.show1();
+}
+catch(ArithmeticException e)
+{
+ System.out.println(e);
+}
+}
+}
+ 
+// custom resource 1
+class Demo implements AutoCloseable 
+{
+void show()
+{
+ System.out.println("inside show");
+}
+public void close()
+{
+ System.out.println("close from demo");
+}
+}
+ 
+//custom resource 2
+class Demo1 implements AutoCloseable 
+{
+void show1()
+{
+ System.out.println("inside show1");
+}
+public void close()
+{
+ System.out.println("close from demo1");
+}
+}
+
+---------------------

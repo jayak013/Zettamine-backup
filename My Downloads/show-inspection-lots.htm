@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<meta charset="ISO-8859-1">
+<title>Material Inspection Lot Details</title>
+<style>
+.header {
+	width: 100%;
+	background-color: #333;
+	padding: 10px 20px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+}
+
+.header a {
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+.header .left {
+	display: flex;
+	align-items: center;
+}
+</style>
+</head>
+<body>
+
+	<div class="header pt-3 pb-3">
+		<div class="left">
+			<a href="/zettamine/user/add-material-insp-lot">Back</a> <a href="/zettamine/user/home">Home</a>
+		</div>
+
+		<div>
+			<a href="/zettamine/user/logout" style="color: red;">Logout</a>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<h1 class="w-50 mx-auto text-secondary">Inspection Lot Details</h1>
+	<p></p>
+	<div class="w-50 px-md-2">
+		<h4 class="right btn btn-primary " onclick="redirect()">Add
+			Material Inpection Lot</h4>
+	</div>
+	<p></p>
+	<table
+		class="table table-striped table-light table-hover table-bordered w-100 mx-auto">
+		<thead>
+			<tr>
+				<th>Lot ID</th>
+				<th>Material Desc</th>
+				<th>Vendor </th>
+				<th>Plant</th>
+				<th>Created Date</th>
+				<th>Insp Start Date</th>
+				<th>options</th>
+				<th>Material Actuals</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>4801</td>
+			<td>M-02</td>
+			<td>5001</td>
+			<td>HYD-MDCL</td>
+			<td>2024-02-08</td>
+			<td>2024-02-09</td>
+			<td><a href="@{'/user/update-material-insp-lot/' + ${matInspLot.lotId}}"><i
+					class="fa fa-edit text-info">Edit</i></a> &nbsp; &nbsp; 
+					<a href="@{'/user/delete-material-insp-lot/' + ${matInspLot.lotId}}"> <i
+						class="fa fa-trash text-danger">Delete</i>
+				</a></td>
+				<td  >
+				   <a href="@{'/user/show-material-actuals/' + ${matInspLot.lotId}}"><i class="fa fa-eye text-success">Show</i></a> &nbsp; &nbsp;
+				  <a href="/zettamine/user/add-material-actuals/4801"><i
+					class="fa fa-edit text-info">Add</i></a> &nbsp; &nbsp; 
+				</td>
+		</tr>
+		
+	</table>
+	<h4></h4>
+	<script>
+		function redirect() {
+			window.location.href = '/zettamine/user/add-material-insp-lot';
+		}
+	</script>
+
+</body>
+</html>

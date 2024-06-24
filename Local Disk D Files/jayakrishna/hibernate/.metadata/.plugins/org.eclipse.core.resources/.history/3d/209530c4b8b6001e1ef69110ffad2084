@@ -1,0 +1,31 @@
+package com.zettamine.hibernate.entity;
+
+import java.util.Set;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Table(name = "BATCH")
+@ToString.Exclude
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Batch {
+	
+	@Id
+	private Integer batchId;
+	
+	private String course;
+	
+	@ManyToOne
+	private Faculty faculty;
+	
+}

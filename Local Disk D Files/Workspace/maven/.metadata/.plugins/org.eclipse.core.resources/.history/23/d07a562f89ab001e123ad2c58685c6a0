@@ -1,0 +1,15 @@
+package com.zettamine.mt;
+
+public class SalaryCalculation implements Runnable{
+	private Employee emp;
+	
+	public SalaryCalculation(Employee emp) {
+		this.emp = emp;
+	}
+	
+	@Override
+	public void run() {
+		
+	}
+	
+}

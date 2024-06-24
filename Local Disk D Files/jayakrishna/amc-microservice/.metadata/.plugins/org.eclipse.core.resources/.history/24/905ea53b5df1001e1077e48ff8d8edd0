@@ -1,0 +1,30 @@
+package com.zettamine.amc.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "property_appraiser",schema = "mpa")
+public class Appraiser {
+	
+	@Id
+	private Integer appraiserId;
+	
+	private String appraiserLicenseId;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String email;
+	
+	private String phone;
+	
+	@ManyToOne
+	@JoinColumn(name = "amc_id")
+	private AppraisalCompany amc;
+	
+}

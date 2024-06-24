@@ -1,0 +1,9 @@
+package com.zettamine.web.service;
+
+import com.zettamine.web.dto.Employee;
+
+public class EmpService {
+	public void addEmp(Employee e) {
+		
+	}
+}

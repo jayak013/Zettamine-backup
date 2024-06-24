@@ -1,0 +1,5 @@
+package com.zettamine.amc.mapper;
+
+public interface mapToApprasialCompanyDto {
+
+}

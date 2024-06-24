@@ -1,0 +1,42 @@
+services:
+  appraisal-ms-db:
+    image: postgres:latest
+    container_name: appraisal-ms-db
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: appraisal
+      POSTGRES_DB: appraisal-ms-db
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "appraisal-ms-db"]
+      interval: 10s
+      timeout: 5s
+      retries: 1
+      start_period: 10s
+
+    networks:
+      - zettaloan
+
+  appraisal-ms:
+    image: appraisal-ms:v1
+    container_name: appraisal-ms
+    ports:
+      - "9050:9050"
+    environment:
+      SPRING_APPLICATION_NAME: "appraisal-ms"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://appraisal-ms-db:5432/appraisal-ms-db"
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: appraisal
+      # EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8900/eureka/
+    depends_on:
+      appraisal-ms-db:
+        condition: service_healthy
+      # eureka-server:
+      #   condition: service_healthy
+    networks:
+      - zettaloan
+
+networks:
+  zettaloan:
+    driver: "bridge"

@@ -1,0 +1,157 @@
+Topics Discussed today
+
+JQUERY
+and ajax just introduction
+DOM vs VIRTUAL DOM - very important for interviews
+java script
+
+jsx means java script and html....
+installation of node.js node --version
+npm(node package manager)
+npx(node package executer or runner)
+npmjs.org
+
+appdata>roaming>npm  ---- globally installed
+
+------procedure------
+
+md node-app
+cd node-app
+npm init
+npm install react or npm i react,  npm uninstall react
+npm i redux
+{npm i -g create-react-app, npm uninstall create-react-app -g
+create-react-app myapp} -> npx create-react-app myapp
+or
+npm init react-app myapp
+
+-----------------------------------------
+To change the port of react js server.(Default port is 3000)
+In package.json>scripts>start --> set PORT=4000 && react-scripts start
+------------------------------------------------------------------------
+To Create a React Application with a Type Script
+>npx create-react-app first-app --template typescript
+---------------------------------------------------------------
+
+react app package structure
+
+package.json ---- react, react-dom,
+package-lock.json ---- complete package tree with version
+/public --- index.html ---- page template
+/src ---- index.js ----
+     ---- App.js, App.css
+/src/components
+.gitignore
+/node_modules
+
+cmd> npx create-react-app 01.react-app
+cmd> npm start ---- to start the application
+cmd> npm install	
+
+single page application
+multi page application
+
+react js is a java script library for building user interfaces.It has got jsx,virtual dom
+
+Virtual DOM compares the components changes with the DOM and it takes care about the changes to be made in the DOM(Virtual DOM snapshot just before doing the changes.)(Diffing)
+---------------------------------------------------------------
+A component can be created in two ways
+ 1) Class based Component
+ 2) Functional Component
+
+
+to return multiple elements through a function in react 
+--------------------------------------------------------
+***provide a enclosing tag for all those elements
+
+***In react each element has to be closed while returning through a function so that no compilation erros we get
+***compiler is babel
+
+
+-------------------------------------------------------------------------------------------
+
+
+Creating Elements 
+React.createElement(element,styles,text or can create another React.createElement)
+
+
+
+
+
+	@Override
+	public AppraiserDto getAppraiserByLicenseId(String licenseId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<AppraiserDto> getAppraisersByAmcId(Integer amcId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PropertyTypeDto> getAllPropertyTypesByAmcId() {
+		return null;
+	}
+
+
+
+Controllers
+--------------------------------------------
+	@Operation(
+            summary = "Fetch All Appraisers REST API",
+            description = "REST API to fetch Appraisers based on AMC ID"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            )
+    }
+    )
+	@GetMapping("/fetch/{licenseId}")
+	public ResponseEntity<ResponseDto> fetchAppraiser(@PathVariable String licenseId){
+		appraiserService.getAppraiserByLicenseId(licenseId);
+		return ResponseEntity.status(HttpStatus.OK)
+							 .body(new ResponseDto(AppraiserConstants.STATUS_200, AppraiserConstants.MESSAGE_200));
+	}
+	
+	@Operation(
+            summary = "Fetch All Appraisers REST API",
+            description = "REST API to fetch all Appraisers based on AMC ID"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            )
+    }
+    )
+	@GetMapping("/fetch/appraisers")
+	public ResponseEntity<ResponseDto> fetchAllAppraisers(@PathVariable Integer amcId){
+		appraiserService.getAppraisersByAmcId(amcId);
+		return ResponseEntity.status(HttpStatus.OK)
+							 .body(new ResponseDto(AppraiserConstants.STATUS_200, AppraiserConstants.MESSAGE_200));
+	}
+
+	@Operation(
+            summary = "Fetch All Appraisal Property Type REST API",
+            description = "REST API to fetch Appraisal Property Types based on AMC ID"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP Status OK"
+            )
+    }
+    )
+	@GetMapping("/properties/{amcId}")
+	public ResponseEntity<List<PropertyTypeDto>> getAllPropertyTypesByAmcId(@PathVariable Integer amcId){
+		List<PropertyTypeDto> propTypeList = propTypeService.getAllPropertyTypesByAmcId();
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(propTypeList);
+	}

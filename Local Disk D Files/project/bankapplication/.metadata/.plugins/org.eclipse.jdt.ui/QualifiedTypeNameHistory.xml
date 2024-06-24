@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.UserService"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.AccountService"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.CustomerService"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.UserServiceImpl"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.AccountDAO"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.CustomerDAO"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.UserDAO"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.Filter"/>
+    <fullyQualifiedTypeName name="java.net.http.HttpRequest"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.BankTransactionDAO"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.config.ConnectionFactory"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.UserDAOImpl"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dto.User"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.AccountDAOImpl"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.CustomerServiceImpl"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.AccountServiceImpl"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebFilter"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.AdminService"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.dao.AdminDAO"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.BankTransactionServiceImpl"/>
+    <fullyQualifiedTypeName name="com.zm.bankapp.service.BankTransactionService"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+</qualifiedTypeNameHistroy>

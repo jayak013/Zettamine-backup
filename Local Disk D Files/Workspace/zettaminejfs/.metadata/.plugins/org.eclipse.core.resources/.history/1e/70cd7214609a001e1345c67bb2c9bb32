@@ -1,0 +1,21 @@
+package com.zettamine.java.practice;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class ZonedTimeAndDateDemo {
+	
+	public static void main(String[] args) {
+//		ZoneId.getAvailableZoneIds().forEach(ZonedTimeAndDateDemo::test);
+		ZoneId currZone = ZoneId.systemDefault();
+		ZoneId customZone = ZoneId.of("Europe/Budapest");
+		ZonedDateTime.now();
+	}
+	
+	
+	public static void test(String t1) {
+		System.out.println(t1);
+	}
+	
+}

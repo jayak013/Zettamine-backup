@@ -1,0 +1,21 @@
+package com.zettamine.mt;
+
+public class Account {
+	private Integer  initialDeposit;
+
+	public Integer getInitialDeposit() {
+		return initialDeposit;
+	}
+
+	public void setInitialDeposit(Integer initialDeposit) {
+		this.initialDeposit = initialDeposit;
+	}
+
+	public Account(Integer initialDeposit) {
+		super();
+		this.initialDeposit = initialDeposit;
+	}
+
+	
+	
+}

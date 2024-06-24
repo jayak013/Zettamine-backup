@@ -1,0 +1,24 @@
+package com.zettamine.java.day06.assignment05;
+
+import java.util.Scanner;
+
+public class PolicyApp {
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		System.out.print("Enter the number of policy names you want to store: ");
+		int choice = scn.nextInt();
+		for(int i = 0;i<choice;i++) {
+			System.out.print("Enter the Policy Id: ");
+			int policyId = scn.nextInt();
+			scn.nextLine();
+			System.out.print("Enter the Policy Name: ");
+			String policyName = scn.nextLine();
+		}
+		Policies.getAllDetails();
+		System.out.println("Enter the Policy Type to be searched: ");
+		String policyParName = scn.nextLine();
+		Policies.searchBasedOnPolicyType(policyParName).forEach(System.out::println);
+	}
+	
+}

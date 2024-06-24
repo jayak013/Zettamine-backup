@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>XHR Based Data</title>
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td>Customer Id:</td>
+			<td><input type="number" size=20 autofocus onblur="getBalance(this.value)"></td>
+		</tr>
+		<tr>
+			<td>Account Number: </td>
+			<td><span id="accno"></span></td>
+		</tr>
+		<tr>
+			<td>Balance: </td>
+			<td><span id="bal"></span></td>
+		</tr>
+	</table>
+</body>
+<script>
+	var xhr;
+	function getBalance(custid){
+		xhr=new XMLHttpRequest();
+		xhr.open("GET","search",true);
+		xhr.onreadystatechange = statechanged;
+		xhr.send();
+	}
+	function stateChanged(){
+		if(xhr.state==4 && xhr.status==200){
+			var respText = xhr.responseText;
+			if(resp.length>0){
+				var obj = JSON.parse(respText);
+				accountno = obj.accountno;
+				balance = obj.balance;
+			}
+		}
+	}
+</script>
+</html>

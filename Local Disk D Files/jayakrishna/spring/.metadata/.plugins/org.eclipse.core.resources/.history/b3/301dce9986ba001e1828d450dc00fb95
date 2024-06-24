@@ -1,0 +1,5 @@
+package com.zettamine.jdbctemplate.dto;
+
+public class Employee {
+
+}

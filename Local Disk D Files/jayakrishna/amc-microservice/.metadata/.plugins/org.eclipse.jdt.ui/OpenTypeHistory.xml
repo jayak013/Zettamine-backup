@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=amc-module/C:\/Users\/S Jaya Krishna\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.2.4\/spring-data-jpa-3.2.4.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.2.4=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1710495297000"/>
+    <typeInfo handle="=amc-module/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.amc.service{AppraisalCompanyService.java[AppraisalCompanyService" modifiers="513" timestamp="1712116732937"/>
+    <typeInfo handle="=amc-module/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.zettamine.amc.service{ServiceAreaService.java[ServiceAreaService" modifiers="513" timestamp="1712118031009"/>
+</typeInfoHistroy>

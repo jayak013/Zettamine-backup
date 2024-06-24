@@ -1,0 +1,18 @@
+package reflection;
+
+import java.lang.reflect.Field;
+
+public class Main {
+	public static void main(String[] args) {
+		Product prod = new Product();
+		System.out.println(prod);
+		
+		Class<?> prodClass = Class.forName("com.zettamine.models.Product");
+		
+		Field prodField = prodClass.getDeclaredField("productName");
+		prodField.setAccessible(true);
+		prodField.set(prod, "computer");
+		
+		System.out.println(prod);
+	}
+}

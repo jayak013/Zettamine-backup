@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST-2</title>
+</head>
+<body>
+    <div>
+        <h1 id="name" onmouseover="textChange()" onmouseout="textChangeBack()"> Welcome to ZettaMine Labs Pvt Ltd</h1>
+        <button id="buttonId" >Click me</button>
+    </div>
+
+    <script>
+        function textChange(){
+            var change = document.getElementById('name');
+            change.innerText = 'Clicked Successfully!'
+        }
+
+        function textChangeBack(){
+            var changedText = document.getElementById('name');
+            changedText.innerText = 'Welcome to ZettaMine Labs Pvt Ltd'
+        }
+    </script>
+</body>
+</html>

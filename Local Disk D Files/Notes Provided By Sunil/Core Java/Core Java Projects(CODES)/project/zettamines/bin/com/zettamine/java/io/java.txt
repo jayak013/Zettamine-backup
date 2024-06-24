@@ -1,0 +1,6 @@
+Java is a Programming Languages
+used for developing pllatform independent applications.
+A programming language is an artifical 
+language used to express computations or calculations
+that can be performed with a machine.
+Thank You!!

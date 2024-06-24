@@ -1,0 +1,29 @@
+package com.zettamine.amc.mapper;
+
+import com.zettamine.amc.dto.AppraisalCompanyDto;
+import com.zettamine.amc.entity.AppraisalCompany;
+
+public class AppraisalCompanyMapper {
+	
+	public static AppraisalCompany mapToAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto
+			,AppraisalCompany appraisalCompany) {
+		
+		appraisalCompany.setAmcId(appraisalCompanyDto.getAmcId());
+		appraisalCompany.setAmcRegId(appraisalCompanyDto.getAmcRegId());
+		appraisalCompany.setAmcName(appraisalCompanyDto.getAmcName());
+		appraisalCompany.setAddress(appraisalCompanyDto.getAddress());
+		appraisalCompany.setCity(appraisalCompanyDto.getCity());
+		appraisalCompany.setState(appraisalCompanyDto.getState());
+		appraisalCompany.setZipcode(appraisalCompanyDto.getZipcode());
+		appraisalCompany.setCountry(appraisalCompanyDto.getCountry());
+		appraisalCompany.setPhone(appraisalCompanyDto.getPhone());
+		appraisalCompany.setEmail(appraisalCompanyDto.getEmail());
+		appraisalCompany.setWebsite(appraisalCompanyDto.getWebsite());
+		appraisalCompany.setNotes(null);
+		appraisalCompany.setAppraisalMethodology(null);
+		appraisalCompany.setPropertyTypes(null);
+		return null;
+	}
+	
+
+}

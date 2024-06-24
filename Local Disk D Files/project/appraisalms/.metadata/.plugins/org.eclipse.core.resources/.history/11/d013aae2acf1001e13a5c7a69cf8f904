@@ -1,0 +1,18 @@
+package com.zettamine.amc.dto;
+
+import lombok.Data;
+
+@Data
+public class ServiceAreaDto {
+	
+	private Integer area_id;
+	
+	private String county;
+	
+	private String city;
+	
+	private String state;
+	
+	private String zipcode;
+	
+}

@@ -1,0 +1,13 @@
+package com.zettamine.iostreams;
+
+import java.io.File;
+import java.io.IOException;
+
+public class IOStreamsTestClass {
+	
+	public static void main(String[] args) throws IOException {
+		File file = new File("C:\\Users\\S Jaya Krishna\\Desktop\\IO Streams Files\\file-one.txt");
+		file.createNewFile();
+	}
+	
+}

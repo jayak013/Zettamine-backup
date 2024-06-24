@@ -1,0 +1,13 @@
+package com.zettamine.utils;
+
+public class NoElementsFound extends RuntimeException{
+
+	public NoElementsFound() {
+		super();
+	}
+
+	public NoElementsFound(String message) {
+		super(message);
+	}
+	
+}

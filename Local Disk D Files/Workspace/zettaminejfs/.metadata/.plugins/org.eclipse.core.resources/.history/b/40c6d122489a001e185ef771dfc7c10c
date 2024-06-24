@@ -1,0 +1,22 @@
+package com.zettamine.java.practice;
+
+import java.text.Format;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Date;
+
+public class JodaDateAndTime {
+	public static void main(String[] args) {
+		Date date = new Date();
+		System.out.println(date);
+		LocalDate now = LocalDate.now();
+		System.out.println(now);
+		LocalDate of = LocalDate.of(2012, 1, 23);
+		System.out.println(of);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("y.M.d");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("y.M.d h:m:s;");
+		String format = now.format(dtf);
+		System.out.println(format);
+	}
+}

@@ -1,0 +1,27 @@
+package com.zettamine.java.day06.assignment06;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class LocationSegregate {
+	
+	public static void main(String[] args) {
+		List<Student> listOfStudents = new ArrayList<Student>();
+		Scanner scn = new Scanner(System.in);
+		do {
+			System.out.println("Enter Student's Name,Location,Email and Mobile: ");
+			String name = scn.nextLine();
+			String loc = scn.nextLine();
+			String email = scn.nextLine();
+			long mobile = scn.nextLong();
+			listOfStudents.add(new Student(name, loc, email, mobile));
+			System.out.print("Do you want to add more Students[Y/N]: ");
+			char opt = scn.next().charAt(0);
+			if(opt=='N'||opt=='n') break;
+		}while(true);
+		
+		
+	}
+	
+}

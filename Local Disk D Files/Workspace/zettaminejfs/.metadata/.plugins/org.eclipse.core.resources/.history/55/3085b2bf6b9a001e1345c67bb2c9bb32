@@ -1,0 +1,9 @@
+package com.zettamine.java.practice;
+
+public class MainClassTes {
+	public static void main(String[] args) {
+		String s = "jaya";
+		System.out.println(s);
+		System.out.println(s);
+	}
+}

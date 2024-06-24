@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="spring-core1"/>
+<aop-project name="spring-core"/>
+<aop-project name="spring-core7"/>
+<aop-project name="spring-core6"/>
+<aop-project name="spring-core8"/>
+<aop-project name="spring-core3"/>
+<aop-project name="spring-jdbc-template"/>
+<aop-project name="spring-jdbc-template-annotation"/>
+<aop-project name="spring-core2"/>
+<aop-project name="spring-core5"/>
+<aop-project name="spring-core4"/>
+</aop-reference-model>

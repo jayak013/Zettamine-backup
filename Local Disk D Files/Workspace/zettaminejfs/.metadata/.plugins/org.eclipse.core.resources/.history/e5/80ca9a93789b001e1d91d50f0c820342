@@ -1,0 +1,33 @@
+package com.zettamine.practice;
+
+import java.util.HashSet;
+
+public class Student {
+	
+	int id;
+	String name;
+	int classStudying;
+	
+	
+	public Student(int id, String name, int classStudying) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.classStudying = classStudying;
+	}
+
+
+	public static void main(String[] args) {
+		HashSet<Student> set = new HashSet<>();
+		set.add(new Student(1,"ganesh",8));
+		set.add(new Student(1,"ganesh",8));
+		System.out.println(set);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", classStudying=" + classStudying + "]";
+	}
+	
+}

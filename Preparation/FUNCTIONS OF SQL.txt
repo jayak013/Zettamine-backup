@@ -1,0 +1,30 @@
+lower
+upper
+substr
+length
+replace
+lpad
+rpad
+trim
+ltrim
+rtrim
+
+conditional functions
+case
+if
+coalesce
+
+conversion functions
+cast
+convert
+ 
+
+Window functions
+OVER() and OVER(PARTITION BY col)
+In what kind of situations we use this?
+
+Window Functions----> 
+1. ROW_NUMBER() over (order by sal)
+2. RANK(),DENSE_RANK()
+3. LEAD()
+4. SUM()

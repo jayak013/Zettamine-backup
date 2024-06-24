@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+ sql:
+  init:
+   mode: always
+ application:
+  name: "accounts"
+ profiles:
+  active: "qa"
+ config:
+  import:  "optional:configserver:http://localhost:8071/"
+    
+ datasource:
+  url: jdbc:postgresql://localhost:5432/accountsdb
+  driverClassName: org.postgresql.Driver
+  username: postgres
+  password: Jayak@013
+ h2:
+  console:
+   enabled: true
+   settings:
+    web-allow-others: true
+ jpa:
+  hibernate:
+   ddl-auto: update
+  show-sql: true  
+
+  
+
+info:
+  app:
+    name: "accounts"
+    description: "Zetta Bank Accounts Application"
+    version: "1.0.0"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+     

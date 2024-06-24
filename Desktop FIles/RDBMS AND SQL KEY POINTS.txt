@@ -1,0 +1,22 @@
+RDBMS AND SQL KEY POINTS
+
+* Relational model was designed by E.F CODD. Any DBMS which follows relational model or EF CODD rules becomes a RDBMS. In RDBMS the data is organized in the form of tabular columns and rows.
+	Rules of CODD:
+	1. The data entered into a cell must always be a single value.
+	2. According to E.F CODD we can store data in multiple tables, if needed we can establish a connection between the tables with the help of a "Key" attribute.
+	3. In RDBMS we store everything in the form of tables including metadata. "Metadata" : The details about a data is knows as Metadata
+	4. The data entered into the table can be validated in two steps:
+		i. By assigning data types
+		ii. By assigning constraints
+		Data types are mandatory whereas Constraints are optional.
+
+SET OPERATORS OF SQL:
+{key points to remember while using set operators
+	1. The number of columns must be matched in the same for all the select commands used.
+	2. The datatype of columns must be mathced for the respective columns in all the select commands used.
+	3. The processed result is based on result set.
+}
+1. UNION - The resultset which is given does not contain any duplicates.
+2. UNION ALL - The resultset which is given contains duplicates also.
+3. INTERSECT - The resultset which is given gathers only mathced records.
+4. EXCEPT - The resultset which is given will remove matched records and gives remaining results and does not recognize the remaining values in the select command which is given below the EXCEPT operator.

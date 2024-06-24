@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id = "bmw" class="com.zettamine.spring.core.beans.Car">
+		<property name="model" value = "B M W"></property>
+		<property name="cost" value = "96859050"></property>
+	</bean>
+	
+	<bean id = "car" class="com.zettamine.spring.core.beans.Car">
+		<property name="model" value = "A Car"></property>
+		<property name="cost" value = "55759050"></property>
+	</bean>
+	
+	<!-- Setter Injection -->
+	
+	<!-- <bean id = "cust" class="com.zettamine.spring.core.beans.Customer">
+		<property name="name" value = "Jaya"></property>
+		<property name="car" ref = "bmw"></property>
+	</bean> -->
+	
+	<!-- Constructor Injection -->
+	
+	<!-- <bean id = "cust" class="com.zettamine.spring.core.beans.Customer">
+		<property name="name" value = "Kittu"></property>
+		<constructor-arg ref = "bmw"></constructor-arg>
+	</bean> -->
+	
+	<bean id = "cust" class="com.zettamine.spring.core.beans.Customer" autowire="byName">
+		<property name="name" value = "Hari"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,10 @@
+package com.zettamine.junit;
+
+public class EvenOrOdd {
+	
+	public String evenOrOdd(Integer num) {
+		if(num%2==0) return "even";
+		return "odd";
+	}
+	
+}

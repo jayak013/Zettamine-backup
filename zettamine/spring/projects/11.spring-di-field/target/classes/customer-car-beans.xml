@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bmw" class="com.zettamine.spring.core.beans.Car">
+		<property name="model" value="B M W"/>
+		<property name="cost" value="5785000"/>
+	</bean>
+	
+	<bean id="sanjay" class="com.zettamine.spring.core.beans.Customer" autowire="byType">
+		<property name="customerName" value="Sanjay Patil"/>		
+	</bean>
+	
+	<bean id="audi" class="com.zettamine.spring.core.beans.Car" primary="true">
+		<property name="model" value="Audi"/>
+		<property name="cost" value="7896000"/>
+	</bean>	
+</beans>

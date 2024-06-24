@@ -1,0 +1,27 @@
+.view-card-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  
+  .animated-text {
+    font-size: 24px;
+    color: #333;
+    animation-name: slideInFromRight;
+    animation-duration: 1s;
+    animation-delay: 0.2s;  
+    animation-fill-mode: both;
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  

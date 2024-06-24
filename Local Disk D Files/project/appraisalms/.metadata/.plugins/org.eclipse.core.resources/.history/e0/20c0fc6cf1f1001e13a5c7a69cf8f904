@@ -1,0 +1,13 @@
+package com.zettamine.amc.constants;
+
+public final class AMCConstants {
+	
+	private AMCConstants() {
+		
+	}
+	
+	private final String STATUS_201 = "201";
+	private final String STATUS_200 = "200";
+	private final String STATUS_404 = "404";
+	
+}

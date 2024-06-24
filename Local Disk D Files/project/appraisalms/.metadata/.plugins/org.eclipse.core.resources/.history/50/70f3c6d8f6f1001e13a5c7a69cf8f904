@@ -1,0 +1,16 @@
+package com.zettamine.amc.mapper;
+
+import com.zettamine.amc.dto.AppraisalCompanyDto;
+import com.zettamine.amc.entity.AppraisalCompany;
+
+public class AppraisalCompanyMapper {
+	
+	public static AppraisalCompany mapToAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto
+			,AppraisalCompany appraisalCompany) {
+		
+		return null;
+		
+	}
+	
+
+}

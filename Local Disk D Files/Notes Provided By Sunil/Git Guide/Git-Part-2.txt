@@ -1,0 +1,158 @@
+add multiple files to repo
+
+$touch Test.java   -- to create a new file
+--create a new file Welocome.java & UserService.java
+
+$git status
+$git add --a
+
+$git commit -m "added Welcome.java & UserService Interface"
+
+$git push
+
+-- check the remote repository -----
+-----------------------------------------------------------------
+
+$git status
+
+open UserService.java and add the following in the file
+
+public interface UserService
+{
+	 public String getUserNameById(int id);
+}
+
+$git status
+
+$git restore UserService.java  ----> to discard changes in working directory
+ OR
+$git restore UserService.java Test.java
+ OR
+$git restore *
+
+-- check the UserService.java
+$git status
+
+-- add the same contents to UserService.java
+$git add --a
+$git commit -m "added method to UserService.java"
+$git push
+
+
+
+When we make changes to files we need to stage them to commit
+1) To add file(s) to staging area we will use "add " command
+2) To commit file(s) to local repository we should use "commit " command
+3) We should provide Reason for Commit
+4) To publish local commits to central repository –we should use "push " command
+5) When we commit , git will generate commit-id  [ check in GitHub]
+6) Commit ID contains 40 alpha-numeric characters
+7) From 40 Alpha-Numeric characters it will display first 7 characters to us
+
+$git log  	-- to check commit history	  In logs it will displays – commit-ID, author, timestamp, commit msg
+$git log -10  	-> to view last 10 commits
+
+
+------------------------------------------------------------------------
+GIT CLONING
+
+git clone – this command is used to take existing project from repository to local system 
+
+Create a Two New Folder with Name "Jeffery"  & "Charles” & Open Git Bash in both folders and clone
+$git clone https://github.com/suniljo/Test.git
+
+Now Jeffery creates a new file – DateUtils.java and add a method convertToDate()		
+$git status
+$git add DateUtils.java
+$git commit –m "COG-2:  Added DateUtils class"		
+$git status	
+$git push
+
+
+Now Charles – in Git Bash
+
+-- make some changes to existing file
+$git add --a
+$git commit -m "added method defintion"
+
+$git push
+   --->  Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref. If you want to integrate the remote changes, use 'git pull' before pushing again. See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
+-	Before making any changes to file(s) in local , it is recommended to take latest changes from central repository.
+
+
+$git pull – this command is used to take the latest changes from central repo
+$git push
+
+-------------------------------------------------------------------------------
+To Push a Boot Project to Git Repository from IDE
+
+Create a New Repository in GitHub
+
+Create a New Spring Starter Project in STS – SB-APP
+Dependencies : Lombok, Oracle, Data JPA
+
+Come inside  Project Folder – open GitBash
+
+$git init
+$git status
+$git add - -a   (add the files to staging area)
+$git status
+
+$git commit –m "Project Structure Initialization"
+
+$git remote add origin <repo_url>
+
+$git push –u origin master
+
+If the files does not need to be committed – mention the files names in .gitignore (file) https://github.com/github/gitignore -- look for “java.gitignore” & “maven.gitignore” – copy and paste it in .gitignore of our project
+
+--- A NEW MEMBER JOINED – CHRIS
+Create a New folder with name "Chris" and clone the repo	Open it in workspace
+Create a new class or modify any file – starter class ConfigurableApplicationContext context = 
+$git status
+$git add –a
+$git commit –m "Added a new class/ Main class modified "
+$git push
+
+---------------------------------------------------------------------------------------
+To Push a Java Maven Project to Git Repository
+
+Create a New Repository in GitHub
+
+Create a New Maven Project – employee-management
+--Add DTO class (Employee.java), DAO Interface (EmployeeDAO.java), Service Interface (EmployeeService.java) -- add method declarations
+
+
+Come inside  Project Folder – open GitBash
+
+$git init
+$git status
+$git add --a   (add the files to staging area)
+$git status
+
+$git commit –m "Project Structure Initialization"
+
+$git remote add origin <repo_url>
+
+$git push –u origin master
+
+If the files does not need to be committed – mention the files names in .gitignore (file) https://github.com/github/gitignore -- look for “java.gitignore” & “maven.gitignore” – copy and paste it in .gitignore of our project
+
+--- A NEW MEMBER JOINED – CHRIS
+Create a New folder with name "Chris" and clone the repo
+$git clone <repo_url>
+	
+Open it in workspace
+Create a new class or modify any file – starter class ConfigurableApplicationContext context = 
+$git status
+$git add –a
+$git commit –m "Added a new class/ Main class modified "
+$git push
+
+
+
+
+
+

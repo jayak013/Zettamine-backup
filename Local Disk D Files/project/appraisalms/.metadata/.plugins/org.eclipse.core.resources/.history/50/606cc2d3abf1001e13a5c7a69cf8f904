@@ -1,0 +1,11 @@
+package com.zettamine.amc.service;
+
+import com.zettamine.amc.dto.AppraisalCompanyDto;
+
+public interface AppraisalCompanyService {
+	
+	void addAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto);
+	
+	boolean updateAppraisalCompany(AppraisalCompanyDto appraisalCompanyDto);
+	
+}

@@ -1,0 +1,44 @@
+Note:
+*By using JOINS I can perfrom a DQL query even if there are no related columns.
+
+DATABASE TRANSACTION
+
+*** A set of DML commands that succeed or fails as a single unit is a Database Transaction. ***
+
+-automocity and isolation
+-dirty read of db
+-transaction isolation
+
+
+JOINS;
+
+Self Join:The fields that are matched based on a join condition the retreival of rows will be done.(Joining itself is self join).
+
+Cross Join:
+
+Inner Join : The fields that are matched based on a join condition the retreival of rows will be done.(self join,equi-join(if '=' is present) and non-equi-join)
+
+Left Outer Join:The fields that are matched based on a join condition the retreival of rows will be done + And also the unmatched rows from left table will be given as a final RS.
+
+Right Outer Join:The fields that are matched based on a join condition the retreival of rows will be done + And also the unmatched rows from right table will be given as a final RS.
+
+Full Outer Join:The fields that are matched based on a join condition the retreival of rows will be done + And also the unmatched rows from left and right table will be given as a final RS.
+
+
+Set Operators;(considering 2 RS)
+1. Union: duplicated rows are made as a single record along with them, all remaining rows from both the RS will be put in the final RS.
+2. Union All: Both the RS's rows combined and made as a final resultset.
+3. Intersect: Only matched rows from both the RS will be made as final RS.
+4. Minus Or Except: Unmathed rows in the second result set will be made as a final RS.
+
+*** When it comes to Stored Procedure how can i perform Debug--By Dry Run.
+Debugging and finding logical errors in SP is hard.Dry Run is a legorious Process.***
+
+
+--nth highest or lowest salary can be calculate by the below sub-query
+
+select * from empl
+where salary = (select salary 
+		from (select distinct(salary) 
+			from empl order by salary desc limit 3)
+		order by salary asc limit 1);

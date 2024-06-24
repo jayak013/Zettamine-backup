@@ -1,0 +1,30 @@
+package newassignments;
+
+import java.util.Scanner;
+
+public class TicketBooking {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		movieTicketsCost();
+	}
+
+	private static void movieTicketsCost() {
+		System.out.print("Enter the no of tickets: ");
+		int ticketCount = scn.nextInt();
+		if(ticketCount>=5 && ticketCount<=40) {
+			System.out.println("dsj");
+		}else {
+			System.out.println("\u001B[31mMinimum of 5 and Maximum of 40\u001B[0m");
+			return;
+		}
+		System.out.println("Do you want refreshment(Y/N): ");
+		char refreshmentConfirmation = scn.next().charAt(0);
+		System.out.println("Do you have coupon code(Y/N): ");
+		char couponConfirmation = scn.next().charAt(0);
+		System.out.print("Enter the circle");
+		char classCheck = scn.next().charAt(0);
+	}
+	
+}

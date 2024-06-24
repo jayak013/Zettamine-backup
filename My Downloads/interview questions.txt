@@ -1,0 +1,36 @@
+what is servlet 
+what is exception handling ? types of exception handling 
+date time api 
+write a program to format a date(dd-mm-yyyy)
+oops concepts
+types of inheritance
+streams in java 
+applications(uses) of stream 
+write a stream program and explain
+difference between statement and prepared statement
+what is controller
+collection
+difference between arraylist and array
+mutithreading
+what is thread
+what is an api
+jdbc
+connection object
+types of JDBC drivers
+what is functional interface
+name some functional interfaces
+lambda expression
+java 8 features
+what is jira
+name some checked Exceptions
+can we handle multiple exception in a single catch block
+what is an interface
+difference between interface and astractClass
+difference between try-catch and try with Resource
+insert query with auto increment field
+indexing in sql
+types of input in html
+how many headers tags in html 
+what is inline css 
+class in css
+

@@ -1,0 +1,19 @@
+package org.jfs.practice;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class StreamsAPIDemo {
+	
+	public static void main(String[] args) {
+		Map<Integer,String> m = new HashMap<>() {
+			{
+				put(1,"jaya");
+				put(2,"hari");
+				put(3,"vishnu");
+			}
+		};
+		
+		m.entrySet().stream().filter(e->e.getKey()%2!=0).forEach(e->System.out.println(e));
+	}
+}	

@@ -1,0 +1,15 @@
+package newassignments;
+
+public class ConvertToUpperCase {
+	
+	public static void main(String[] args) {
+		String personName = "";
+		convertToUpperCase(personName);
+	}
+
+	private static void convertToUpperCase(String personName) {
+		
+	}
+	
+	
+}

@@ -1,0 +1,12 @@
+package com.jayasbms.demo.service.impl;
+
+import com.jayasbms.demo.service.InventoryService;
+
+public class InventoryServiceImpl implements InventoryService{
+
+	@Override
+	public boolean isInStock() {
+		return false;
+	}
+
+}

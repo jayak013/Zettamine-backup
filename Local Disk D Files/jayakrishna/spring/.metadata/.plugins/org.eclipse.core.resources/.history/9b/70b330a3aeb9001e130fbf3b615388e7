@@ -1,0 +1,5 @@
+package com.zettamine.spring.core.repository;
+
+public class Repository {
+
+}

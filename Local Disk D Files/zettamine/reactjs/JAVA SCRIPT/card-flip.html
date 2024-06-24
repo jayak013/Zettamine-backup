@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Flip</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            background-color: darkgrey;
+            margin: 0px auto;
+            padding: 30px;
+            text-align: center;
+            color: blueviolet;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        footer {
+            bottom: 0;
+            position: fixed;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+            color: blueviolet;
+            border-radius: 0px 0px 20px 20px;
+            background-color: darkgrey;
+            width: 100%;
+        }
+
+        .font {
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .card {
+            background-color: burlywood;
+            width: 25%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 30px;
+            font-family: sans-serif;
+            font-style: oblique;
+            color: red;
+            text-align: center;
+            transform: rotateY(180deg);
+        }
+
+        button {
+            border: none;
+            background-color: aquamarine;
+            border-radius: 10px;
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004080;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="font">Card Flip Through A Button Click</header>
+    <div>
+        <div class="card">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste delectus consequuntur, natus numquam velit
+                assumenda perspiciatis reiciendis amet vitae obcaecati? Earum assumenda porro placeat, nemo molestias
+                quas in velit maxime?
+            </p>
+            <button>Flip the Card</button>
+        </div>
+
+    </div>
+    <footer class="font">
+        Jaya Krishna Seethagari Corporation &copy; 2022-2024
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+package com.zettamine.accounts.entity;
+
+public class BaseEntity {
+
+}

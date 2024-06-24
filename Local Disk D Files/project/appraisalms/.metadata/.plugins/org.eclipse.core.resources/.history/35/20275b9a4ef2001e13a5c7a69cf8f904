@@ -1,0 +1,11 @@
+spring.application.name=amc-module
+
+#datasource postgresql
+spring.datasource.url=jdbc:postgresql://localhost:5432/ams
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=postgres
+spring.datasource.password=Jayak@013
+
+spring.jpa.show-sql=true
+
+spring.jpa.hibernate.ddl-auto=create

@@ -1,0 +1,6 @@
+package com.zettamine.mt;
+
+public class GPay extends Thread{
+	Account acc;
+	
+}

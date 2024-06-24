@@ -1,0 +1,8 @@
+package com.zettamine.java.day06.assignment01;
+
+public class Book {
+	private int bkNo;
+	private String bookTitle;
+	private String bookAuthor;
+	
+}

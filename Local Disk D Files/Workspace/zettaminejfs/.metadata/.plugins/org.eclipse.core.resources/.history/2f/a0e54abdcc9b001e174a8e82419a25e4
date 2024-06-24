@@ -1,0 +1,12 @@
+package com.zettamine.practice;
+
+import java.util.function.Function;
+
+public class LambdaScopeTest {
+	
+	public static void main(String[] args) {
+		int a = 100;
+		Function<Integer> fn = e->e*2;
+	}
+	
+}

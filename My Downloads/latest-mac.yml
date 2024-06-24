@@ -1,0 +1,11 @@
+version: 1.38.0
+files:
+  - url: sqlectron-1.38.0-mac.zip
+    sha512: Z5U+nsA4xM+MmppFY6pXVw2CRg5tjyDcmF+f8n0PFdfvoxPyvPCet9oTVpIlLs3OoSBSZUpR+9OltsFl4yCoIg==
+    size: 106614361
+  - url: sqlectron-1.38.0.dmg
+    sha512: FX2xBKc3PMWIoTjRyKqiye+/ASdFKA667+wK1oxCT8PaxUJrAImM4VXWoYkVeEcVWaKo5x7APx7Q4r5bgnMwdQ==
+    size: 110842349
+path: sqlectron-1.38.0-mac.zip
+sha512: Z5U+nsA4xM+MmppFY6pXVw2CRg5tjyDcmF+f8n0PFdfvoxPyvPCet9oTVpIlLs3OoSBSZUpR+9OltsFl4yCoIg==
+releaseDate: '2022-03-31T00:51:36.826Z'

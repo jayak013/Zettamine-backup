@@ -1,0 +1,16 @@
+package com.zettamine.mt;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CallableMainClass {
+	
+	public static void main(String[] args) {
+		ExecutorService tPool = Executors.newSingleThreadExecutor();
+		
+		tPool.submit(()->{
+			return 23;
+		});
+	}
+	
+}

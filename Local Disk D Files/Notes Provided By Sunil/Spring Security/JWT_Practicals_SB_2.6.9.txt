@@ -1,0 +1,385 @@
+JWT Application
+
+1) Create a Spring Starter Project - sb-security-jwt
+package: com.zettamine.boot.security
+Dependencies : Spring Web, Spring DevTools, Spring Security, Spring Data JPA, H2, Lombok
+
+-> in pom.xml
+spring-boot-starter-parent  <version>2.6.9</version>
+
+2) Create a RestController
+
+package com.zettamine.boot.security.controllers;
+
+@RestController
+public class WelcomeRestController {
+  @GetMapping("/welcome")	
+  public String showWelcomeMessage() {
+	  return "Welcome to Zettamine";
+  }
+  
+  @GetMapping("/greet")
+  public String showGreetings() {
+	  return "Greetings from Zettamine";
+  }
+}
+
+3) resources/application.properties
+
+spring.h2.console.enabled=true
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:h2:mem:jwtdb
+
+4) Create Entity class  - UserEntity.java
+package com.zettamine.boot.security.entity;
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
+public class UserEntity {
+    @Id    
+    private long id;
+    private String username;  
+    private String password;
+}
+
+5) Create Repository Interface - UserRepository.java
+
+package com.zettamine.boot.security.repository;
+
+@Repository
+public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+    @Query("select s from UserEntity s where s.username = ?1")
+    UserEntity findByUsername(String username);
+}
+
+
+6) provide the details in the starter class to create some user credentials 
+
+@SpringBootApplication
+public class Application {
+    @Autowired
+    private UserRepository repository;
+
+    public static void main(String[] args) {
+	SpringApplication.run(Application.class, args);
+    }
+
+    @PostConstruct 
+    public void initUsers() {
+    	List<UserEntity> users = Stream.of(
+		new UserEntity(1, "admin", "1234"),
+		new UserEntity(2, "employee", "1234"),
+		new UserEntity(3, "clerk", "1234"),
+		new UserEntity(4, "sanjay", "1234")).collect(Collectors.toList());
+
+        repository.saveAll(users);
+    }
+}
+
+
+7) Create Custom User Details class - CustomUserDetailsService.java
+
+package com.zettamine.boot.security.services;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+ @Autowired
+ private UserRepository repository;
+	
+ @Override
+ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+   UserEntity authUser = repository.findByUsername(username);
+	
+   User user = new User(authUser.getUsername(), authUser.getPassword(), new ArrayList<>());
+		
+   return user;
+ }
+}
+
+
+-- in the above method - we are getting the username from the request header
+org.springframework.security.core.userdetails.User  - User object provided by Spring Security
+
+
+package com.zettamine.boot.security.configs
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());     
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+         http.csrf().disable()
+         	 .headers().frameOptions().sameOrigin()
+         	 .and()
+         	 .authorizeRequests()    
+         	 .anyRequest()
+         	 .authenticated();  
+         http.httpBasic();
+    }
+}
+
+-- run the application:    http://localhost:8080/h2-console
+
+
+spring.main.allow-circular-references=true
+
+-------------- spring security is implemented by now -------------
+
+
+Stage - 2 - implementing JWT
+===========================
+
+-> once user sends a request with user name and password - spring application should be able to create a web token - so that, going forward user can directly pass that web token as part of request header (Authorization) - that means, user does not need to pass the user name and password in each and every request - we directly work with web token
+
+{
+ "username": "admin",
+ "password": "1234"
+}
+
+How to generate JSON Web Token?
+
+--> need to add JWT library
+--> need to write a Utility class - here we write the logic to create token and to validate token 
+
+in pom.xml  - mvnrepository.com - jjwt
+
+<dependency>
+ <groupId>io.jsonwebtoken</groupId>
+ <artifactId>jjwt</artifactId>
+ <version>0.9.1</version>
+</dependency>
+
+
+1) Create Utility class - JwtUtil.java
+-- google for "jwtutil class spring boot"
+-- here we need to write logic to generate token and also to validate token
+
+package com.zettamine.boot.security.utils;
+
+@Service
+public class JwtUtil {
+	//@Value("${jwt.secret}")
+	private String SECRET_KEY = "my_secret_key_with_32_character_length";
+	
+	/*--- retrieve username from JWT Token ---*/
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
+
+    /*--- retrieve expiration date & time from JWT Token ---*/
+    public Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+    
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+    
+    /*--- for retrieving any information from token, we need to provide the secret key  ---*/
+    private Claims extractAllClaims(String token) {
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+    }
+    
+    /*--- to chek whether the token is expired ---*/    
+    private Boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    /*--- generate token for the user ---*/
+    public String generateToken(String userName) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("firstName", "Sanjay");
+        claims.put("lastName", "Kumar");
+        claims.put("email", "sanjay@gmail.com");
+        
+        return createToken(claims, userName);
+    }
+
+    private String createToken(Map<String, Object> claims, String subject) {  
+    	
+        return Jwts.builder().setHeaderParam("typ","JWT")
+        		.setIssuer("Zettamine")        					
+        		.setSubject(subject)        					
+        		.setIssuedAt(new Date(System.currentTimeMillis()))
+        		.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30)) //30 mins
+        		.addClaims(claims)        					
+        		.signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+        		.compact();        					
+    }
+    
+    //-- to validate the token
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+}
+
+2) Create an entity class to provide Username & password as Request Body - LoginRequest.java
+
+package com.zettamine.boot.security.models;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class LoginRequest {
+    private String username;
+    private String password;
+}
+
+3) Create an endpoint to generate a token in RestController class
+
+package com.zettamine.boot.security.controllers;
+
+@RestController
+public class JwtTokenRestController {
+  @Autowired
+  private JwtUtil jwtUtil;
+	
+  @Autowired
+  AuthenticationManager authManager;
+	
+  @PostMapping("/authenticate")	
+  public String generateToken(@RequestBody LoginRequest loginRequest) throws Exception {
+     try {
+       authManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+     } catch (Exception ex) {
+	    throw new Exception("invalid username/password");  
+    }
+    return jwtUtil.generateToken(loginRequest.getUsername());
+  }	
+}
+
+
+4) Provide one more Bean configuration in SecurityConfig.java
+
+    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+5) if a request is coming for /authenticate - we need to configure in SpringConfiguration file not to be authenticated
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+         	 .headers().frameOptions().sameOrigin()
+         	 .and()
+         	 .authorizeRequests() 
+         	 .antMatchers("/authenticate")
+         	 .permitAll()
+         	 .anyRequest()
+         	 .authenticated();  
+         http.httpBasic();
+}
+
+run it  --- to check whether token in created or not
+In POSTMAN POST  http://localhost:8080/authenticate
+{
+  "username":"admin",
+  "password":"1234"
+}
+
+
+6) copy the encrypted string response and decrypt it in jwt.io site
+
+7) now we can use the above token to access the other endpoints
+In POSTMAN		GET  http://localhost:8080/welcome
+Headers		Authorization    Bearer <<token>>    Send
+
+
+Now  we will get an error (401 Unauthorized) as spring boot do not understand what is given as part Authorization header
+
+now we need to tell Spring Boot to extract the string and get the username and password and then authenticate the user, and if it is authenticated then allow to access the endpoint
+
+- take "Authorization" header value
+- take the JWT from the value of Authorization 
+
+
+8) Create a filter class to provide the above functionality - JwtRequestFilter.java
+
+package com.zettamine.boot.security.filters;
+
+@Component
+public class JwtRequestFilter extends OncePerRequestFilter {
+ @Autowired
+ private JwtUtil jwtUtil;
+	
+ @Autowired
+ private CustomUserDetailsService service;
+	
+ @Override
+ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+  String authorizationHeaderValue = request.getHeader("Authorization");
+  System.out.println(authorizationHeaderValue);
+		
+  String token = null;
+  String username = null;
+		
+  if(authorizationHeaderValue != null && authorizationHeaderValue.startsWith("Bearer ")) {
+	token = authorizationHeaderValue.substring(7);
+	username = jwtUtil.extractUsername(token);
+  }
+		
+  if(username != null && SecurityContextHolder.getContext().getAuthentication()==null) {
+	UserDetails userDetails = service.loadUserByUsername(username);
+			
+	if(jwtUtil.validateToken(token, userDetails)) {
+  	  UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+	upToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+				
+	SecurityContextHolder.getContext().setAuthentication(upToken);
+      }
+  }
+		
+  filterChain.doFilter(request, response);
+ }
+}
+
+
+
+9) we need to register/ inject this JwtFilter in SecurityConfig class
+
+@Autowired
+private JwtFilter jwtFilter;
+
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+  http.csrf().disable()
+ 	.authorizeRequests()
+ 	.antMatchers("/authenticate").permitAll()
+ 	.anyRequest().authenticated()
+        .and()
+        .exceptionHandling()
+        .and()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); 
+        
+  http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+}
+
+
+
+
+
+
+
+

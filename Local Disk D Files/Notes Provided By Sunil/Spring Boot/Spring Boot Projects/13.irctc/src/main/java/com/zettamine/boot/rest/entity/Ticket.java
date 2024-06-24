@@ -1,0 +1,33 @@
+package com.zettamine.boot.rest.entity;
+
+import java.time.LocalDate;
+
+import com.zettamine.boot.rest.dto.Passenger;
+import com.zettamine.boot.rest.dto.adapter.LocalDateAdapter;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Entity
+@Data
+@RequiredArgsConstructor
+@AllArgsConstructor
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Ticket extends BaseEntity {
+	private Passenger passenger;
+	
+	@Id
+	private String pnr;
+	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+	private LocalDate dateOfBooking;
+	private String bookingStatus;
+	private Float ticketFare;
+}

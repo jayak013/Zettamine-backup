@@ -1,0 +1,9 @@
+package com.zettamine.amc.repository;
+
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ServiceAreaRepository extends JpaRepository<ServiceAreaRepository, Serializable> {
+
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>create emp</title>
+</head>
+<body>
+	<form action="/createemployee?action=create" method="post">
+		EMPNO: <input type="number" name="empno">
+		ENAME: <input type="text" name="ename">
+		SAL: <input type="number" name="sal">
+		<input type="submit" value="S U B M I T">
+	</form>
+</body>
+</html>

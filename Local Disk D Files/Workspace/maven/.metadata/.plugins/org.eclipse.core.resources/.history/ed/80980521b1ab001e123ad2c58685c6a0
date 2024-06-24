@@ -1,0 +1,29 @@
+package com.zettamine.mt;
+
+public class Account {
+	private Integer bal;
+
+	public Integer getbal() {
+		return bal;
+	}
+
+	public void setInitialDeposit(Integer bal) {
+		this.bal = bal;
+	}
+
+	public Account(Integer bal) {
+		super();
+		this.bal = bal;
+	}
+
+	synchronized public void deposit(Integer amount) {
+		this.bal+=amount;
+		System.out.println("Deposited : " + amount+" | Balance: "+bal);
+	}
+	
+	synchronized public void withdraw(Integer amount) {
+		this.bal-=amount;
+		System.out.println("Withdrawn : " + amount+" | Balance: "+bal);
+	}
+	
+}

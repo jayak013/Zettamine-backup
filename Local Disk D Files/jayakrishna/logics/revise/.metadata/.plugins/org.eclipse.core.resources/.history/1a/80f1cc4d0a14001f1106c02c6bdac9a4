@@ -1,0 +1,9 @@
+package logics.revise;
+
+public class DecimalToBinaryConverter {
+	
+	public static Integer DecToBin(Integer number){
+		return null;
+	}
+	
+}

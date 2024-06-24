@@ -1,0 +1,19 @@
+==================================================================
+
+/*---- 1. global configuration for CORS ---*/
+@Bean
+public WebMvcConfigurer corsConfigurer(){
+	return new WebMvcConfigurer(){
+		public void addCorsMappings(CorsRegistry registry){
+			registry.addMapping("/**")
+				.allowedMethods("*")
+				.allowedOrigins("http://localhost:3000");
+		}
+	};
+}
+
+===================================================================
+/*---- 2. Local Configuration ---*/
+
+@CrossOrigin -- allows request from all origins
+@CrossOrigin(origins = "http://:localhost:3000") -- allows request from a specific origin

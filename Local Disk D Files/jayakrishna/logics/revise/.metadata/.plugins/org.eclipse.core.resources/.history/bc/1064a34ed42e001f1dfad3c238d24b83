@@ -1,0 +1,42 @@
+package acc.code;
+
+public class MainClass {
+	
+	
+	
+}
+
+
+class Node{
+	
+	Object ele;
+	Node next;
+	
+	public Node(Object e, Node n) {
+		ele = e;
+		next = n;
+	}
+	
+}
+
+class LinkedList{
+	
+	private Node first = null;
+	private int count = 0;
+	
+	public void add(Object e) {
+		if(first==null) {
+			first = new Node(e,null);
+			count++;
+			return;
+		}
+		
+		Node curr = first;
+		
+		while(curr.next!=null) {
+			curr = curr.next;
+		}
+		curr = new Node(e,null);
+		count++;
+	}
+}

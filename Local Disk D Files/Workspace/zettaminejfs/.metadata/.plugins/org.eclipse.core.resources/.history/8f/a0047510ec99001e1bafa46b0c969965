@@ -1,0 +1,9 @@
+package com.zettamine.java.day06.assignment06;
+
+public class LocationSegregate {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+}

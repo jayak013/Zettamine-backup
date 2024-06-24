@@ -1,0 +1,16 @@
+package org.jfs.practice;
+
+import java.time.Year;
+import java.util.Date;
+
+public class JodaTimeAPIDemo {
+	
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		Date date = new Date();
+		System.out.println(date);
+		Year year = Year.of(2012);
+		System.out.println(year);
+	}
+	
+}

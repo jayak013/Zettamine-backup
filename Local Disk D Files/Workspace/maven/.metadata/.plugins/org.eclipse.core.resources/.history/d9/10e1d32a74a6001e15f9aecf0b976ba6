@@ -1,0 +1,16 @@
+package com.zettamine.web.dao;
+
+import java.sql.Connection;
+
+import com.zettamine.web.configs.DBHandler;
+import com.zettamine.web.dto.Employee;
+
+public class EmpDAO {
+	public void saveEmp(Employee emp) {
+		try {
+			Connection con = DBHandler.establishConnection();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

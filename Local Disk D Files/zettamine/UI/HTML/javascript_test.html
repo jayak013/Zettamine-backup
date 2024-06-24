@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Menu with Checkboxes</title>
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        border: 1px solid #ccc;
+        padding: 8px;
+        z-index: 1;
+    }
+
+    .dropdown-content label {
+        display: block;
+    }
+
+    .dropdown-content label input {
+        margin-right: 5px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+        <label><input type="checkbox" value="Option 1"> Option 1</label>
+        <label><input type="checkbox" value="Option 2"> Option 2</label>
+        <label><input type="checkbox" value="Option 3"> Option 3</label>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var dropdown = document.querySelector('.dropdown');
+        var checkboxes = dropdown.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                var selectedOptions = [];
+                checkboxes.forEach(function(cb) {
+                    if (cb.checked) {
+                        selectedOptions.push(cb.value);
+                    }
+                });
+                console.log(selectedOptions);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

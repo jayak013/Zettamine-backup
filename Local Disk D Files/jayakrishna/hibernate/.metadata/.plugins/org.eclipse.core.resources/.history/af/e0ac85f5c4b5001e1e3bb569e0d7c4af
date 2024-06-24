@@ -1,0 +1,35 @@
+package com.zettamine.hibernate;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import com.zettamine.hibernate.entity.Student;
+import com.zettamine.hibernate.utils.SessionFactoryUtils;
+
+public class HQLTest {
+	
+	public static void main(String[] args) {
+		SessionFactory sF = SessionFactoryUtils.getseSessionFactory();
+		Session session = sF.openSession();
+//		String hql = "from Student";
+//		Query<Student> query = session.createQuery(hql,Student.class);
+//		List<Student> list = query.getResultList();
+//		printStudents(list);
+		
+		String hql = "from Student where studentName='tja'";
+		Query<Student> query = session.createQuery(hql,Student.class);
+		List<Student> list = query.list();
+		printStudents(list);
+		
+		session.close();
+		sF.close();
+	}
+
+	private static void printStudents(List<Student> list) {
+		for(Student s:list) System.out.println(s);
+	}
+	
+}

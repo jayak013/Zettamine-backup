@@ -1,0 +1,12 @@
+package com.zettamine.java.day06.assignment02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PhoneBook {
+	private List<Contact> phoneBookList = new ArrayList<>();
+	
+	public void addContact(Contact contactObj) {
+		
+	}
+}

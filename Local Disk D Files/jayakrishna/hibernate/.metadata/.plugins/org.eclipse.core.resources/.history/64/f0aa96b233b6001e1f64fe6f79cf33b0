@@ -1,0 +1,26 @@
+package com.zettamine.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.zettamine.hibernate.entity.ProductDetails;
+import com.zettamine.hibernate.utils.SessionFactoryUtils;
+
+public class ProductDetailsHQL {
+	
+	public static void main(String[] args) {
+		SessionFactory sF = SessionFactoryUtils.getseSessionFactory();
+		Session session = sF.openSession();
+		ProductDetails pD = new ProductDetails();
+		pD.setProductName("TV");
+		pD.setProductPrice(30000.00);
+		
+		session.beginTransaction();
+		session.save(pD);
+		session.getTransaction().commit();
+		session.close();
+		sF.close();
+		
+	}
+	
+}

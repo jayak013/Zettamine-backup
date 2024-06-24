@@ -1,0 +1,51 @@
+package com.zettamine.jdbctemplate.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
+
+import com.zettamine.jdbctemplate.dto.Employee;
+
+public class EmpDAOImpl implements EmpDAO {
+
+	private JdbcTemplate jt;
+
+	public JdbcTemplate getJt() {
+		return jt;
+	}
+
+	public void setJt(JdbcTemplate jt) {
+		this.jt = jt;
+	}
+
+	@Override
+	public int saveEmployee(Employee emp) {
+		String sql = "INSERT INTO EMP VALUES(" + emp.getEid() + ",'" + emp.getEname() + "','" + emp.getEmail() + "',"
+				+ emp.getSal() + ")";
+		int update = jt.update(sql);
+		return update;
+	}
+
+	@Override
+	public Employee findEmployeeById(Integer id) {
+		String sql = "select * from emp where id = "+id;
+		Employee emp = jt.queryForObject(sql, new RowMapper<Employee>() {
+
+			@Override
+			public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+				String name = rs.getString(2);
+				System.out.println(name);
+				String email = rs.getString(3);
+				 double sal = rs.getDouble(4);
+				return new Employee(id,name,email,sal);
+			}
+			
+		});
+		return emp;
+	}
+
+}

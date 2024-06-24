@@ -1,0 +1,18 @@
+package com.zettamine.java.day05.assignment02;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+public class ApachePoiTest {
+	public static void main(String[] args) throws IOException {
+		 Workbook w =  new HSSFWorkbook();
+		 OutputStream fileOut = new FileOutputStream("Javatpoint.xls");
+		 w.write(fileOut);
+		 
+	}
+}
